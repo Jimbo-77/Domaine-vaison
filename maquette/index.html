@@ -102,6 +102,8 @@
     display: flex; align-items: flex-end; padding: 20px;
     font-size: .85rem; color: var(--ombre-2);
   }
+  .photo { position: relative; overflow: hidden; }
+  .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .photo.bassin { background: #d5e9ea; }
   .photo.olivier { background: #e1e3d2; }
   dl.fiche { display: grid; grid-template-columns: max-content 1fr; gap: 10px 28px; margin: 24px 0 28px; font-size: 1rem; }
@@ -351,7 +353,7 @@
     </div>
 
     <article class="maison" id="maison-cote-piscine">
-      <div class="photo bassin">Photo à fournir : le salon ouvert sur la terrasse</div>
+      <div class="photo bassin">Photo à fournir : le salon ouvert sur la terrasse<img src="photos/cote-piscine.jpg" alt="Villa Côté Piscine : le salon ouvert sur la terrasse" loading="lazy" onerror="this.remove()"></div>
       <div>
         <h3>Côté Piscine</h3>
         <p>La plus proche du bassin. Le salon donne directement sur la terrasse et le jardin : pratique pour garder un œil sur les enfants.</p>
@@ -367,7 +369,7 @@
     </article>
 
     <article class="maison" id="maison-2-terrasses">
-      <div class="photo">Photo à fournir : la terrasse du soir</div>
+      <div class="photo">Photo à fournir : la terrasse du soir<img src="photos/2-terrasses.jpg" alt="Villa les 2 Terrasses : la terrasse du soir" loading="lazy" onerror="this.remove()"></div>
       <div>
         <h3>Les 2 Terrasses</h3>
         <p>Une terrasse au soleil pour le petit-déjeuner, l'autre à l'ombre pour dîner quand il fait encore chaud.</p>
@@ -382,7 +384,7 @@
     </article>
 
     <article class="maison" id="maison-olivier">
-      <div class="photo olivier">Photo à fournir : la maison sous l'olivier</div>
+      <div class="photo olivier">Photo à fournir : la maison sous l'olivier<img src="photos/olivier.jpg" alt="Villa l'Olivier sous son olivier" loading="lazy" onerror="this.remove()"></div>
       <div>
         <h3>L'Olivier</h3>
         <p>La plus au calme, en retrait au fond du jardin. Elle convient bien à un couple.</p>
