@@ -3,8 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Domaine Vaison — Trois maisons à deux pas du Théâtre antique</title>
-<meta name="description" content="Trois maisons pour 4 personnes dans un domaine fermé à Vaison-la-Romaine, à deux pas du Théâtre antique et à 300 m du centre-ville. Piscine, jardin, boulodrome. Ouvert toute l'année.">
+<title data-i18n="meta_titre">Domaine Vaison — Trois maisons à deux pas du Théâtre antique</title>
+<meta name="description" content="Trois maisons pour 4 personnes dans un domaine fermé à Vaison-la-Romaine, à deux pas du Théâtre antique et à 300 m du centre-ville. Piscine, jardin, boulodrome. Ouvert toute l'année." data-i18n-content="meta_description">
+<link rel="canonical" href="https://jimbo-77.github.io/Domaine-vaison/maquette/">
+<link rel="alternate" hreflang="fr" href="https://jimbo-77.github.io/Domaine-vaison/maquette/">
+<link rel="alternate" hreflang="en" href="https://jimbo-77.github.io/Domaine-vaison/maquette/en/">
+<link rel="alternate" hreflang="de" href="https://jimbo-77.github.io/Domaine-vaison/maquette/de/">
+<link rel="alternate" hreflang="nl" href="https://jimbo-77.github.io/Domaine-vaison/maquette/nl/">
+<link rel="alternate" hreflang="x-default" href="https://jimbo-77.github.io/Domaine-vaison/maquette/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600&family=Marcellus&display=swap" rel="stylesheet">
@@ -241,20 +247,20 @@
 <body>
 
 <header>
-  <nav class="wrap nav" id="nav" aria-label="Navigation principale">
+  <nav class="wrap nav" id="nav" aria-label="Navigation principale" data-i18n-aria-label="aria_nav">
     <a class="marque" href="#">Domaine Vaison</a>
     <ul>
-      <li><a href="#maisons">Les maisons</a></li>
-      <li><a href="#sur-place">Sur place</a></li>
-      <li><a href="#autour">Autour</a></li>
-      <li><a href="#tarifs">Tarifs</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#maisons" data-i18n="nav_maisons">Les maisons</a></li>
+      <li><a href="#sur-place" data-i18n="nav_sur_place">Sur place</a></li>
+      <li><a href="#autour" data-i18n="nav_autour">Autour</a></li>
+      <li><a href="#tarifs" data-i18n="nav_tarifs">Tarifs</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
     <label class="langues">
-      <select aria-label="Langue"><option>Français</option><option>English</option><option>Deutsch</option><option>Nederlands</option></select>
+      <select aria-label="Langue" data-i18n-aria-label="aria_langue" onchange="location.href = this.value"><option value="./" lang="fr" selected>Français</option><option value="en/" lang="en">English</option><option value="de/" lang="de">Deutsch</option><option value="nl/" lang="nl">Nederlands</option></select>
     </label>
-    <a class="btn" href="#reservation">Réserver</a>
-    <button class="menu-btn" aria-expanded="false" aria-controls="nav" onclick="basculerMenu(this)">Menu</button>
+    <a class="btn" href="#reservation" data-i18n="btn_reserver">Réserver</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" onclick="basculerMenu(this)" data-i18n="btn_menu">Menu</button>
   </nav>
 </header>
 
@@ -262,22 +268,22 @@
 <section class="ouverture">
   <div class="wrap ouverture-grille">
     <div>
-      <h1>Trois maisons à deux pas du Théâtre antique</h1>
-      <p class="chapo">Olivier, Lavande et Les Cigales : trois maisons pour 4 personnes dans un domaine fermé de Vaison-la-Romaine, avec jardin, boulodrome et parking. Ouvert toute l'année.</p>
+      <h1 data-i18n="h1">Trois maisons à deux pas du Théâtre antique</h1>
+      <p class="chapo" data-i18n="chapo">Olivier, Lavande et Les Cigales : trois maisons pour 4 personnes dans un domaine fermé de Vaison-la-Romaine, avec jardin, boulodrome et parking. Ouvert toute l'année.</p>
       <ul class="reperes">
-        <li><strong>Théâtre antique</strong> à deux pas</li>
-        <li><strong>Centre-ville</strong> à 300 m à pied</li>
-        <li><strong>Piscine</strong> de 10 × 5 m dans le jardin</li>
+        <li data-i18n="repere_theatre"><strong>Théâtre antique</strong> à deux pas</li>
+        <li data-i18n="repere_centre"><strong>Centre-ville</strong> à 300 m à pied</li>
+        <li data-i18n="repere_piscine"><strong>Piscine</strong> de 10 × 5 m dans le jardin</li>
       </ul>
       <div class="actions">
-        <a class="btn" href="#reservation">Voir les disponibilités</a>
-        <a class="btn secondaire" href="#maisons">Découvrir les maisons</a>
+        <a class="btn" href="#reservation" data-i18n="btn_disponibilites">Voir les disponibilités</a>
+        <a class="btn secondaire" href="#maisons" data-i18n="btn_decouvrir">Découvrir les maisons</a>
       </div>
     </div>
     <div class="arcs">
-      <figure class="piscine"><img src="photos/accueil-piscine.jpg" alt="La piscine du domaine sous le ciel bleu, bordée de lauriers-roses" fetchpriority="high"></figure>
-      <figure><img src="photos/accueil-olivier.jpg" alt="Une maison aux volets verts derrière un olivier, sur la pelouse du jardin"></figure>
-      <figure><img src="photos/accueil-terrasse.jpg" alt="Vue sur le jardin fleuri depuis une terrasse couverte"></figure>
+      <figure class="piscine"><img src="photos/accueil-piscine.jpg" alt="La piscine du domaine sous le ciel bleu, bordée de lauriers-roses" data-i18n-alt="alt_accueil_piscine" fetchpriority="high"></figure>
+      <figure><img src="photos/accueil-olivier.jpg" alt="Une maison aux volets verts derrière un olivier, sur la pelouse du jardin" data-i18n-alt="alt_accueil_olivier"></figure>
+      <figure><img src="photos/accueil-terrasse.jpg" alt="Vue sur le jardin fleuri depuis une terrasse couverte" data-i18n-alt="alt_accueil_terrasse"></figure>
     </div>
   </div>
 </section>
@@ -285,48 +291,48 @@
 <section class="maisons" id="maisons">
   <div class="wrap">
     <div class="intro-section">
-      <h2>Les maisons</h2>
-      <p>Trois maisons tout équipées pour 4 personnes, chacune avec sa terrasse privée, sa cuisine et sa salle de bain. Le jardin, la piscine, le boulodrome et le parking sont partagés.</p>
+      <h2 data-i18n="nav_maisons">Les maisons</h2>
+      <p data-i18n="maisons_intro">Trois maisons tout équipées pour 4 personnes, chacune avec sa terrasse privée, sa cuisine et sa salle de bain. Le jardin, la piscine, le boulodrome et le parking sont partagés.</p>
     </div>
 
     <article class="maison" id="maison-olivier-lavande">
-      <button class="photo bassin photo-galerie" data-galerie="olivier-lavande" aria-label="Voir les photos d'Olivier et Lavande"><img src="photos/olivier-lavande.jpg" alt="Le séjour d'une des maisons Olivier et Lavande : table, canapé et télévision" loading="lazy"></button>
+      <button class="photo bassin photo-galerie" data-galerie="olivier-lavande" aria-label="Voir les photos d'Olivier et Lavande" data-i18n-aria-label="aria_photos_ol"><img src="photos/olivier-lavande.jpg" alt="Le séjour d'une des maisons Olivier et Lavande : table, canapé et télévision" data-i18n-alt="alt_ol" loading="lazy"></button>
       <div>
-        <h3>Olivier et Lavande</h3>
-        <p>Deux maisons jumelles, chacune avec sa terrasse privée qui donne sur la piscine. Décoration sobre et chaleureuse, panier d'accueil à votre arrivée.</p>
+        <h3 data-i18n="ol_titre">Olivier et Lavande</h3>
+        <p data-i18n="ol_texte">Deux maisons jumelles, chacune avec sa terrasse privée qui donne sur la piscine. Décoration sobre et chaleureuse, panier d'accueil à votre arrivée.</p>
         <dl class="fiche">
-          <dt>Surface</dt><dd>55 m²</dd>
-          <dt>Couchages</dt><dd>4 personnes, lit bébé possible</dd>
-          <dt>Chambres</dt><dd>Un lit double 140 × 190, deux lits jumeaux 90 × 190</dd>
-          <dt>Salle de bain</dt><dd>Baignoire-douche</dd>
-          <dt>Cuisine</dt><dd>Gazinière, réfrigérateur, lave-linge, cafetière</dd>
-          <dt>Extérieur</dt><dd>Terrasse privée avec vue sur la piscine</dd>
+          <dt data-i18n="fiche_surface">Surface</dt><dd>55 m²</dd>
+          <dt data-i18n="fiche_couchages">Couchages</dt><dd data-i18n="ol_couchages">4 personnes, lit bébé possible</dd>
+          <dt data-i18n="fiche_chambres">Chambres</dt><dd data-i18n="ol_chambres">Un lit double 140 × 190, deux lits jumeaux 90 × 190</dd>
+          <dt data-i18n="fiche_sdb">Salle de bain</dt><dd data-i18n="sdb_baignoire">Baignoire-douche</dd>
+          <dt data-i18n="fiche_cuisine">Cuisine</dt><dd data-i18n="ol_cuisine">Gazinière, réfrigérateur, lave-linge, cafetière</dd>
+          <dt data-i18n="fiche_exterieur">Extérieur</dt><dd data-i18n="ol_exterieur">Terrasse privée avec vue sur la piscine</dd>
         </dl>
         <div class="vignettes" data-vignettes="olivier-lavande"></div>
-        <p class="prix">À partir de <strong>700 €</strong> la semaine</p>
+        <p class="prix" data-i18n="ol_prix">À partir de <strong>700 €</strong> la semaine</p>
         <div class="actions-maison">
-          <button class="btn" onclick="ouvrirReservation('olivier')">Dates libres : Olivier</button>
-          <button class="btn secondaire" onclick="ouvrirReservation('lavande')">Dates libres : Lavande</button>
+          <button class="btn" onclick="ouvrirReservation('olivier')" data-i18n="btn_dates_olivier">Dates libres : Olivier</button>
+          <button class="btn secondaire" onclick="ouvrirReservation('lavande')" data-i18n="btn_dates_lavande">Dates libres : Lavande</button>
         </div>
       </div>
     </article>
 
     <article class="maison" id="maison-cigales">
-      <button class="photo photo-galerie" data-galerie="cigales" aria-label="Voir les photos des Cigales"><img src="photos/cigales.jpg" alt="La terrasse couverte des Cigales, avec table, chaises et vue sur le jardin" loading="lazy"></button>
+      <button class="photo photo-galerie" data-galerie="cigales" aria-label="Voir les photos des Cigales" data-i18n-aria-label="aria_photos_ci"><img src="photos/cigales.jpg" alt="La terrasse couverte des Cigales, avec table, chaises et vue sur le jardin" data-i18n-alt="alt_ci" loading="lazy"></button>
       <div>
         <h3>Les Cigales</h3>
-        <p>La plus grande des trois, avec deux terrasses privées exposées au sud et à l'est. Des transats sont à votre disposition.</p>
+        <p data-i18n="ci_texte">La plus grande des trois, avec deux terrasses privées exposées au sud et à l'est. Des transats sont à votre disposition.</p>
         <dl class="fiche">
-          <dt>Surface</dt><dd>65 m²</dd>
-          <dt>Couchages</dt><dd>4 personnes, lit bébé et lit d'appoint possibles</dd>
-          <dt>Chambres</dt><dd>Un lit double, deux lits jumeaux</dd>
-          <dt>Salle de bain</dt><dd>Baignoire-douche</dd>
-          <dt>Cuisine</dt><dd>Lave-vaisselle, lave-linge, micro-ondes, machine à café</dd>
-          <dt>Extérieur</dt><dd>Deux terrasses, au sud et à l'est</dd>
+          <dt data-i18n="fiche_surface">Surface</dt><dd>65 m²</dd>
+          <dt data-i18n="fiche_couchages">Couchages</dt><dd data-i18n="ci_couchages">4 personnes, lit bébé et lit d'appoint possibles</dd>
+          <dt data-i18n="fiche_chambres">Chambres</dt><dd data-i18n="ci_chambres">Un lit double, deux lits jumeaux</dd>
+          <dt data-i18n="fiche_sdb">Salle de bain</dt><dd data-i18n="sdb_baignoire">Baignoire-douche</dd>
+          <dt data-i18n="fiche_cuisine">Cuisine</dt><dd data-i18n="ci_cuisine">Lave-vaisselle, lave-linge, micro-ondes, machine à café</dd>
+          <dt data-i18n="fiche_exterieur">Extérieur</dt><dd data-i18n="ci_exterieur">Deux terrasses, au sud et à l'est</dd>
         </dl>
         <div class="vignettes" data-vignettes="cigales"></div>
-        <p class="prix">À partir de <strong>750 €</strong> la semaine</p>
-        <button class="btn" onclick="ouvrirReservation('cigales')">Voir les dates libres</button>
+        <p class="prix" data-i18n="ci_prix">À partir de <strong>750 €</strong> la semaine</p>
+        <button class="btn" onclick="ouvrirReservation('cigales')" data-i18n="btn_dates">Voir les dates libres</button>
       </div>
     </article>
   </div>
@@ -335,18 +341,18 @@
 <section id="sur-place">
   <div class="wrap sur-place-grille">
     <div class="intro-section" style="margin-bottom:0">
-      <h2>Sur place, sans supplément</h2>
-      <p>Le portail se ferme : les enfants jouent dans le jardin et la voiture reste à l'intérieur pendant que vous partez à pied en ville.</p>
-      <img class="photo-large" src="photos/entree.jpg" alt="L'entrée du domaine : portail, allée de gravier, lauriers-roses et massifs de lavande" loading="lazy">
+      <h2 data-i18n="sp_titre">Sur place, sans supplément</h2>
+      <p data-i18n="sp_texte">Le portail se ferme : les enfants jouent dans le jardin et la voiture reste à l'intérieur pendant que vous partez à pied en ville.</p>
+      <img class="photo-large" src="photos/entree.jpg" alt="L'entrée du domaine : portail, allée de gravier, lauriers-roses et massifs de lavande" data-i18n-alt="alt_entree" loading="lazy">
       <div class="vignettes" data-vignettes="domaine"></div>
     </div>
     <ul class="liste-equip">
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17c2 0 2-1.5 4-1.5S8 17 10 17s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M2 21c2 0 2-1.5 4-1.5S8 21 10 21s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M8 14V5a2 2 0 0 1 4 0M16 14V5a2 2 0 0 0-4 0M8 9h8"/></svg><div><b>Piscine</b><span>10 × 5 m, au milieu du jardin.</span></div></li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22V12M12 12c-4 0-7-3-7-7 4 0 7 3 7 7zM12 12c4 0 7-3 7-7-4 0-7 3-7 7zM4 22h16"/></svg><div><b>Grand jardin</b><span>Pelouse, massifs fleuris et oliviers.</span></div></li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="16" r="3"/><circle cx="16" cy="15" r="4"/><circle cx="12" cy="7" r="1.2"/></svg><div><b>Boulodrome</b><span>Boules prêtées sur demande.</span></div></li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16l-2 7H6zM8 17l-2 5M16 17l2 5M9 6c0-1.5 1-2 1-3M13 6c0-1.5 1-2 1-3"/></svg><div><b>Barbecue</b><span>Prêté sur demande.</span></div></li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div><b>Parking fermé</b><span>Derrière le portail.</span></div></li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg><div><b>Wi-Fi</b><span>Dans les maisons.</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17c2 0 2-1.5 4-1.5S8 17 10 17s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M2 21c2 0 2-1.5 4-1.5S8 21 10 21s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M8 14V5a2 2 0 0 1 4 0M16 14V5a2 2 0 0 0-4 0M8 9h8"/></svg><div><b data-i18n="eq_piscine">Piscine</b><span data-i18n="eq_piscine_d">10 × 5 m, au milieu du jardin.</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22V12M12 12c-4 0-7-3-7-7 4 0 7 3 7 7zM12 12c4 0 7-3 7-7-4 0-7 3-7 7zM4 22h16"/></svg><div><b data-i18n="eq_jardin">Grand jardin</b><span data-i18n="eq_jardin_d">Pelouse, massifs fleuris et oliviers.</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="16" r="3"/><circle cx="16" cy="15" r="4"/><circle cx="12" cy="7" r="1.2"/></svg><div><b data-i18n="eq_boulodrome">Boulodrome</b><span data-i18n="eq_boulodrome_d">Boules prêtées sur demande.</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16l-2 7H6zM8 17l-2 5M16 17l2 5M9 6c0-1.5 1-2 1-3M13 6c0-1.5 1-2 1-3"/></svg><div><b data-i18n="eq_barbecue">Barbecue</b><span data-i18n="eq_barbecue_d">Prêté sur demande.</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div><b data-i18n="eq_parking">Parking fermé</b><span data-i18n="eq_parking_d">Derrière le portail.</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg><div><b data-i18n="eq_wifi">Wi-Fi</b><span data-i18n="eq_wifi_d">Dans les maisons.</span></div></li>
     </ul>
   </div>
 </section>
@@ -354,26 +360,26 @@
 <section class="autour" id="autour">
   <div class="wrap">
     <div class="intro-section">
-      <h2>Ce qu'il y a autour</h2>
-      <p>Vaison se partage entre la ville romaine, la ville haute médiévale et la ville moderne. Vos hôtes vous conseillent randonnées, vignobles et restaurants, et vous prêtent la carte des circuits à pied et à vélo.</p>
+      <h2 data-i18n="au_titre">Ce qu'il y a autour</h2>
+      <p data-i18n="au_texte">Vaison se partage entre la ville romaine, la ville haute médiévale et la ville moderne. Vos hôtes vous conseillent randonnées, vignobles et restaurants, et vous prêtent la carte des circuits à pied et à vélo.</p>
     </div>
-    <img class="photo-large photo-autour" src="photos/pont-romain.jpg" alt="Le pont romain de Vaison-la-Romaine au-dessus de l'Ouvèze, au pied de la ville haute" loading="lazy">
+    <img class="photo-large photo-autour" src="photos/pont-romain.jpg" alt="Le pont romain de Vaison-la-Romaine au-dessus de l'Ouvèze, au pied de la ville haute" data-i18n-alt="alt_pont" loading="lazy">
     <div class="distances">
       <div>
-        <h3>À pied</h3>
+        <h3 data-i18n="au_pied">À pied</h3>
         <ol>
-          <li><span>Théâtre antique</span><span>à deux pas</span></li>
-          <li><span>Centre-ville</span><span>300 m</span></li>
-          <li><span>Sites antiques de Puymin et de la Villasse</span><span>en ville</span></li>
-          <li><span>Pont romain, cathédrale, ville haute</span><span>en ville</span></li>
+          <li><span data-i18n="au_theatre">Théâtre antique</span><span data-i18n="au_deux_pas">à deux pas</span></li>
+          <li><span data-i18n="au_centre">Centre-ville</span><span>300 m</span></li>
+          <li><span data-i18n="au_sites">Sites antiques de Puymin et de la Villasse</span><span data-i18n="au_en_ville">en ville</span></li>
+          <li><span data-i18n="au_pont">Pont romain, cathédrale, ville haute</span><span data-i18n="au_en_ville">en ville</span></li>
         </ol>
       </div>
       <div>
-        <h3>En voiture</h3>
+        <h3 data-i18n="au_voiture">En voiture</h3>
         <ol>
-          <li><span>Dentelles de Montmirail</span><span>moins de 30 min</span></li>
-          <li><span>Mont Ventoux, 1 910 m</span><span>moins de 30 km</span></li>
-          <li><span>Vignobles de Gigondas et Châteauneuf-du-Pape</span><span>moins d'une heure</span></li>
+          <li><span>Dentelles de Montmirail</span><span data-i18n="au_moins_30min">moins de 30 min</span></li>
+          <li><span data-i18n="au_ventoux">Mont Ventoux, 1 910 m</span><span data-i18n="au_moins_30km">moins de 30 km</span></li>
+          <li><span data-i18n="au_vignobles">Vignobles de Gigondas et Châteauneuf-du-Pape</span><span data-i18n="au_moins_1h">moins d'une heure</span></li>
         </ol>
       </div>
     </div>
@@ -383,26 +389,26 @@
 <section id="tarifs">
   <div class="wrap">
     <div class="intro-section">
-      <h2>Tarifs</h2>
-      <p>Prix par maison et par semaine. Séjour de 3 jours minimum en basse et moyenne saison, d'une semaine en haute saison.</p>
+      <h2 data-i18n="nav_tarifs">Tarifs</h2>
+      <p data-i18n="ta_intro">Prix par maison et par semaine. Séjour de 3 jours minimum en basse et moyenne saison, d'une semaine en haute saison.</p>
     </div>
     <div class="tarifs-grille">
       <div>
         <table>
-          <thead><tr><th scope="col">Période</th><th scope="col">Olivier ou Lavande</th><th scope="col">Les Cigales</th></tr></thead>
+          <thead><tr><th scope="col" data-i18n="ta_periode">Période</th><th scope="col" data-i18n="ta_ol">Olivier ou Lavande</th><th scope="col">Les Cigales</th></tr></thead>
           <tbody>
-            <tr><td>Basse saison<span class="periode">janvier à avril, octobre à décembre</span></td><td>700 €</td><td>750 €</td></tr>
-            <tr><td>Moyenne saison<span class="periode">mai, juin et septembre</span></td><td>800 €</td><td>850 €</td></tr>
-            <tr><td class="haute">Haute saison<span class="periode">été (vacances scolaires) et jours fériés</span></td><td class="haute">900 €</td><td class="haute">950 €</td></tr>
+            <tr><td data-i18n="ta_basse">Basse saison<span class="periode">janvier à avril, octobre à décembre</span></td><td data-i18n="p700">700 €</td><td data-i18n="p750">750 €</td></tr>
+            <tr><td data-i18n="ta_moyenne">Moyenne saison<span class="periode">mai, juin et septembre</span></td><td data-i18n="p800">800 €</td><td data-i18n="p850">850 €</td></tr>
+            <tr><td class="haute" data-i18n="ta_haute">Haute saison<span class="periode">été (vacances scolaires) et jours fériés</span></td><td class="haute" data-i18n="p900">900 €</td><td class="haute" data-i18n="p950">950 €</td></tr>
           </tbody>
         </table>
-        <p class="note">Arrivée à partir de 16 h, départ entre 9 h et 10 h. Le prix exact de vos dates s'affiche quand vous les choisissez dans le calendrier de réservation.</p>
+        <p class="note" data-i18n="ta_note">Arrivée à partir de 16 h, départ entre 9 h et 10 h. Le prix exact de vos dates s'affiche quand vous les choisissez dans le calendrier de réservation.</p>
       </div>
       <div class="compris">
-        <h3>Compris</h3>
-        <ul><li>Piscine, jardin, boulodrome, parking fermé et Wi-Fi</li><li>Prêt du barbecue et des boules de pétanque</li><li>Panier d'accueil</li></ul>
-        <h3>En plus</h3>
-        <ul><li>Ménage de fin de séjour : 50 €, obligatoire</li><li>Draps et serviettes : en option</li><li>Lit bébé et chaise haute : 15 € par séjour</li><li>Animal : 25 € par séjour et par animal</li><li>Taxe de séjour : 1,70 € par adulte et par jour</li></ul>
+        <h3 data-i18n="ta_compris">Compris</h3>
+        <ul><li data-i18n="ta_compris1">Piscine, jardin, boulodrome, parking fermé et Wi-Fi</li><li data-i18n="ta_compris2">Prêt du barbecue et des boules de pétanque</li><li data-i18n="ta_compris3">Panier d'accueil</li></ul>
+        <h3 data-i18n="ta_plus">En plus</h3>
+        <ul><li data-i18n="ta_plus1">Ménage de fin de séjour : 50 €, obligatoire</li><li data-i18n="ta_plus2">Draps et serviettes : en option</li><li data-i18n="ta_plus3">Lit bébé et chaise haute : 15 € par séjour</li><li data-i18n="ta_plus4">Animal : 25 € par séjour et par animal</li><li data-i18n="ta_plus5">Taxe de séjour : 1,70 € par adulte et par jour</li></ul>
       </div>
     </div>
   </div>
@@ -411,29 +417,29 @@
 <section class="resa" id="reservation">
   <div class="wrap">
     <div class="intro-section">
-      <h2>Réserver</h2>
-      <p>Choisissez une maison puis vos dates. Le calendrier est le même que sur nos autres plateformes : une date libre ici est réellement libre.</p>
+      <h2 data-i18n="btn_reserver">Réserver</h2>
+      <p data-i18n="re_intro">Choisissez une maison puis vos dates. Le calendrier est le même que sur nos autres plateformes : une date libre ici est réellement libre.</p>
     </div>
-    <div class="onglets" role="tablist" aria-label="Choix de la maison">
-      <button role="tab" data-villa="toutes" aria-selected="true">Toutes les maisons</button>
+    <div class="onglets" role="tablist" aria-label="Choix de la maison" data-i18n-aria-label="aria_choix_maison">
+      <button role="tab" data-villa="toutes" aria-selected="true" data-i18n="re_toutes">Toutes les maisons</button>
       <button role="tab" data-villa="olivier" aria-selected="false">Olivier</button>
       <button role="tab" data-villa="lavande" aria-selected="false">Lavande</button>
       <button role="tab" data-villa="cigales" aria-selected="false">Les Cigales</button>
     </div>
     <div class="resa-cadre" id="resa-frame" role="tabpanel"></div>
-    <p class="resa-infos">Paiement en ligne sécurisé et confirmation par e-mail. Une question avant de réserver ? <a href="#contact">Écrivez-nous</a>.</p>
+    <p class="resa-infos" data-i18n="re_infos">Paiement en ligne sécurisé et confirmation par e-mail. Une question avant de réserver ? <a href="#contact">Écrivez-nous</a>.</p>
   </div>
 </section>
 
 <section aria-labelledby="avis-titre">
   <div class="wrap">
     <div class="intro-section">
-      <h2 id="avis-titre">Ce qu'en disent nos hôtes</h2>
-      <p>Avis laissés sur Google.</p>
+      <h2 id="avis-titre" data-i18n="av_titre">Ce qu'en disent nos hôtes</h2>
+      <p data-i18n="av_intro">Avis laissés sur Google.</p>
     </div>
     <div class="avis-liste">
-      <blockquote><p>« Un accueil fort sympathique des propriétaires. À quelques centaines de mètres du centre-ville, à deux pas du théâtre. Une piscine, un joli cadre. Un lieu idéal pour passer ses vacances. »</p><footer>Go, avis Google</footer></blockquote>
-      <blockquote><p>« Très bon emplacement, les propriétaires sont très sympathiques et la piscine est fantastique. »</p><footer>Alfre A., avis Google</footer></blockquote>
+      <blockquote><p data-i18n="av_1">« Un accueil fort sympathique des propriétaires. À quelques centaines de mètres du centre-ville, à deux pas du théâtre. Une piscine, un joli cadre. Un lieu idéal pour passer ses vacances. »</p><footer data-i18n="av_1_auteur">Go, avis Google</footer></blockquote>
+      <blockquote><p data-i18n="av_2">« Très bon emplacement, les propriétaires sont très sympathiques et la piscine est fantastique. »</p><footer data-i18n="av_2_auteur">Alfre A., avis Google</footer></blockquote>
     </div>
   </div>
 </section>
@@ -441,33 +447,33 @@
 <section class="contact" id="contact">
   <div class="wrap contact-grille">
     <div>
-      <h2>Nous écrire</h2>
-      <p>M. Brygo vous accueille toute l'année. Pour une question sur les maisons, les options ou la réservation, appelez, écrivez ou remplissez le formulaire.</p>
+      <h2 data-i18n="co_titre">Nous écrire</h2>
+      <p data-i18n="co_texte">M. Brygo vous accueille toute l'année. Pour une question sur les maisons, les options ou la réservation, appelez, écrivez ou remplissez le formulaire.</p>
       <address>100 chemin du Brusquet<br>84110 Vaison-la-Romaine</address>
-      <iframe class="carte" title="Carte : le domaine, le Théâtre antique et le centre de Vaison-la-Romaine" loading="lazy"
+      <iframe class="carte" title="Carte : le domaine, le Théâtre antique et le centre de Vaison-la-Romaine" data-i18n-title="title_carte" loading="lazy"
         src="https://www.openstreetmap.org/export/embed.html?bbox=5.0655%2C44.2380%2C5.0870%2C44.2490&amp;layer=mapnik&amp;marker=44.2445258%2C5.0774152"></iframe>
-      <p><a href="https://www.google.com/maps/search/?api=1&amp;query=44.2445258,5.0774152" target="_blank" rel="noopener">Ouvrir l'itinéraire dans Google Maps</a></p>
+      <p><a href="https://www.google.com/maps/search/?api=1&amp;query=44.2445258,5.0774152" target="_blank" rel="noopener" data-i18n="co_itineraire">Ouvrir l'itinéraire dans Google Maps</a></p>
       <dl>
-        <dt>Téléphone</dt><dd><a href="tel:+33632515629">06 32 51 56 29</a></dd>
+        <dt data-i18n="co_telephone">Téléphone</dt><dd><a href="tel:+33632515629">06 32 51 56 29</a></dd>
         <dt>E-mail</dt><dd><a href="mailto:domaine.letheatreantique@gmail.com">domaine.letheatreantique@gmail.com</a></dd>
-        <dt>Stationnement</dt><dd>Parking fermé dans le domaine</dd>
+        <dt data-i18n="co_stationnement">Stationnement</dt><dd data-i18n="co_parking">Parking fermé dans le domaine</dd>
       </dl>
     </div>
     <form class="demande" onsubmit="event.preventDefault(); envoyerDemande(this);">
       <div class="ligne">
-        <label>Nom<input name="nom" autocomplete="name" required></label>
-        <label>E-mail<input type="email" name="email" autocomplete="email" required></label>
+        <label><span data-i18n="form_nom">Nom</span><input name="nom" autocomplete="name" required></label>
+        <label><span data-i18n="form_email">E-mail</span><input type="email" name="email" autocomplete="email" required></label>
       </div>
       <div class="ligne">
-        <label>Arrivée<input type="date" name="arrivee"></label>
-        <label>Départ<input type="date" name="depart"></label>
+        <label><span data-i18n="form_arrivee">Arrivée</span><input type="date" name="arrivee"></label>
+        <label><span data-i18n="form_depart">Départ</span><input type="date" name="depart"></label>
       </div>
       <div class="ligne">
-        <label>Maison<select name="maison"><option>Peu importe</option><option>Olivier</option><option>Lavande</option><option>Les Cigales</option></select></label>
-        <label>Voyageurs<select name="voyageurs"><option>1</option><option>2</option><option>3</option><option>4</option><option>4 et un bébé</option></select></label>
+        <label><span data-i18n="form_maison">Maison</span><select name="maison"><option data-i18n="form_peu_importe">Peu importe</option><option>Olivier</option><option>Lavande</option><option>Les Cigales</option></select></label>
+        <label><span data-i18n="form_voyageurs">Voyageurs</span><select name="voyageurs"><option>1</option><option>2</option><option>3</option><option>4</option><option data-i18n="form_bebe">4 et un bébé</option></select></label>
       </div>
-      <label>Message<textarea name="message" placeholder="Arrivée tardive, animal, lit bébé…"></textarea></label>
-      <div><button class="btn" type="submit">Envoyer la demande</button></div>
+      <label><span data-i18n="form_message">Message</span><textarea name="message" placeholder="Arrivée tardive, animal, lit bébé…" data-i18n-placeholder="form_placeholder"></textarea></label>
+      <div><button class="btn" type="submit" data-i18n="form_envoyer">Envoyer la demande</button></div>
       <p class="confirmation" role="status" aria-live="polite"></p>
     </form>
   </div>
@@ -478,30 +484,93 @@
   <div class="wrap pied-grille">
     <div>
       <p style="font-family:Marcellus,serif;font-size:1.5rem;color:#fff;margin-bottom:8px">Domaine Vaison</p>
-      <p>Trois maisons avec piscine à deux pas du Théâtre antique de Vaison-la-Romaine. Ouvert toute l'année.</p>
+      <p data-i18n="pied_texte">Trois maisons avec piscine à deux pas du Théâtre antique de Vaison-la-Romaine. Ouvert toute l'année.</p>
     </div>
-    <ul><li><a href="#maisons">Les maisons</a></li><li><a href="#tarifs">Tarifs</a></li><li><a href="#reservation">Réserver</a></li></ul>
-    <ul><li><a href="#autour">Autour</a></li><li><a href="#contact">Contact</a></li><li><a href="#">Mentions légales</a></li></ul>
+    <ul><li><a href="#maisons" data-i18n="nav_maisons">Les maisons</a></li><li><a href="#tarifs" data-i18n="nav_tarifs">Tarifs</a></li><li><a href="#reservation" data-i18n="btn_reserver">Réserver</a></li></ul>
+    <ul><li><a href="#autour" data-i18n="nav_autour">Autour</a></li><li><a href="#contact" data-i18n="nav_contact">Contact</a></li><li><a href="#" data-i18n="pied_mentions">Mentions légales</a></li></ul>
   </div>
-  <p class="wrap mention">Maquette : contenus et photos repris du site residenceletheatre.com.</p>
+  <p class="wrap mention" data-i18n="pied_maquette">Maquette : contenus et photos repris du site residenceletheatre.com.</p>
 </footer>
 
-<dialog class="visionneuse" id="visionneuse" aria-label="Photos">
+<dialog class="visionneuse" id="visionneuse" aria-label="Photos" data-i18n-aria-label="aria_photos">
   <div class="visionneuse-haut">
     <p class="visionneuse-titre"></p>
-    <form method="dialog"><button class="visionneuse-fermer">Fermer</button></form>
+    <form method="dialog"><button class="visionneuse-fermer" data-i18n="vi_fermer">Fermer</button></form>
   </div>
   <figure>
     <img alt="">
     <figcaption><span class="visionneuse-legende"></span><span class="visionneuse-compteur"></span></figcaption>
   </figure>
-  <button class="visionneuse-nav precedente" aria-label="Photo précédente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-  <button class="visionneuse-nav suivante" aria-label="Photo suivante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  <button class="visionneuse-nav precedente" aria-label="Photo précédente" data-i18n-aria-label="aria_precedente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="visionneuse-nav suivante" aria-label="Photo suivante" data-i18n-aria-label="aria_suivante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
 </dialog>
 
-<a class="btn cta-mobile" href="#reservation">Voir les disponibilités</a>
+<a class="btn cta-mobile" href="#reservation" data-i18n="btn_disponibilites">Voir les disponibilités</a>
 
+<script id="textes" type="application/json">
+{
+  "galeries": {
+    "olivier-lavande": "Olivier et Lavande",
+    "cigales": "Les Cigales",
+    "domaine": "Le domaine"
+  },
+  "legendes": {
+    "1676558f1dcadd750df69defc4e16d6b": "Le séjour : coin repas, canapé et télévision",
+    "b43e242cade5996541ba6e9c69d9f5f1": "La cuisine ouverte sur le séjour",
+    "acab24f7e5fa35498ca3f2d838189ca4": "Le séjour vu depuis la porte-fenêtre",
+    "1bbe75eccf3c669e7b0264b18bec25dd": "Le coin repas",
+    "0bd4cf0e386fd8f8ccead8c2620ed2a8": "La chambre avec lit double 140 × 190",
+    "9c72197f964bf7e96d040866d01b06f8": "La chambre avec deux lits jumeaux",
+    "97548f86d54bb1ae1ce0378e1f556614": "La salle de bain avec baignoire-douche",
+    "residentheatre-11": "La terrasse couverte",
+    "residentheatre-13": "La terrasse le long de la maison",
+    "residentheatre-16": "La piscine de 10 × 5 m",
+    "residentheatre-18": "La piscine et ses lauriers-roses",
+    "residentheatre-19": "La plage de la piscine",
+    "residentheatre-25": "Le séjour",
+    "be8b8119b11970aa71271cd23073fc59": "Le salon et ses fauteuils",
+    "5e3053176e2a2425d135e1fbb8cadc44": "Le séjour et le coin cuisine",
+    "9d833aa5a4ec348f3d3a9529076c95dc": "La chambre avec lit double",
+    "90883b51c77162f16da73cf929f9f2fd": "La chambre avec deux lits jumeaux",
+    "5b9ca37211e2e5999a2a4f4898e55eb6": "La salle de bain",
+    "residentheatre-12": "La terrasse couverte",
+    "residentheatre-15": "La maison et son jardin fleuri",
+    "residentheatre-14": "L'allée et les lauriers-roses",
+    "residentheatre-20": "La cour gravillonnée",
+    "residentheatre-17": "La piscine",
+    "SAM_3534_1080": "L'entrée du domaine",
+    "SAM_2168_1080": "La piscine et ses parasols",
+    "SAM_2128_1080": "Le jardin et ses massifs",
+    "SAM_2117_1080": "Une maison sous son olivier",
+    "SAM_2122_1080": "Le jardin vu depuis une terrasse couverte",
+    "SAM_2109_1080": "Un coin de terrasse à l'ombre",
+    "residentheatre-34": "Une terrasse ombragée",
+    "residentheatre-21": "Le coin repas dans le jardin"
+  },
+  "compteur": "{n} sur {total}",
+  "agrandir": "Agrandir : {legende}",
+  "voir_photos": "Voir les {n} photos",
+  "voir_photos_domaine": "Voir les {n} photos du domaine",
+  "maisons": {
+    "toutes": "toutes les maisons",
+    "olivier": "Olivier",
+    "lavande": "Lavande",
+    "cigales": "Les Cigales"
+  },
+  "titre_reservation": "Réservation, {maison}",
+  "attente_titre": "Le calendrier en ligne arrive bientôt",
+  "attente_texte": "En attendant, envoyez-nous vos dates pour {maison} : nous vous répondons avec la disponibilité et le prix exact.",
+  "attente_maison_choix": "la maison de votre choix",
+  "attente_bouton": "Demander une disponibilité",
+  "demande_envoyee": "Demande envoyée. Nous vous répondons sous 24 heures."
+}
+</script>
 <script>
+  /* Textes générés par le script : traduits dans i18n/*.json (section "script"). */
+  const T = JSON.parse(document.getElementById('textes').textContent);
+  const PHOTOS = 'photos/';
+  const remplir = (modele, valeurs) => modele.replace(/\{(\w+)\}/g, (_, k) => valeurs[k]);
+
   /* ====== Configuration Smoobu ======
      Dans Smoobu : Paramètres > Booking Engine (moteur de réservation) > « Intégrer au site web ».
      Copiez l'adresse (src / url) du module « tous les logements » dans `toutes`,
@@ -519,43 +588,43 @@
      « Villa les 2 Terrasses » pour Les Cigales). Grandes images : photos/site-actuel/,
      vignettes : photos/vignettes/ (mêmes noms de fichier). */
   const GALERIES = {
-    'olivier-lavande': { titre: 'Olivier et Lavande', photos: [
-      ['1676558f1dcadd750df69defc4e16d6b', 'Le séjour : coin repas, canapé et télévision'],
-      ['b43e242cade5996541ba6e9c69d9f5f1', 'La cuisine ouverte sur le séjour'],
-      ['acab24f7e5fa35498ca3f2d838189ca4', 'Le séjour vu depuis la porte-fenêtre'],
-      ['1bbe75eccf3c669e7b0264b18bec25dd', 'Le coin repas'],
-      ['0bd4cf0e386fd8f8ccead8c2620ed2a8', 'La chambre avec lit double 140 × 190'],
-      ['9c72197f964bf7e96d040866d01b06f8', 'La chambre avec deux lits jumeaux'],
-      ['97548f86d54bb1ae1ce0378e1f556614', 'La salle de bain avec baignoire-douche'],
-      ['residentheatre-11', 'La terrasse couverte'],
-      ['residentheatre-13', 'La terrasse le long de la maison'],
-      ['residentheatre-16', 'La piscine de 10 × 5 m'],
-      ['residentheatre-18', 'La piscine et ses lauriers-roses'],
-      ['residentheatre-19', 'La plage de la piscine'],
-    ]},
-    cigales: { titre: 'Les Cigales', photos: [
-      ['residentheatre-25', 'Le séjour'],
-      ['be8b8119b11970aa71271cd23073fc59', 'Le salon et ses fauteuils'],
-      ['5e3053176e2a2425d135e1fbb8cadc44', 'Le séjour et le coin cuisine'],
-      ['9d833aa5a4ec348f3d3a9529076c95dc', 'La chambre avec lit double'],
-      ['90883b51c77162f16da73cf929f9f2fd', 'La chambre avec deux lits jumeaux'],
-      ['5b9ca37211e2e5999a2a4f4898e55eb6', 'La salle de bain'],
-      ['residentheatre-12', 'La terrasse couverte'],
-      ['residentheatre-15', 'La maison et son jardin fleuri'],
-      ['residentheatre-14', "L'allée et les lauriers-roses"],
-      ['residentheatre-20', 'La cour gravillonnée'],
-      ['residentheatre-17', 'La piscine'],
-    ]},
-    domaine: { titre: 'Le domaine', photos: [
-      ['SAM_3534_1080', "L'entrée du domaine"],
-      ['SAM_2168_1080', 'La piscine et ses parasols'],
-      ['SAM_2128_1080', 'Le jardin et ses massifs'],
-      ['SAM_2117_1080', 'Une maison sous son olivier'],
-      ['SAM_2122_1080', 'Le jardin vu depuis une terrasse couverte'],
-      ['SAM_2109_1080', "Un coin de terrasse à l'ombre"],
-      ['residentheatre-34', 'Une terrasse ombragée'],
-      ['residentheatre-21', 'Le coin repas dans le jardin'],
-    ]},
+    'olivier-lavande': [
+      '1676558f1dcadd750df69defc4e16d6b',
+      'b43e242cade5996541ba6e9c69d9f5f1',
+      'acab24f7e5fa35498ca3f2d838189ca4',
+      '1bbe75eccf3c669e7b0264b18bec25dd',
+      '0bd4cf0e386fd8f8ccead8c2620ed2a8',
+      '9c72197f964bf7e96d040866d01b06f8',
+      '97548f86d54bb1ae1ce0378e1f556614',
+      'residentheatre-11',
+      'residentheatre-13',
+      'residentheatre-16',
+      'residentheatre-18',
+      'residentheatre-19',
+    ],
+    cigales: [
+      'residentheatre-25',
+      'be8b8119b11970aa71271cd23073fc59',
+      '5e3053176e2a2425d135e1fbb8cadc44',
+      '9d833aa5a4ec348f3d3a9529076c95dc',
+      '90883b51c77162f16da73cf929f9f2fd',
+      '5b9ca37211e2e5999a2a4f4898e55eb6',
+      'residentheatre-12',
+      'residentheatre-15',
+      'residentheatre-14',
+      'residentheatre-20',
+      'residentheatre-17',
+    ],
+    domaine: [
+      'SAM_3534_1080',
+      'SAM_2168_1080',
+      'SAM_2128_1080',
+      'SAM_2117_1080',
+      'SAM_2122_1080',
+      'SAM_2109_1080',
+      'residentheatre-34',
+      'residentheatre-21',
+    ],
   };
 
   const visionneuse = document.getElementById('visionneuse');
@@ -563,19 +632,19 @@
   let galerieOuverte = null, indexPhoto = 0;
 
   function afficherPhoto(i) {
-    const photos = GALERIES[galerieOuverte].photos;
+    const photos = GALERIES[galerieOuverte];
     indexPhoto = (i + photos.length) % photos.length;
-    const [fichier, legende] = photos[indexPhoto];
-    vImg.src = 'photos/site-actuel/' + fichier + '.jpg';
+    const fichier = photos[indexPhoto], legende = T.legendes[fichier];
+    vImg.src = PHOTOS + 'site-actuel/' + fichier + '.jpg';
     vImg.alt = legende;
     visionneuse.querySelector('.visionneuse-legende').textContent = legende;
-    visionneuse.querySelector('.visionneuse-compteur').textContent = (indexPhoto + 1) + ' sur ' + photos.length;
-    [1, -1].forEach(d => { new Image().src = 'photos/site-actuel/' + photos[(indexPhoto + d + photos.length) % photos.length][0] + '.jpg'; });
+    visionneuse.querySelector('.visionneuse-compteur').textContent = remplir(T.compteur, { n: indexPhoto + 1, total: photos.length });
+    [1, -1].forEach(d => { new Image().src = PHOTOS + 'site-actuel/' + photos[(indexPhoto + d + photos.length) % photos.length] + '.jpg'; });
   }
 
   function ouvrirGalerie(nom, i = 0) {
     galerieOuverte = nom;
-    visionneuse.querySelector('.visionneuse-titre').textContent = GALERIES[nom].titre;
+    visionneuse.querySelector('.visionneuse-titre').textContent = T.galeries[nom];
     afficherPhoto(i);
     visionneuse.showModal();
   }
@@ -596,24 +665,24 @@
   });
 
   document.querySelectorAll('[data-vignettes]').forEach(zone => {
-    const nom = zone.dataset.vignettes, photos = GALERIES[nom].photos;
-    photos.slice(0, 4).forEach(([fichier, legende], i) => {
+    const nom = zone.dataset.vignettes, photos = GALERIES[nom];
+    photos.slice(0, 4).forEach((fichier, i) => {
       const b = document.createElement('button');
       b.className = 'vignette';
-      b.setAttribute('aria-label', 'Agrandir : ' + legende);
-      b.innerHTML = `<img src="photos/vignettes/${fichier}.jpg" alt="" loading="lazy">`;
+      b.setAttribute('aria-label', remplir(T.agrandir, { legende: T.legendes[fichier] }));
+      b.innerHTML = `<img src="${PHOTOS}vignettes/${fichier}.jpg" alt="" loading="lazy">`;
       b.addEventListener('click', () => ouvrirGalerie(nom, i));
       zone.appendChild(b);
     });
     const tout = document.createElement('button');
     tout.className = 'tout-voir';
-    tout.textContent = nom === 'domaine' ? `Voir les ${photos.length} photos du domaine` : `Voir les ${photos.length} photos`;
+    tout.textContent = remplir(nom === 'domaine' ? T.voir_photos_domaine : T.voir_photos, { n: photos.length });
     tout.addEventListener('click', () => ouvrirGalerie(nom));
     zone.appendChild(tout);
   });
   document.querySelectorAll('.photo-galerie').forEach(b => b.addEventListener('click', () => ouvrirGalerie(b.dataset.galerie)));
 
-  const NOMS = { toutes: 'toutes les maisons', olivier: 'Olivier', lavande: 'Lavande', cigales: 'Les Cigales' };
+  const NOMS = T.maisons;
   const cadre = document.getElementById('resa-frame');
 
   function afficherVilla(villa) {
@@ -623,14 +692,14 @@
       cadre.innerHTML = '';
       const f = document.createElement('iframe');
       f.src = url;
-      f.title = 'Réservation, ' + NOMS[villa];
+      f.title = remplir(T.titre_reservation, { maison: NOMS[villa] });
       f.loading = 'lazy';
       cadre.appendChild(f);
     } else {
       cadre.innerHTML = `<div class="resa-vide">
-        <h3>Le calendrier en ligne arrive bientôt</h3>
-        <p>En attendant, envoyez-nous vos dates pour ${villa === 'toutes' ? 'la maison de votre choix' : NOMS[villa]} : nous vous répondons avec la disponibilité et le prix exact.</p>
-        <a class="btn" href="#contact">Demander une disponibilité</a></div>`;
+        <h3>${T.attente_titre}</h3>
+        <p>${remplir(T.attente_texte, { maison: villa === 'toutes' ? T.attente_maison_choix : NOMS[villa] })}</p>
+        <a class="btn" href="#contact">${T.attente_bouton}</a></div>`;
     }
   }
 
@@ -640,7 +709,7 @@
   }
 
   function envoyerDemande(form) {
-    form.querySelector('.confirmation').textContent = 'Demande envoyée. Nous vous répondons sous 24 heures.';
+    form.querySelector('.confirmation').textContent = T.demande_envoyee;
     form.querySelector('button').disabled = true;
   }
 
