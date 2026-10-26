@@ -6,9 +6,13 @@ Photos récupérées sur residenceletheatre.com (octobre 2026), recompressées s
 
 | Fichier | Où | Original |
 |---|---|---|
+| `accueil-piscine.jpg` | Ouverture, grand arc | `residentheatre-16.jpg` |
+| `accueil-olivier.jpg` | Ouverture, arc du haut | `SAM_2117_1080.jpg` |
+| `accueil-terrasse.jpg` | Ouverture, arc du bas | `SAM_2122_1080.jpg` |
+| `entree.jpg` | Section « Sur place » | `SAM_3534_1080.jpg` |
 | `olivier-lavande.jpg` | Fiche Olivier et Lavande | `1676558f1dcadd750df69defc4e16d6b.jpg` |
 | `cigales.jpg` | Fiche Les Cigales | `residentheatre-12.jpg` |
-| `piscine.jpg` | Section « Sur place » | `residentheatre-18.jpg` |
+| `piscine.jpg` | Réserve | `residentheatre-18.jpg` |
 | `pont-romain.jpg` | Section « Autour » | `1fa7748ea79f0770434323efd9a8b54b.jpg` |
 | `jardin.jpg` | Réserve (page détail à venir) | `SAM_2128_1080.jpg` |
 

@@ -69,26 +69,20 @@
   .ouverture-grille { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; }
   .ouverture p.chapo { font-size: 1.25rem; color: var(--ombre-2); margin-top: 24px; }
   .ouverture .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-  .plan { width: 100%; height: auto; display: block; }
-  .plan text { font-family: Commissioner, sans-serif; fill: var(--ombre-2); font-size: 13px; }
-  .plan .titre-lieu { font-family: Marcellus, serif; fill: var(--ombre); font-size: 17px; }
-  .plan .maison-plan { font-size: 12px; fill: var(--volet-fonce); font-weight: 600; }
-  .plan .note-plan { font-size: 12px; }
-  .plan .nom-route { font-size: 13px; fill: var(--ombre-2); letter-spacing: .02em; }
-  .plan .gradin { fill: none; stroke: var(--pierre); stroke-width: 11; }
-  .plan .gradin.fort { stroke: #c7bba7; }
-  .plan .allees { stroke: var(--chaux); stroke-width: 4; }
-  .plan .toit { fill: #fbf7ef; stroke: var(--volet); stroke-width: 1.5; transition: fill .15s; }
-  .plan .aretes { fill: none; stroke: #b4a993; stroke-width: 1; }
-  .plan .maison-lien { cursor: pointer; outline: none; }
-  .plan .maison-lien:hover .toit, .plan .maison-lien:focus-visible .toit { fill: #f6dfae; }
-  .plan .maison-lien:focus-visible .toit { stroke: var(--ombre); stroke-width: 3; }
-  .legende-plan { font-size: .85rem; color: var(--ombre-2); margin-top: 8px; }
-  @keyframes dessiner { from { stroke-dashoffset: var(--l); } to { stroke-dashoffset: 0; } }
-  .plan .gradin { stroke-dasharray: var(--l); animation: dessiner 1.4s cubic-bezier(.3,.6,.2,1) both; }
+  .arcs { display: grid; grid-template-columns: 1.35fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; height: min(620px, 72vh); }
+  .arcs figure { margin: 0; overflow: hidden; border-radius: 999px 999px 0 0; background: var(--pierre-claire); }
+  .arcs figure:first-child { grid-row: 1 / 3; }
+  .arcs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .arcs .piscine img { object-position: 60% 50%; }
+  @keyframes lever { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+  .arcs figure { animation: lever 1s cubic-bezier(.25,.7,.2,1) both; }
+  .arcs figure:nth-child(2) { animation-delay: .15s; }
+  .arcs figure:nth-child(3) { animation-delay: .3s; }
+  .reperes { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 6px; font-size: 1rem; color: var(--ombre-2); }
+  .reperes strong { color: var(--ombre); font-weight: 600; }
   .maison { scroll-margin-top: 88px; }
   @media (prefers-reduced-motion: reduce) {
-    .plan .gradin { animation: none; }
+    .arcs figure { animation: none; }
     html { scroll-behavior: auto; }
   }
 
@@ -169,11 +163,12 @@
   /* Contact */
   .contact { background: var(--pierre-claire); }
   .contact-grille { display: grid; grid-template-columns: 2fr 3fr; gap: 72px; }
+  .carte { display: block; width: 100%; aspect-ratio: 4 / 3; border: 0; border-radius: 4px; margin-bottom: 12px; background: var(--pierre); }
   address { font-style: normal; line-height: 1.8; margin-bottom: 24px; }
   .contact dl { margin: 0 0 24px; }
   .contact dt { font-weight: 600; margin-top: 16px; }
   .contact dd { margin: 0; color: var(--ombre-2); }
-  form.demande { display: grid; gap: 16px; }
+  form.demande { display: grid; gap: 16px; align-content: start; }
   form.demande .ligne { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   form.demande label { display: grid; gap: 6px; font-size: .95rem; font-weight: 500; }
   form.demande input, form.demande select, form.demande textarea {
@@ -197,6 +192,7 @@
     .nav.ouvert { flex-wrap: wrap; height: auto; padding-top: 16px; padding-bottom: 16px; }
     .nav.ouvert ul { display: flex; flex-direction: column; width: 100%; gap: 14px; order: 3; padding: 8px 0 16px; }
     .nav.ouvert .langues { display: block; order: 4; padding-bottom: 12px; }
+    .arcs { height: 460px; order: -1; }
     .ouverture-grille, .maison, .sur-place-grille, .distances, .tarifs-grille, .contact-grille { grid-template-columns: 1fr; gap: 40px; }
     .maison:nth-of-type(even) .photo { order: 0; }
     .photo { aspect-ratio: 4 / 3; max-height: 420px; }
@@ -210,10 +206,7 @@
   .cta-mobile.visible { visibility: visible; opacity: 1; }
   @media (max-width: 560px) {
     body { font-size: 1.0625rem; }
-    .plan text { font-size: 19px; }
-    .plan .titre-lieu { font-size: 21px; }
-    .plan .maison-plan { font-size: 16px; }
-    .plan .note-plan, .plan .nom-route { font-size: 16px; }
+    .arcs { height: 340px; gap: 10px; }
     .wrap { padding: 0 16px; }
     form.demande .ligne { grid-template-columns: 1fr; }
     .ouverture { padding-top: 32px; }
@@ -245,108 +238,22 @@
   <div class="wrap ouverture-grille">
     <div>
       <h1>Trois maisons à deux pas du Théâtre antique</h1>
-      <p class="chapo">Un domaine fermé à Vaison-la-Romaine, à 300 m du centre-ville : piscine de 10 × 5 m, grand jardin, boulodrome et parking. Ouvert toute l'année.</p>
+      <p class="chapo">Olivier, Lavande et Les Cigales : trois maisons pour 4 personnes dans un domaine fermé de Vaison-la-Romaine, avec jardin, boulodrome et parking. Ouvert toute l'année.</p>
+      <ul class="reperes">
+        <li><strong>Théâtre antique</strong> à deux pas</li>
+        <li><strong>Centre-ville</strong> à 300 m à pied</li>
+        <li><strong>Piscine</strong> de 10 × 5 m dans le jardin</li>
+      </ul>
       <div class="actions">
         <a class="btn" href="#reservation">Voir les disponibilités</a>
         <a class="btn secondaire" href="#maisons">Découvrir les maisons</a>
       </div>
     </div>
-    <figure style="margin:0">
-      <svg class="plan" viewBox="0 0 640 560" role="img" aria-labelledby="plan-titre plan-desc">
-        <title id="plan-titre">Plan du quartier</title>
-        <desc id="plan-desc">Le Théâtre antique, adossé à la colline de Puymin, est tout proche, de l'autre côté du chemin du Brusquet. Le domaine fermé comprend un portail, un parking, une piscine au centre, les trois maisons Olivier, Lavande et Les Cigales, des oliviers et un boulodrome. Le centre-ville est à 300 m à pied.</desc>
-        <defs>
-          <pattern id="hachures" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-            <line x1="0" y1="0" x2="0" y2="5" stroke="#c7bba7" stroke-width="1.6"/>
-          </pattern>
-          <marker id="fleche" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M0 0 L10 5 L0 10 z" fill="#2f5d62"/>
-          </marker>
-        </defs>
-
-        <!-- Colline de Puymin -->
-        <path d="M40 250 C40 110 170 22 330 18 C500 14 610 120 612 252 Z" fill="#e9ebdf"/>
-        <text x="52" y="226" class="note-plan">Colline</text>
-        <text x="52" y="244" class="note-plan">de Puymin</text>
-
-        <!-- Théâtre antique -->
-        <path d="M140 214 A180 180 0 0 1 500 214" fill="none" stroke="#c7bba7" stroke-width="1.5"/>
-        <path class="gradin fort" style="--l:302;animation-delay:0.0s" d="M224 214 A96 96 0 0 1 416 214"/>
-        <path class="gradin" style="--l:349;animation-delay:0.1s" d="M209 214 A111 111 0 0 1 431 214"/>
-        <path class="gradin fort" style="--l:396;animation-delay:0.2s" d="M194 214 A126 126 0 0 1 446 214"/>
-        <path class="gradin" style="--l:443;animation-delay:0.3s" d="M179 214 A141 141 0 0 1 461 214"/>
-        <path class="gradin fort" style="--l:490;animation-delay:0.4s" d="M164 214 A156 156 0 0 1 476 214"/>
-        <path class="gradin" style="--l:537;animation-delay:0.5s" d="M149 214 A171 171 0 0 1 491 214"/>
-        <path class="allees" d="M245.5 171.0 L165.8 125.0 M277.0 139.5 L231.0 59.8 M320.0 128.0 L320.0 36.0 M363.0 139.5 L409.0 59.8 M394.5 171.0 L474.2 125.0"/>
-        <path d="M238 214 A82 82 0 0 1 402 214 Z" fill="#f1ece2"/>
-        <rect x="208" y="214" width="224" height="9" fill="#d9d0c1"/>
-        <rect x="180" y="223" width="280" height="16" fill="#bfb29c"/>
-        <text class="titre-lieu" x="320" y="178" text-anchor="middle">Théâtre antique</text>
-        <text x="320" y="198" text-anchor="middle">Ier siècle</text>
-
-        <!-- Chemin du Brusquet -->
-        <path id="route" d="M-10 300 C150 280 340 314 650 286" fill="none" stroke="#d9d0c1" stroke-width="34"/>
-        <path d="M-10 300 C150 280 340 314 650 286" fill="none" stroke="#fff" stroke-width="30"/>
-        <text class="nom-route" dy="4"><textPath href="#route" startOffset="72%" text-anchor="middle">Chemin du Brusquet</textPath></text>
-
-        <!-- Trajet à pied vers le centre-ville -->
-        <path d="M320 338 L320 306 C230 300 150 292 24 304" fill="none" stroke="#2f5d62" stroke-width="2.2" stroke-dasharray="1 7" stroke-linecap="round" marker-end="url(#fleche)"/>
-        <text class="titre-lieu" x="10" y="342">Centre-ville</text>
-        <text x="10" y="361">300 m à pied</text>
-
-        <!-- Le domaine -->
-        <rect x="150" y="338" width="362" height="196" rx="3" fill="#eef0e6" stroke="#2f5d62" stroke-width="2"/>
-        <rect x="302" y="334" width="36" height="10" fill="#eef0e6"/>
-        <path d="M302 333 v10 M338 333 v10" stroke="#2f5d62" stroke-width="3"/>
-        <path d="M320 344 L320 366 L258 366" fill="none" stroke="#e3dccd" stroke-width="16" stroke-linejoin="round"/>
-        <text x="342" y="358" class="note-plan">Portail</text>
-
-        <rect x="164" y="350" width="86" height="34" fill="#e3dccd"/>
-        <path d="M193 350 v34 M222 350 v34" stroke="#fff" stroke-width="1.5"/>
-        <text x="207" y="398" text-anchor="middle" class="note-plan">Parking</text>
-
-        <rect x="262" y="404" width="118" height="66" fill="#e3dccd"/>
-        <rect x="274" y="414" width="94" height="46" rx="2" fill="#8ec5c9"/>
-        <path d="M284 430 q8 -5 16 0 t16 0 M322 446 q8 -5 16 0 t16 0" fill="none" stroke="#d5ecee" stroke-width="1.5"/>
-        <text x="321" y="485" text-anchor="middle" class="note-plan">Piscine</text>
-
-        <rect x="276" y="496" width="88" height="24" fill="#e8dcc2"/>
-        <text x="320" y="512" text-anchor="middle" class="note-plan">Boulodrome</text>
-
-        <rect x="216" y="414" width="34" height="38" fill="url(#hachures)"/>
-        <rect x="382" y="352" width="16" height="44" fill="url(#hachures)"/>
-        <rect x="400" y="396" width="94" height="14" fill="url(#hachures)"/>
-        <rect x="396" y="458" width="20" height="40" fill="url(#hachures)"/>
-
-        <g fill="#b9c19a" stroke="#9da77c" stroke-width="1">
-          <circle cx="198" cy="502" r="12"/>
-          <circle cx="232" cy="516" r="9"/>
-          <circle cx="172" cy="520" r="7"/>
-          <circle cx="376" cy="378" r="11"/>
-          <circle cx="392" cy="500" r="15"/>
-        </g>
-
-        <a href="#maison-olivier-lavande" class="maison-lien" aria-label="Voir la maison Olivier">
-          <rect class="toit" x="166" y="412" width="50" height="42"/>
-          <path class="aretes" d="M187.0 433.0 L195.0 433.0 M166 412 L187.0 433.0 L166 454 M216 412 L195.0 433.0 L216 454"/>
-          <text class="maison-plan" x="191" y="470" text-anchor="middle">Olivier</text>
-        </a>
-        <a href="#maison-cigales" class="maison-lien" aria-label="Voir la maison Les Cigales">
-          <rect class="toit" x="400" y="352" width="94" height="44"/>
-          <path class="aretes" d="M422.0 374.0 L472.0 374.0 M400 352 L422.0 374.0 L400 396 M494 352 L472.0 374.0 L494 396"/>
-          <text class="maison-plan" x="447" y="426" text-anchor="middle">Les Cigales</text>
-        </a>
-        <a href="#maison-olivier-lavande" class="maison-lien" aria-label="Voir la maison Lavande">
-          <rect class="toit" x="416" y="456" width="82" height="44"/>
-          <path class="aretes" d="M438.0 478.0 L476.0 478.0 M416 456 L438.0 478.0 L416 500 M498 456 L476.0 478.0 L498 500"/>
-          <text class="maison-plan" x="457" y="520" text-anchor="middle">Lavande</text>
-        </a>
-
-        <text class="titre-lieu" x="522" y="442">Domaine</text>
-        <text class="titre-lieu" x="522" y="463">Vaison</text>
-      </svg>
-      <figcaption class="legende-plan">Plan schématique : disposition indicative, pas à l'échelle. Touchez une maison pour la découvrir.</figcaption>
-    </figure>
+    <div class="arcs">
+      <figure class="piscine"><img src="photos/accueil-piscine.jpg" alt="La piscine du domaine sous le ciel bleu, bordée de lauriers-roses" fetchpriority="high"></figure>
+      <figure><img src="photos/accueil-olivier.jpg" alt="Une maison aux volets verts derrière un olivier, sur la pelouse du jardin"></figure>
+      <figure><img src="photos/accueil-terrasse.jpg" alt="Vue sur le jardin fleuri depuis une terrasse couverte"></figure>
+    </div>
   </div>
 </section>
 
@@ -403,7 +310,7 @@
     <div class="intro-section" style="margin-bottom:0">
       <h2>Sur place, sans supplément</h2>
       <p>Le portail se ferme : les enfants jouent dans le jardin et la voiture reste à l'intérieur pendant que vous partez à pied en ville.</p>
-      <img class="photo-large" src="photos/piscine.jpg" alt="La piscine du domaine, bordée de dalles claires et de lauriers-roses" loading="lazy">
+      <img class="photo-large" src="photos/entree.jpg" alt="L'entrée du domaine : portail, allée de gravier, lauriers-roses et massifs de lavande" loading="lazy">
     </div>
     <ul class="liste-equip">
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17c2 0 2-1.5 4-1.5S8 17 10 17s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M2 21c2 0 2-1.5 4-1.5S8 21 10 21s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M8 14V5a2 2 0 0 1 4 0M16 14V5a2 2 0 0 0-4 0M8 9h8"/></svg><div><b>Piscine</b><span>10 × 5 m, au milieu du jardin.</span></div></li>
@@ -509,6 +416,8 @@
       <h2>Nous écrire</h2>
       <p>M. Brygo vous accueille toute l'année. Pour une question sur les maisons, les options ou la réservation, appelez, écrivez ou remplissez le formulaire.</p>
       <address>100 chemin du Brusquet<br>84110 Vaison-la-Romaine</address>
+      <iframe class="carte" title="Carte : le domaine, le Théâtre antique et le centre de Vaison-la-Romaine" loading="lazy"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=5.0655%2C44.2380%2C5.0870%2C44.2490&amp;layer=mapnik&amp;marker=44.2445258%2C5.0774152"></iframe>
       <p><a href="https://www.google.com/maps/search/?api=1&amp;query=44.2445258,5.0774152" target="_blank" rel="noopener">Ouvrir l'itinéraire dans Google Maps</a></p>
       <dl>
         <dt>Téléphone</dt><dd><a href="tel:+33632515629">06 32 51 56 29</a></dd>
