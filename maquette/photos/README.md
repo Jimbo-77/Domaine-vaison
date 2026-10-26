@@ -27,3 +27,11 @@ Les 55 images trouvées sur le site, avec leurs noms d'origine : intérieurs et 
 **Droits** : les photos de la résidence appartiennent au propriétaire. Les photos touristiques
 (Ventoux, Avignon, pont romain…) peuvent provenir d'une banque d'images fournie par le prestataire
 du site actuel : vérifiez leur licence avant de les publier ailleurs.
+
+## Galeries des maisons
+
+Les galeries (vignettes sous chaque fiche, visionneuse plein écran) affichent les photos de
+`site-actuel/` et leurs vignettes de `vignettes/` (360 px, mêmes noms de fichier).
+La liste des photos et leurs légendes se trouvent dans l'objet `GALERIES`, en bas de `index.html`.
+Pour ajouter une photo : déposez-la dans `site-actuel/`, créez sa vignette dans `vignettes/`,
+puis ajoutez une ligne `['nom-du-fichier-sans-extension', 'Légende']` dans la bonne galerie.

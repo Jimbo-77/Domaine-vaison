@@ -102,6 +102,28 @@
   .photo-large { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 4px; margin-top: 32px; background: var(--pierre-claire); }
   .photo-autour { aspect-ratio: 21 / 9; margin: 0 0 56px; }
   .actions-maison { display: flex; flex-wrap: wrap; gap: 12px; }
+  button.photo { border: 0; padding: 0; cursor: zoom-in; font: inherit; }
+  .vignettes { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 28px; }
+  .vignettes button.vignette { width: 64px; height: 64px; padding: 0; border: 0; border-radius: 4px; overflow: hidden; cursor: zoom-in; background: var(--pierre-claire); }
+  .vignettes img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vignettes .tout-voir { margin-left: 8px; background: none; border: 0; padding: 6px 0; font: 600 1rem Commissioner, sans-serif; color: var(--volet); text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
+  #sur-place .vignettes { margin-top: 16px; }
+
+  .visionneuse { width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: #151b1c; color: #eef3f1; }
+  .visionneuse::backdrop { background: rgba(21,27,28,.9); }
+  .visionneuse[open] { display: grid; grid-template-rows: auto 1fr; }
+  .visionneuse-haut { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 20px; }
+  .visionneuse-titre { margin: 0; font-family: Marcellus, serif; font-size: 1.25rem; }
+  .visionneuse-fermer { font: 600 1rem Commissioner, sans-serif; color: #fff; background: rgba(255,255,255,.1); border: 0; border-radius: 6px; padding: 10px 16px; cursor: pointer; }
+  .visionneuse figure { margin: 0; min-height: 0; display: grid; grid-template-rows: 1fr auto; padding: 0 72px 16px; }
+  .visionneuse figure img { width: 100%; height: 100%; min-height: 0; object-fit: contain; touch-action: pan-y; }
+  .visionneuse figcaption { display: flex; justify-content: space-between; gap: 16px; padding-top: 12px; font-size: 1rem; color: #c3cbca; }
+  .visionneuse-compteur { white-space: nowrap; }
+  .visionneuse-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; border: 0; background: rgba(255,255,255,.12); cursor: pointer; display: grid; place-items: center; }
+  .visionneuse-nav:hover, .visionneuse-fermer:hover { background: rgba(255,255,255,.22); }
+  .visionneuse-nav svg { width: 26px; height: 26px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .visionneuse-nav.precedente { left: 12px; }
+  .visionneuse-nav.suivante { right: 12px; }
   td .periode { display: block; font-size: .875rem; color: var(--ombre-2); font-weight: 400; }
   .photo.olivier { background: #e1e3d2; }
   dl.fiche { display: grid; grid-template-columns: max-content 1fr; gap: 10px 28px; margin: 24px 0 28px; font-size: 1rem; }
@@ -207,6 +229,9 @@
   @media (max-width: 560px) {
     body { font-size: 1.0625rem; }
     .arcs { height: 340px; gap: 10px; }
+    .visionneuse figure { padding: 0 0 12px; }
+    .visionneuse figcaption { padding: 12px 16px 0; }
+    .visionneuse-nav { top: auto; bottom: 64px; transform: none; }
     .wrap { padding: 0 16px; }
     form.demande .ligne { grid-template-columns: 1fr; }
     .ouverture { padding-top: 32px; }
@@ -265,7 +290,7 @@
     </div>
 
     <article class="maison" id="maison-olivier-lavande">
-      <div class="photo bassin"><img src="photos/olivier-lavande.jpg" alt="Le séjour d'une des maisons Olivier et Lavande : table, canapé et télévision" loading="lazy"></div>
+      <button class="photo bassin photo-galerie" data-galerie="olivier-lavande" aria-label="Voir les photos d'Olivier et Lavande"><img src="photos/olivier-lavande.jpg" alt="Le séjour d'une des maisons Olivier et Lavande : table, canapé et télévision" loading="lazy"></button>
       <div>
         <h3>Olivier et Lavande</h3>
         <p>Deux maisons jumelles, chacune avec sa terrasse privée qui donne sur la piscine. Décoration sobre et chaleureuse, panier d'accueil à votre arrivée.</p>
@@ -277,6 +302,7 @@
           <dt>Cuisine</dt><dd>Gazinière, réfrigérateur, lave-linge, cafetière</dd>
           <dt>Extérieur</dt><dd>Terrasse privée avec vue sur la piscine</dd>
         </dl>
+        <div class="vignettes" data-vignettes="olivier-lavande"></div>
         <p class="prix">À partir de <strong>700 €</strong> la semaine</p>
         <div class="actions-maison">
           <button class="btn" onclick="ouvrirReservation('olivier')">Dates libres : Olivier</button>
@@ -286,7 +312,7 @@
     </article>
 
     <article class="maison" id="maison-cigales">
-      <div class="photo"><img src="photos/cigales.jpg" alt="La terrasse couverte des Cigales, avec table, chaises et vue sur le jardin" loading="lazy"></div>
+      <button class="photo photo-galerie" data-galerie="cigales" aria-label="Voir les photos des Cigales"><img src="photos/cigales.jpg" alt="La terrasse couverte des Cigales, avec table, chaises et vue sur le jardin" loading="lazy"></button>
       <div>
         <h3>Les Cigales</h3>
         <p>La plus grande des trois, avec deux terrasses privées exposées au sud et à l'est. Des transats sont à votre disposition.</p>
@@ -298,6 +324,7 @@
           <dt>Cuisine</dt><dd>Lave-vaisselle, lave-linge, micro-ondes, machine à café</dd>
           <dt>Extérieur</dt><dd>Deux terrasses, au sud et à l'est</dd>
         </dl>
+        <div class="vignettes" data-vignettes="cigales"></div>
         <p class="prix">À partir de <strong>750 €</strong> la semaine</p>
         <button class="btn" onclick="ouvrirReservation('cigales')">Voir les dates libres</button>
       </div>
@@ -311,6 +338,7 @@
       <h2>Sur place, sans supplément</h2>
       <p>Le portail se ferme : les enfants jouent dans le jardin et la voiture reste à l'intérieur pendant que vous partez à pied en ville.</p>
       <img class="photo-large" src="photos/entree.jpg" alt="L'entrée du domaine : portail, allée de gravier, lauriers-roses et massifs de lavande" loading="lazy">
+      <div class="vignettes" data-vignettes="domaine"></div>
     </div>
     <ul class="liste-equip">
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17c2 0 2-1.5 4-1.5S8 17 10 17s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M2 21c2 0 2-1.5 4-1.5S8 21 10 21s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M8 14V5a2 2 0 0 1 4 0M16 14V5a2 2 0 0 0-4 0M8 9h8"/></svg><div><b>Piscine</b><span>10 × 5 m, au milieu du jardin.</span></div></li>
@@ -458,6 +486,19 @@
   <p class="wrap mention">Maquette : contenus et photos repris du site residenceletheatre.com.</p>
 </footer>
 
+<dialog class="visionneuse" id="visionneuse" aria-label="Photos">
+  <div class="visionneuse-haut">
+    <p class="visionneuse-titre"></p>
+    <form method="dialog"><button class="visionneuse-fermer">Fermer</button></form>
+  </div>
+  <figure>
+    <img alt="">
+    <figcaption><span class="visionneuse-legende"></span><span class="visionneuse-compteur"></span></figcaption>
+  </figure>
+  <button class="visionneuse-nav precedente" aria-label="Photo précédente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="visionneuse-nav suivante" aria-label="Photo suivante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+</dialog>
+
 <a class="btn cta-mobile" href="#reservation">Voir les disponibilités</a>
 
 <script>
@@ -472,6 +513,105 @@
     lavande: '',
     cigales: '',
   };
+
+  /* ====== Galeries ======
+     Photos reprises des pages du site actuel (« Villa côté Piscine » pour Olivier et Lavande,
+     « Villa les 2 Terrasses » pour Les Cigales). Grandes images : photos/site-actuel/,
+     vignettes : photos/vignettes/ (mêmes noms de fichier). */
+  const GALERIES = {
+    'olivier-lavande': { titre: 'Olivier et Lavande', photos: [
+      ['1676558f1dcadd750df69defc4e16d6b', 'Le séjour : coin repas, canapé et télévision'],
+      ['b43e242cade5996541ba6e9c69d9f5f1', 'La cuisine ouverte sur le séjour'],
+      ['acab24f7e5fa35498ca3f2d838189ca4', 'Le séjour vu depuis la porte-fenêtre'],
+      ['1bbe75eccf3c669e7b0264b18bec25dd', 'Le coin repas'],
+      ['0bd4cf0e386fd8f8ccead8c2620ed2a8', 'La chambre avec lit double 140 × 190'],
+      ['9c72197f964bf7e96d040866d01b06f8', 'La chambre avec deux lits jumeaux'],
+      ['97548f86d54bb1ae1ce0378e1f556614', 'La salle de bain avec baignoire-douche'],
+      ['residentheatre-11', 'La terrasse couverte'],
+      ['residentheatre-13', 'La terrasse le long de la maison'],
+      ['residentheatre-16', 'La piscine de 10 × 5 m'],
+      ['residentheatre-18', 'La piscine et ses lauriers-roses'],
+      ['residentheatre-19', 'La plage de la piscine'],
+    ]},
+    cigales: { titre: 'Les Cigales', photos: [
+      ['residentheatre-25', 'Le séjour'],
+      ['be8b8119b11970aa71271cd23073fc59', 'Le salon et ses fauteuils'],
+      ['5e3053176e2a2425d135e1fbb8cadc44', 'Le séjour et le coin cuisine'],
+      ['9d833aa5a4ec348f3d3a9529076c95dc', 'La chambre avec lit double'],
+      ['90883b51c77162f16da73cf929f9f2fd', 'La chambre avec deux lits jumeaux'],
+      ['5b9ca37211e2e5999a2a4f4898e55eb6', 'La salle de bain'],
+      ['residentheatre-12', 'La terrasse couverte'],
+      ['residentheatre-15', 'La maison et son jardin fleuri'],
+      ['residentheatre-14', "L'allée et les lauriers-roses"],
+      ['residentheatre-20', 'La cour gravillonnée'],
+      ['residentheatre-17', 'La piscine'],
+    ]},
+    domaine: { titre: 'Le domaine', photos: [
+      ['SAM_3534_1080', "L'entrée du domaine"],
+      ['SAM_2168_1080', 'La piscine et ses parasols'],
+      ['SAM_2128_1080', 'Le jardin et ses massifs'],
+      ['SAM_2117_1080', 'Une maison sous son olivier'],
+      ['SAM_2122_1080', 'Le jardin vu depuis une terrasse couverte'],
+      ['SAM_2109_1080', "Un coin de terrasse à l'ombre"],
+      ['residentheatre-34', 'Une terrasse ombragée'],
+      ['residentheatre-21', 'Le coin repas dans le jardin'],
+    ]},
+  };
+
+  const visionneuse = document.getElementById('visionneuse');
+  const vImg = visionneuse.querySelector('figure img');
+  let galerieOuverte = null, indexPhoto = 0;
+
+  function afficherPhoto(i) {
+    const photos = GALERIES[galerieOuverte].photos;
+    indexPhoto = (i + photos.length) % photos.length;
+    const [fichier, legende] = photos[indexPhoto];
+    vImg.src = 'photos/site-actuel/' + fichier + '.jpg';
+    vImg.alt = legende;
+    visionneuse.querySelector('.visionneuse-legende').textContent = legende;
+    visionneuse.querySelector('.visionneuse-compteur').textContent = (indexPhoto + 1) + ' sur ' + photos.length;
+    [1, -1].forEach(d => { new Image().src = 'photos/site-actuel/' + photos[(indexPhoto + d + photos.length) % photos.length][0] + '.jpg'; });
+  }
+
+  function ouvrirGalerie(nom, i = 0) {
+    galerieOuverte = nom;
+    visionneuse.querySelector('.visionneuse-titre').textContent = GALERIES[nom].titre;
+    afficherPhoto(i);
+    visionneuse.showModal();
+  }
+
+  visionneuse.querySelector('.precedente').addEventListener('click', () => afficherPhoto(indexPhoto - 1));
+  visionneuse.querySelector('.suivante').addEventListener('click', () => afficherPhoto(indexPhoto + 1));
+  visionneuse.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') afficherPhoto(indexPhoto - 1);
+    if (e.key === 'ArrowRight') afficherPhoto(indexPhoto + 1);
+  });
+  let toucheX = null;
+  vImg.addEventListener('touchstart', e => { toucheX = e.touches[0].clientX; }, { passive: true });
+  vImg.addEventListener('touchend', e => {
+    if (toucheX === null) return;
+    const dx = e.changedTouches[0].clientX - toucheX;
+    if (Math.abs(dx) > 40) afficherPhoto(indexPhoto + (dx < 0 ? 1 : -1));
+    toucheX = null;
+  });
+
+  document.querySelectorAll('[data-vignettes]').forEach(zone => {
+    const nom = zone.dataset.vignettes, photos = GALERIES[nom].photos;
+    photos.slice(0, 4).forEach(([fichier, legende], i) => {
+      const b = document.createElement('button');
+      b.className = 'vignette';
+      b.setAttribute('aria-label', 'Agrandir : ' + legende);
+      b.innerHTML = `<img src="photos/vignettes/${fichier}.jpg" alt="" loading="lazy">`;
+      b.addEventListener('click', () => ouvrirGalerie(nom, i));
+      zone.appendChild(b);
+    });
+    const tout = document.createElement('button');
+    tout.className = 'tout-voir';
+    tout.textContent = nom === 'domaine' ? `Voir les ${photos.length} photos du domaine` : `Voir les ${photos.length} photos`;
+    tout.addEventListener('click', () => ouvrirGalerie(nom));
+    zone.appendChild(tout);
+  });
+  document.querySelectorAll('.photo-galerie').forEach(b => b.addEventListener('click', () => ouvrirGalerie(b.dataset.galerie)));
 
   const NOMS = { toutes: 'toutes les maisons', olivier: 'Olivier', lavande: 'Lavande', cigales: 'Les Cigales' };
   const cadre = document.getElementById('resa-frame');
