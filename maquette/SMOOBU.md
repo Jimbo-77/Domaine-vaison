@@ -21,17 +21,16 @@ Dans `maquette/index.html`, en bas du fichier, remplir l'objet `SMOOBU` avec l'a
 
 ```js
 const SMOOBU = {
-  toutes: 'https://login.smoobu.com/…',        // module tous logements
-  'cote-piscine': 'https://login.smoobu.com/…', // module Villa Côté Piscine
-  '2-terrasses': 'https://login.smoobu.com/…',
-  olivier: 'https://login.smoobu.com/…',
+  toutes: 'https://login.smoobu.com/…',   // module tous logements
+  olivier: 'https://login.smoobu.com/…',  // Villa Olivier
+  lavande: 'https://login.smoobu.com/…',  // Villa Lavande
+  cigales: 'https://login.smoobu.com/…',  // Villa Les Cigales
 };
 ```
 
 - Une villa laissée vide affiche le module « toutes les villas ».
 - Si tout est vide, un encart « Module Smoobu à connecter » renvoie vers le formulaire de contact.
-- Les boutons « Réserver », « Disponibilités → » des villas et la barre sous l'image d'accueil
-  ouvrent directement l'onglet de la bonne villa.
+- Les boutons « Réserver » et « Dates libres » des fiches ouvrent directement l'onglet de la bonne villa.
 
 Si Smoobu fournit un code JavaScript (et non une simple adresse d'iframe), envoyez-le-moi :
 je l'intégrerai tel quel dans la section, à la place de l'iframe.
