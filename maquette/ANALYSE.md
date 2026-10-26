@@ -40,7 +40,11 @@ Une page d'accueil « one-page » responsive (mobile d'abord), autonome (HTML + 
 - **CTA collant sur mobile** « Vérifier les disponibilités ».
 - Menu multilingue FR / EN / DE / NL (clientèle étrangère importante en Vaucluse).
 
-**Identité visuelle** : palette provençale (pierre, ocre, olive, lavande), typographies *Cormorant Garamond* (titres) et *Inter* (texte). Les photos sont remplacées par des blocs colorés étiquetés indiquant la photo attendue.
+**Identité visuelle** (revue avec le plugin *frontend-design*) :
+- élément signature : un plan dessiné en ouverture (hémicycle du théâtre, chemin du Brusquet, domaine, piscine, trajet vers le centre) qui montre la promesse « en face du Théâtre antique » ;
+- palette : blanc de chaux `#F8F8F4`, pierre `#D9D0C1`, vert de volet `#2F5D62`, eau du bassin `#8EC5C9`, ombre `#1F2A2C`, soleil `#E0A43A` ;
+- typographies : *Marcellus* (titres, inspirée des inscriptions romaines) et *Commissioner* (texte) ;
+- photos à fournir dans des cadres en arc romain ; une seule animation (les gradins qui se dessinent), désactivée si l'utilisateur limite les animations.
 
 ## 4. À valider avec le propriétaire avant mise en ligne
 
