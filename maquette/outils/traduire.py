@@ -22,7 +22,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 SOURCE = RACINE / 'index.html'
 DOSSIER_I18N = RACINE / 'i18n'
-LANGUES = {'fr': 'Français', 'en': 'English', 'de': 'Deutsch', 'nl': 'Nederlands'}
+LANGUES = {'fr': 'Français', 'en': 'English', 'de': 'Deutsch', 'nl': 'Nederlands', 'es': 'Español'}
 
 RE_CONTENU = re.compile(r'(<([a-zA-Z0-9]+)\b[^>]*\sdata-i18n="([^"]+)"[^>]*>)(.*?)(</\2>)', re.S)
 RE_ATTRIBUT = re.compile(r'(\s([a-z-]+)=")([^"]*)(" data-i18n-\2="([^"]+)")')
