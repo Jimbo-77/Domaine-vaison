@@ -1,15 +1,25 @@
-# Photos de la maquette
+# Photos
 
-Déposez ici les photos avec exactement ces noms : elles remplacent automatiquement
-les emplacements « Photo à fournir » de la page.
+Photos récupérées sur residenceletheatre.com (octobre 2026), recompressées sans métadonnées.
 
-| Fichier | Emplacement |
-|---|---|
-| `cote-piscine.jpg` | Villa Côté Piscine |
-| `2-terrasses.jpg` | Villa les 2 Terrasses |
-| `olivier.jpg` | Villa l'Olivier |
+## Utilisées par la maquette (1200 px)
 
-Conseils : format portrait ou carré (le cadre est en arc, rapport 5:6), environ 1200 px de large,
-moins de 400 Ko (compression JPEG ~80 %). Vérifiez que vous détenez les droits sur chaque photo.
+| Fichier | Où | Original |
+|---|---|---|
+| `olivier-lavande.jpg` | Fiche Olivier et Lavande | `1676558f1dcadd750df69defc4e16d6b.jpg` |
+| `cigales.jpg` | Fiche Les Cigales | `residentheatre-12.jpg` |
+| `piscine.jpg` | Section « Sur place » | `residentheatre-18.jpg` |
+| `pont-romain.jpg` | Section « Autour » | `1fa7748ea79f0770434323efd9a8b54b.jpg` |
+| `jardin.jpg` | Réserve (page détail à venir) | `SAM_2128_1080.jpg` |
 
-Pour les ajouter depuis GitHub : ouvrez ce dossier, **Add file > Upload files**, glissez les photos, puis **Commit changes**.
+Pour changer une photo, remplacez le fichier en gardant le même nom.
+
+## Archive complète : `site-actuel/` (1600 px max)
+
+Les 55 images trouvées sur le site, avec leurs noms d'origine : intérieurs et extérieurs des villas
+(séries `residentheatre-*`, `SAM_*` et noms en hexadécimal) et photos des environs
+(Vaison, Mont Ventoux, Avignon, Dentelles de Montmirail).
+
+**Droits** : les photos de la résidence appartiennent au propriétaire. Les photos touristiques
+(Ventoux, Avignon, pont romain…) peuvent provenir d'une banque d'images fournie par le prestataire
+du site actuel : vérifiez leur licence avant de les publier ailleurs.
