@@ -28,20 +28,20 @@
 
 Page d'accueil unique, responsive, autonome :
 
-- **Ouverture** : promesse « Trois maisons à deux pas du Théâtre antique » et plan dessiné du quartier ; chaque maison du plan mène à sa fiche.
+- **Ouverture** : promesse « Trois maisons à deux pas du Théâtre antique », trois repères (théâtre, centre-ville à 300 m, piscine) et trois photos en arcs romains.
 - **Les maisons** : une fiche pour Olivier et Lavande, une pour Les Cigales, avec les vraies photos, surfaces, couchages et prix.
 - **Sur place** : équipements compris, photo de la piscine.
 - **Autour** : à pied et en voiture, d'après la page « Aux alentours ».
 - **Tarifs** : grille par saison et par maison, ce qui est compris, les frais en plus.
 - **Réserver** : onglets Olivier / Lavande / Les Cigales prêts pour le moteur Smoobu (voir `SMOOBU.md`).
 - **Avis** : les deux avis Google.
-- **Contact** : téléphone, e-mail, itinéraire, formulaire.
+- **Contact** : carte OpenStreetMap de l'emplacement réel, téléphone, e-mail, itinéraire, formulaire.
 
 **Identité visuelle** (revue avec le plugin *frontend-design*) :
-- élément signature : le plan dessiné en ouverture (gradins du théâtre, chemin du Brusquet, domaine, piscine, trajet vers le centre) ;
+- élément signature : l'ouverture en trois arcs romains (piscine, maison sous l'olivier, terrasse sur le jardin), qui se lèvent au chargement ;
 - palette : blanc de chaux `#F8F8F4`, pierre `#D9D0C1`, vert de volet `#2F5D62`, eau du bassin `#8EC5C9`, ombre `#1F2A2C`, soleil `#E0A43A` ;
 - typographies : *Marcellus* (titres, inspirée des inscriptions romaines) et *Commissioner* (texte) ;
-- photos dans des cadres en arc romain ; une seule animation (les gradins qui se dessinent), désactivée si l'utilisateur limite les animations.
+- photos dans des cadres en arc romain ; une seule animation (le lever des arcs), désactivée si l'utilisateur limite les animations.
 
 ## 4. À valider avec le propriétaire avant mise en ligne
 
@@ -49,7 +49,6 @@ Page d'accueil unique, responsive, autonome :
 - [ ] Horaires d'arrivée et de départ (la maquette reprend ceux des pages villas : 16 h ; 9 h–10 h)
 - [ ] Périodes exactes de moyenne et haute saison (juin apparaît dans les deux sur le site actuel)
 - [ ] Prix des draps et serviettes en option
-- [ ] Disposition réelle des maisons pour ajuster le plan (actuellement indicatif)
 - [ ] Licence des photos touristiques (voir `photos/README.md`)
 - [ ] Orthographe des avis cités (légèrement corrigée dans la maquette)
 
