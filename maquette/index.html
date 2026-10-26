@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Domaine Vaison — Villas face au Théâtre antique</title>
+<meta name="description" content="Villas avec piscine au pied du Théâtre antique de Vaison-la-Romaine. Jardin, parking fermé, boulodrome. Ouvert toute l'année.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pierre: #f6f1e8;
+    --pierre-2: #ece3d3;
+    --ocre: #c47a3a;
+    --ocre-fonce: #9c5a24;
+    --olive: #5f6b45;
+    --lavande: #7b6fa0;
+    --encre: #2b2620;
+    --encre-2: #5c544a;
+    --blanc: #fffdf9;
+    --ligne: #d9cdb8;
+    --rayon: 14px;
+    --max: 1180px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--pierre);
+    color: var(--encre);
+    font: 400 17px/1.65 Inter, system-ui, sans-serif;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; line-height: 1.1; margin: 0 0 .5em; }
+  h2 { font-size: clamp(2rem, 4vw, 2.9rem); }
+  h3 { font-size: 1.6rem; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .18em; font-size: .75rem; font-weight: 600; color: var(--ocre-fonce); margin-bottom: .8rem; }
+  section { padding: 96px 0; }
+  .btn {
+    display: inline-flex; align-items: center; gap: .5em;
+    padding: 14px 26px; border-radius: 999px;
+    background: var(--ocre); color: #fff; text-decoration: none; font-weight: 600; font-size: .95rem;
+    border: 0; cursor: pointer; transition: background .2s;
+  }
+  .btn:hover { background: var(--ocre-fonce); }
+  .btn.ghost { background: transparent; border: 1.5px solid currentColor; }
+  .btn.ghost:hover { background: rgba(255,255,255,.12); }
+
+  /* Visuels de substitution (à remplacer par les vraies photos) */
+  .photo {
+    position: relative; overflow: hidden; border-radius: var(--rayon);
+    background: linear-gradient(160deg, #e9c9a0, #c98d55 55%, #8c5a33);
+  }
+  .photo::after {
+    content: attr(data-label);
+    position: absolute; left: 12px; bottom: 12px;
+    font-size: .72rem; letter-spacing: .06em; text-transform: uppercase;
+    background: rgba(0,0,0,.45); color: #fff; padding: 4px 10px; border-radius: 6px;
+  }
+  .photo.pool { background: linear-gradient(170deg, #bfe3e6 0%, #6fb3c0 45%, #3d7f8e 100%); }
+  .photo.garden { background: linear-gradient(170deg, #d9dfb8, #8f9c62 50%, #5f6b45); }
+  .photo.lavender { background: linear-gradient(170deg, #d8d0ea, #9a8cc4 50%, #5f5288); }
+  .photo.stone { background: linear-gradient(170deg, #efe2cc, #cdb48c 50%, #9b8058); }
+
+  /* En-tête */
+  header {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    transition: background .3s, box-shadow .3s;
+    color: #fff;
+  }
+  header.scrolled { background: rgba(246,241,232,.96); color: var(--encre); box-shadow: 0 1px 0 var(--ligne); backdrop-filter: blur(8px); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 600; text-decoration: none; letter-spacing: .02em; }
+  .logo small { display: block; font-family: Inter, sans-serif; font-size: .62rem; letter-spacing: .25em; text-transform: uppercase; opacity: .8; margin-top: -2px; }
+  .nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; font-size: .92rem; font-weight: 500; }
+  .nav ul a { text-decoration: none; opacity: .9; }
+  .nav ul a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 6px; }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .lang { font-size: .8rem; font-weight: 600; letter-spacing: .08em; }
+  .lang a { text-decoration: none; opacity: .6; }
+  .lang a.on { opacity: 1; }
+  .burger { display: none; background: none; border: 0; color: inherit; font-size: 1.6rem; cursor: pointer; }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end;
+    padding: 0 0 80px; color: #fff; position: relative;
+    background:
+      linear-gradient(180deg, rgba(30,20,10,.35) 0%, rgba(30,20,10,.1) 40%, rgba(30,20,10,.65) 100%),
+      radial-gradient(ellipse at 70% 30%, #f3c98b 0%, transparent 55%),
+      linear-gradient(170deg, #d99a5c 0%, #a8683a 45%, #5c3b22 100%);
+  }
+  .hero .tag { position: absolute; right: 20px; top: 96px; font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; background: rgba(0,0,0,.35); padding: 4px 10px; border-radius: 6px; }
+  .hero h1 { font-size: clamp(2.8rem, 7vw, 5.6rem); max-width: 14ch; }
+  .hero p { font-size: 1.15rem; max-width: 46ch; opacity: .95; }
+  .hero .ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+
+  /* Barre de réservation */
+  .booking-bar {
+    margin-top: -46px; position: relative; z-index: 5;
+  }
+  .booking-bar form {
+    background: var(--blanc); border-radius: var(--rayon); box-shadow: 0 20px 50px rgba(60,40,20,.15);
+    display: grid; grid-template-columns: repeat(4, 1fr) auto; gap: 0; padding: 10px;
+  }
+  .booking-bar label { display: block; padding: 10px 18px; border-right: 1px solid var(--ligne); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--encre-2); font-weight: 600; }
+  .booking-bar label:nth-of-type(4) { border-right: 0; }
+  .booking-bar input, .booking-bar select { display: block; width: 100%; border: 0; background: none; font: 500 1rem Inter, sans-serif; color: var(--encre); padding: 4px 0 0; outline: none; }
+  .booking-bar .btn { margin: 4px; border-radius: 10px; }
+
+  /* Intro / le domaine */
+  .intro { display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
+  .intro-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .intro-photos .photo { aspect-ratio: 3/4; }
+  .intro-photos .photo:nth-child(2) { margin-top: 48px; }
+  .stats { display: flex; gap: 36px; margin-top: 32px; flex-wrap: wrap; }
+  .stats div { font-size: .85rem; color: var(--encre-2); }
+  .stats strong { display: block; font-family: "Cormorant Garamond", serif; font-size: 2.4rem; color: var(--ocre-fonce); line-height: 1; }
+
+  /* Villas */
+  .villas { background: var(--blanc); }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 48px; flex-wrap: wrap; }
+  .section-head p { max-width: 52ch; color: var(--encre-2); margin: 0; }
+  .villa-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .villa { background: var(--pierre); border-radius: var(--rayon); overflow: hidden; display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s; }
+  .villa:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(60,40,20,.12); }
+  .villa .photo { aspect-ratio: 4/3; border-radius: 0; }
+  .villa-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+  .villa-body p { color: var(--encre-2); font-size: .95rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 20px; padding: 0; list-style: none; }
+  .chips li { font-size: .78rem; background: var(--blanc); border: 1px solid var(--ligne); border-radius: 999px; padding: 4px 12px; }
+  .villa-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--ligne); padding-top: 16px; }
+  .price { font-size: .85rem; color: var(--encre-2); }
+  .price strong { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; color: var(--encre); }
+  .link { font-weight: 600; font-size: .9rem; color: var(--ocre-fonce); text-decoration: none; }
+  .link:hover { text-decoration: underline; }
+
+  /* Équipements */
+  .amen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ligne); border: 1px solid var(--ligne); border-radius: var(--rayon); overflow: hidden; }
+  .amen { background: var(--pierre); padding: 32px 28px; }
+  .amen svg { width: 34px; height: 34px; stroke: var(--olive); fill: none; stroke-width: 1.5; margin-bottom: 14px; }
+  .amen h3 { font-size: 1.35rem; margin-bottom: .3em; }
+  .amen p { margin: 0; font-size: .92rem; color: var(--encre-2); }
+
+  /* Bandeau Vaison */
+  .vaison { background: var(--olive); color: #f3efe2; }
+  .vaison .eyebrow { color: #e3d6a6; }
+  .vaison-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: center; }
+  .vaison .photo { aspect-ratio: 5/4; }
+  .places { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; }
+  .places li { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 10px; font-size: .95rem; }
+  .places span { opacity: .75; }
+
+  /* Tarifs */
+  .tarifs-table { width: 100%; border-collapse: collapse; background: var(--blanc); border-radius: var(--rayon); overflow: hidden; }
+  .tarifs-table th, .tarifs-table td { padding: 18px 22px; text-align: left; border-bottom: 1px solid var(--ligne); }
+  .tarifs-table th { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--encre-2); background: var(--pierre-2); }
+  .tarifs-table td:last-child, .tarifs-table th:last-child { text-align: right; }
+  .tarifs-table tr:last-child td { border-bottom: 0; }
+  .season { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px; }
+  .note { font-size: .85rem; color: var(--encre-2); margin-top: 16px; }
+  .tarifs-wrap { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; align-items: start; }
+  .incl { background: var(--blanc); border-radius: var(--rayon); padding: 28px; }
+  .incl ul { padding-left: 1.1em; margin: 0; }
+  .incl li { margin-bottom: 6px; font-size: .95rem; }
+
+  /* Avis */
+  .avis { background: var(--pierre-2); }
+  .avis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  blockquote { margin: 0; background: var(--blanc); padding: 28px; border-radius: var(--rayon); }
+  blockquote p { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-style: italic; line-height: 1.4; margin: 0 0 16px; }
+  blockquote footer { font-size: .85rem; color: var(--encre-2); }
+  .stars { color: var(--ocre); letter-spacing: 2px; margin-bottom: 10px; }
+
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .map { aspect-ratio: 4/3; border-radius: var(--rayon); background:
+      repeating-linear-gradient(0deg, transparent 0 38px, rgba(0,0,0,.05) 38px 39px),
+      repeating-linear-gradient(90deg, transparent 0 38px, rgba(0,0,0,.05) 38px 39px),
+      #e6dcc8; position: relative; }
+  .map .pin { position: absolute; left: 52%; top: 46%; transform: translate(-50%,-100%); background: var(--ocre); color: #fff; padding: 8px 14px; border-radius: 10px; font-size: .85rem; font-weight: 600; white-space: nowrap; }
+  .map .pin::after { content: ""; position: absolute; left: 50%; bottom: -7px; transform: translateX(-50%); border: 7px solid transparent; border-top-color: var(--ocre); border-bottom: 0; }
+  .map .poi { position: absolute; font-size: .75rem; color: var(--encre-2); background: var(--blanc); padding: 3px 8px; border-radius: 6px; }
+  .contact-list { list-style: none; padding: 0; margin: 24px 0; }
+  .contact-list li { padding: 14px 0; border-bottom: 1px solid var(--ligne); display: flex; gap: 16px; }
+  .contact-list b { min-width: 110px; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--encre-2); padding-top: 2px; }
+  form.contact { display: grid; gap: 14px; margin-top: 8px; }
+  form.contact .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  form.contact input, form.contact textarea, form.contact select { width: 100%; padding: 13px 15px; border: 1px solid var(--ligne); border-radius: 10px; background: var(--blanc); font: inherit; font-size: .95rem; }
+  form.contact textarea { min-height: 120px; resize: vertical; }
+
+  footer.site { background: var(--encre); color: #cfc6b8; padding: 56px 0 32px; font-size: .9rem; }
+  .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+  footer.site a { text-decoration: none; }
+  footer.site h4 { color: #fff; font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; margin: 0 0 14px; }
+  footer.site ul { list-style: none; padding: 0; margin: 0; line-height: 2; }
+  .legal { border-top: 1px solid #443d34; margin-top: 40px; padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: .8rem; }
+
+  /* CTA mobile collant */
+  .sticky-cta { display: none; }
+
+  @media (max-width: 960px) {
+    section { padding: 72px 0; }
+    .nav ul { display: none; }
+    .nav ul.open { display: flex; flex-direction: column; position: absolute; top: 76px; left: 0; right: 0; background: var(--pierre); color: var(--encre); padding: 20px; gap: 16px; box-shadow: 0 10px 20px rgba(0,0,0,.08); }
+    .burger { display: block; }
+    .nav-right .btn { display: none; }
+    .booking-bar form { grid-template-columns: 1fr 1fr; }
+    .booking-bar label { border-right: 0; border-bottom: 1px solid var(--ligne); }
+    .booking-bar .btn { grid-column: 1 / -1; justify-content: center; }
+    .intro, .vaison-grid, .tarifs-wrap, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .villa-grid, .avis-grid { grid-template-columns: 1fr; }
+    .amen-grid { grid-template-columns: 1fr 1fr; }
+    .foot-grid { grid-template-columns: 1fr; }
+    .sticky-cta { display: flex; position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 60; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+    footer.site { padding-bottom: 96px; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 16px; }
+    .amen-grid, .places, form.contact .row { grid-template-columns: 1fr; }
+    .booking-bar form { grid-template-columns: 1fr; }
+    .tarifs-table th, .tarifs-table td { padding: 14px 12px; font-size: .9rem; }
+    .hero .tag { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="logo" href="#top">Domaine Vaison<small>Résidence le Théâtre</small></a>
+    <ul id="menu">
+      <li><a href="#domaine">Le domaine</a></li>
+      <li><a href="#villas">Nos villas</a></li>
+      <li><a href="#equipements">Équipements</a></li>
+      <li><a href="#vaison">Vaison-la-Romaine</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <span class="lang"><a class="on" href="#">FR</a> · <a href="#">EN</a> · <a href="#">DE</a> · <a href="#">NL</a></span>
+      <a class="btn" href="#reserver">Réserver</a>
+      <button class="burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" aria-label="Accueil">
+  <span class="tag">Photo plein écran : piscine & Théâtre antique au coucher du soleil</span>
+  <div class="wrap">
+    <div class="eyebrow" style="color:#f6dcb6">Vaison-la-Romaine · Provence</div>
+    <h1>Vos villas face au Théâtre antique</h1>
+    <p>Un domaine clos au calme, piscine, grand jardin et boulodrome — à quelques minutes à pied du centre historique. Ouvert toute l'année.</p>
+    <div class="ctas">
+      <a class="btn" href="#villas">Découvrir les villas</a>
+      <a class="btn ghost" href="#reserver">Vérifier les disponibilités</a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap booking-bar" id="reserver">
+  <form onsubmit="event.preventDefault(); location.hash='contact';">
+    <label>Arrivée<input type="date"></label>
+    <label>Départ<input type="date"></label>
+    <label>Voyageurs<select><option>2 adultes</option><option>3 personnes</option><option>4 personnes</option><option>+ bébé</option></select></label>
+    <label>Villa<select><option>Toutes les villas</option><option>Villa Côté Piscine</option><option>Villa les 2 Terrasses</option><option>Villa l'Olivier</option></select></label>
+    <button class="btn" type="submit">Rechercher</button>
+  </form>
+</div>
+
+<section id="domaine">
+  <div class="wrap intro">
+    <div>
+      <div class="eyebrow">Le domaine</div>
+      <h2>La Provence authentique, au pied des vestiges romains</h2>
+      <p>Au cœur du quartier des Arts, chemin du Brusquet, notre résidence fermée réunit quelques villas indépendantes autour d'une piscine et d'un grand jardin arboré. De la terrasse, le Théâtre antique est juste en face ; le centre-ville, ses marchés et la Haute Ville médiévale sont accessibles à pied.</p>
+      <p>Familles, couples ou amis : chaque villa est entièrement équipée pour un séjour en toute autonomie, que ce soit pour un week-end, une semaine ou une cure de soleil hors saison.</p>
+      <div class="stats">
+        <div><strong>3</strong>villas indépendantes</div>
+        <div><strong>4</strong>voyageurs par villa</div>
+        <div><strong>365</strong>jours d'ouverture</div>
+      </div>
+    </div>
+    <div class="intro-photos">
+      <div class="photo garden" data-label="Jardin & oliviers"></div>
+      <div class="photo stone" data-label="Façade en pierre"></div>
+    </div>
+  </div>
+</section>
+
+<section class="villas" id="villas">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Hébergements</div>
+        <h2>Nos villas</h2>
+      </div>
+      <p>Trois maisons de plain-pied, chacune avec sa terrasse privée, sa cuisine équipée et un accès direct au jardin et à la piscine partagée.</p>
+    </div>
+    <div class="villa-grid">
+      <article class="villa">
+        <div class="photo pool" data-label="Villa Côté Piscine"></div>
+        <div class="villa-body">
+          <h3>Villa Côté Piscine</h3>
+          <p>Le salon s'ouvre sur la terrasse et le jardin, à deux pas du bassin. Idéale pour les familles.</p>
+          <ul class="chips"><li>4 pers.</li><li>2 chambres</li><li>65 m²</li><li>Terrasse</li><li>Animaux acceptés</li></ul>
+          <div class="villa-foot"><span class="price">dès <strong>450 €</strong> / sem.</span><a class="link" href="#contact">Voir la villa →</a></div>
+        </div>
+      </article>
+      <article class="villa">
+        <div class="photo" data-label="Villa les 2 Terrasses"></div>
+        <div class="villa-body">
+          <h3>Villa les 2 Terrasses</h3>
+          <p>Une terrasse au soleil du matin, l'autre à l'ombre pour les dîners d'été face au Théâtre antique.</p>
+          <ul class="chips"><li>4 pers.</li><li>2 chambres</li><li>2 terrasses</li><li>Climatisation</li></ul>
+          <div class="villa-foot"><span class="price">dès <strong>450 €</strong> / sem.</span><a class="link" href="#contact">Voir la villa →</a></div>
+        </div>
+      </article>
+      <article class="villa">
+        <div class="photo lavender" data-label="Villa l'Olivier"></div>
+        <div class="villa-body">
+          <h3>Villa l'Olivier</h3>
+          <p>Nichée sous un olivier centenaire, la plus intime des trois, parfaite pour un séjour en couple.</p>
+          <ul class="chips"><li>2–4 pers.</li><li>2 chambres</li><li>Jardin privatif</li><li>Lit bébé</li></ul>
+          <div class="villa-foot"><span class="price">dès <strong>450 €</strong> / sem.</span><a class="link" href="#contact">Voir la villa →</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="equipements">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Inclus dans votre séjour</div>
+        <h2>Tout pour se sentir chez soi</h2>
+      </div>
+      <p>Les équipements du domaine sont en accès libre pour tous nos hôtes, sans supplément.</p>
+    </div>
+    <div class="amen-grid">
+      <div class="amen"><svg viewBox="0 0 24 24"><path d="M2 18c2 0 2-1.5 4-1.5S8 18 10 18s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M2 21c2 0 2-1.5 4-1.5S8 21 10 21s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M8 15V5a2 2 0 0 1 4 0M16 15V5a2 2 0 0 0-4 0M8 9h8"/></svg><h3>Piscine</h3><p>Bassin entouré de transats, au cœur du jardin.</p></div>
+      <div class="amen"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 12c-4 0-7-3-7-7 4 0 7 3 7 7zM12 12c4 0 7-3 7-7-4 0-7 3-7 7zM4 22h16"/></svg><h3>Grand jardin</h3><p>Pelouse, oliviers et coins d'ombre pour la sieste.</p></div>
+      <div class="amen"><svg viewBox="0 0 24 24"><circle cx="7" cy="16" r="3"/><circle cx="16" cy="15" r="4"/><circle cx="12" cy="7" r="1.2"/></svg><h3>Boulodrome</h3><p>Pour des parties de pétanque à la provençale.</p></div>
+      <div class="amen"><svg viewBox="0 0 24 24"><path d="M4 10h16l-2 7H6zM8 17l-2 5M16 17l2 5M9 6c0-1.5 1-2 1-3M13 6c0-1.5 1-2 1-3"/></svg><h3>Espace barbecue</h3><p>Pour vos grillades sous les étoiles.</p></div>
+      <div class="amen"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><h3>Parking fermé</h3><p>Stationnement sécurisé à l'intérieur du portail.</p></div>
+      <div class="amen"><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg><h3>Wi-Fi gratuit</h3><p>Dans toutes les villas et au bord de la piscine.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="vaison" id="vaison">
+  <div class="wrap vaison-grid">
+    <div class="photo stone" data-label="Théâtre antique de Vaison"></div>
+    <div>
+      <div class="eyebrow">La destination</div>
+      <h2>Vivre Vaison-la-Romaine</h2>
+      <p>Sites antiques, cité médiévale, marché provençal du mardi, festival d'été au Théâtre antique, vignobles des Côtes-du-Rhône et ascension du Mont Ventoux : Vaison est le point de départ idéal pour explorer le Vaucluse.</p>
+      <ul class="places">
+        <li>Théâtre antique <span>en face</span></li>
+        <li>Centre-ville <span>≈ 10 min à pied</span></li>
+        <li>Haute Ville médiévale <span>≈ 15 min à pied</span></li>
+        <li>Dentelles de Montmirail <span>≈ 15 min</span></li>
+        <li>Mont Ventoux <span>≈ 45 min</span></li>
+        <li>Orange · Avignon <span>≈ 30 · 50 min</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="tarifs">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Tarifs</div>
+        <h2>Des prix clairs, toute l'année</h2>
+      </div>
+      <p>Location à la semaine en haute saison, courts séjours possibles le reste de l'année.</p>
+    </div>
+    <div class="tarifs-wrap">
+      <div>
+        <table class="tarifs-table">
+          <thead><tr><th>Période</th><th>Séjour minimum</th><th>Prix / semaine</th></tr></thead>
+          <tbody>
+            <tr><td><span class="season" style="background:var(--olive)"></span>Janvier – mars</td><td>2 nuits</td><td>450 €</td></tr>
+            <tr><td><span class="season" style="background:var(--lavande)"></span>Avril – juin</td><td>3 nuits</td><td>550 €</td></tr>
+            <tr><td><span class="season" style="background:var(--ocre)"></span>Juillet – août</td><td>7 nuits (samedi)</td><td>800 €</td></tr>
+            <tr><td><span class="season" style="background:var(--lavande)"></span>Septembre</td><td>3 nuits</td><td>550 €</td></tr>
+            <tr><td><span class="season" style="background:var(--olive)"></span>Octobre – décembre</td><td>2 nuits</td><td>450 €</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Tarifs indicatifs pour une villa de 4 personnes. Taxe de séjour en sus. Grille à valider avec le propriétaire.</p>
+      </div>
+      <div class="incl">
+        <h3>Compris</h3>
+        <ul>
+          <li>Accès piscine, jardin, boulodrome, barbecue</li>
+          <li>Parking fermé & Wi-Fi</li>
+          <li>Lit bébé sur demande</li>
+        </ul>
+        <h3 style="margin-top:20px">En option</h3>
+        <ul>
+          <li>Linge de lit et de toilette</li>
+          <li>Ménage de fin de séjour</li>
+          <li>Animal de compagnie (forfait séjour)</li>
+        </ul>
+        <a class="btn" style="margin-top:22px" href="#contact">Demander un devis</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="avis" aria-label="Avis clients">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Ils ont séjourné chez nous</div>
+        <h2>Avis de nos hôtes</h2>
+      </div>
+      <p>Exemples de mise en page : à remplacer par de vrais avis (Google, Gîtes de France, Booking…).</p>
+    </div>
+    <div class="avis-grid">
+      <blockquote><div class="stars">★★★★★</div><p>« [Avis client] — emplacement, piscine, accueil… »</p><footer>Prénom · Ville · Mois Année</footer></blockquote>
+      <blockquote><div class="stars">★★★★★</div><p>« [Avis client] — calme, jardin, proximité du centre… »</p><footer>Prénom · Ville · Mois Année</footer></blockquote>
+      <blockquote><div class="stars">★★★★★</div><p>« [Avis client] — équipement de la villa, propreté… »</p><footer>Prénom · Ville · Mois Année</footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow">Contact & accès</div>
+      <h2>Préparons votre séjour</h2>
+      <ul class="contact-list">
+        <li><b>Adresse</b><span>100 chemin du Brusquet<br>84110 Vaison-la-Romaine</span></li>
+        <li><b>Téléphone</b><span><a href="tel:+33000000000">[à confirmer]</a></span></li>
+        <li><b>E-mail</b><span><a href="mailto:contact@example.com">[à confirmer]</a></span></li>
+        <li><b>Accès</b><span>A7 sortie Bollène ou Orange · Gare TGV d'Avignon à ~1 h</span></li>
+      </ul>
+      <div class="map" role="img" aria-label="Plan de situation">
+        <span class="poi" style="left:58%;top:24%">Théâtre antique</span>
+        <span class="poi" style="left:14%;top:62%">Centre-ville</span>
+        <span class="poi" style="left:20%;top:84%">Haute Ville</span>
+        <span class="pin">Domaine Vaison</span>
+      </div>
+    </div>
+    <div>
+      <h3>Demande de disponibilité</h3>
+      <form class="contact" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Merci, nous revenons vers vous sous 24 h ✓';">
+        <div class="row"><input placeholder="Nom" required><input type="email" placeholder="E-mail" required></div>
+        <div class="row"><input type="date" aria-label="Arrivée"><input type="date" aria-label="Départ"></div>
+        <div class="row">
+          <select aria-label="Villa"><option>Villa (indifférent)</option><option>Côté Piscine</option><option>Les 2 Terrasses</option><option>L'Olivier</option></select>
+          <select aria-label="Voyageurs"><option>2 personnes</option><option>3 personnes</option><option>4 personnes</option></select>
+        </div>
+        <textarea placeholder="Votre message (animal, lit bébé, arrivée tardive…)"></textarea>
+        <button class="btn" type="submit">Envoyer ma demande</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="color:#fff">Domaine Vaison<small>Résidence le Théâtre</small></div>
+        <p style="max-width:40ch;margin-top:14px">Villas avec piscine face au Théâtre antique de Vaison-la-Romaine. Ouvert toute l'année.</p>
+      </div>
+      <div><h4>Le séjour</h4><ul><li><a href="#villas">Nos villas</a></li><li><a href="#tarifs">Tarifs</a></li><li><a href="#reserver">Réserver</a></li></ul></div>
+      <div><h4>Infos</h4><ul><li><a href="#vaison">Vaison-la-Romaine</a></li><li><a href="#contact">Contact & accès</a></li><li><a href="#">Mentions légales</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Domaine Vaison</span><span>Maquette — contenus et photos à valider</span></div>
+  </div>
+</footer>
+
+<a class="btn sticky-cta" href="#reserver">Vérifier les disponibilités</a>
+
+<script>
+  const h = document.querySelector('header');
+  const onScroll = () => h.classList.toggle('scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => document.getElementById('menu').classList.remove('open')));
+</script>
+</body>
+</html>
