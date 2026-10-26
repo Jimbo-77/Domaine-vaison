@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta_titre">Domaine Vaison — Drie vakantiehuizen bij het Romeinse theater van Vaison-la-Romaine</title>
+<meta name="description" content="Drie vakantiehuizen voor 4 personen op een afgesloten domein in Vaison-la-Romaine, op een steenworp van het Romeinse theater en 300 m van het centrum. Zwembad, tuin, jeu-de-boulesbaan. Het hele jaar open." data-i18n-content="meta_description">
+<link rel="canonical" href="https://jimbo-77.github.io/Domaine-vaison/maquette/nl/">
+<link rel="alternate" hreflang="fr" href="https://jimbo-77.github.io/Domaine-vaison/maquette/">
+<link rel="alternate" hreflang="en" href="https://jimbo-77.github.io/Domaine-vaison/maquette/en/">
+<link rel="alternate" hreflang="de" href="https://jimbo-77.github.io/Domaine-vaison/maquette/de/">
+<link rel="alternate" hreflang="nl" href="https://jimbo-77.github.io/Domaine-vaison/maquette/nl/">
+<link rel="alternate" hreflang="x-default" href="https://jimbo-77.github.io/Domaine-vaison/maquette/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --chaux: #f8f8f4;
+    --pierre: #d9d0c1;
+    --pierre-claire: #ece7de;
+    --volet: #2f5d62;
+    --volet-fonce: #234649;
+    --bassin: #8ec5c9;
+    --ombre: #1f2a2c;
+    --ombre-2: #4d5859;
+    --soleil: #e0a43a;
+    --mesure: 34rem;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--chaux);
+    color: var(--ombre);
+    font: 400 1.125rem/1.6 Commissioner, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--volet); text-underline-offset: .2em; }
+  h1, h2, h3 { font-family: Marcellus, Georgia, serif; font-weight: 400; margin: 0 0 .5em; letter-spacing: -.005em; }
+  h1 { font-size: clamp(2.5rem, 5.4vw, 4.25rem); line-height: 1.04; }
+  h2 { font-size: clamp(2rem, 3.6vw, 2.75rem); line-height: 1.1; }
+  h3 { font-size: 1.5rem; line-height: 1.2; }
+  p { margin: 0 0 1em; max-width: var(--mesure); }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 112px 0; }
+  .intro-section { max-width: 40rem; margin-bottom: 56px; }
+  .intro-section p { color: var(--ombre-2); }
+
+  :focus-visible { outline: 3px solid var(--soleil); outline-offset: 3px; }
+
+  .btn {
+    display: inline-block; padding: 15px 26px; border-radius: 6px;
+    background: var(--volet); color: #fff; text-decoration: none;
+    font: 600 1rem Commissioner, sans-serif; border: 0; cursor: pointer;
+  }
+  .btn:hover { background: var(--volet-fonce); }
+  .btn.secondaire { background: transparent; color: var(--volet); box-shadow: inset 0 0 0 1.5px var(--volet); }
+  .btn.secondaire:hover { background: var(--pierre-claire); }
+
+  /* En-tête */
+  header { position: sticky; top: 0; z-index: 40; background: rgba(248,248,244,.94); backdrop-filter: blur(6px); border-bottom: 1px solid transparent; transition: border-color .2s; }
+  header.defile { border-bottom-color: var(--pierre); }
+  .nav { display: flex; align-items: center; gap: 32px; height: 72px; }
+  .marque { font-family: Marcellus, serif; font-size: 1.5rem; text-decoration: none; color: var(--ombre); margin-right: auto; }
+  .nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; font-size: 1rem; }
+  .nav ul a { color: var(--ombre); text-decoration: none; }
+  .nav ul a:hover { color: var(--volet); text-decoration: underline; }
+  .langues { font-size: .9rem; color: var(--ombre-2); }
+  .langues select { font: inherit; color: inherit; background: none; border: 1px solid var(--pierre); border-radius: 4px; padding: 4px 6px; }
+  .menu-btn { display: none; font: 600 1rem Commissioner, sans-serif; background: none; border: 1px solid var(--pierre); border-radius: 4px; padding: 8px 12px; color: var(--ombre); cursor: pointer; }
+
+  /* Ouverture : le plan */
+  .ouverture { padding: 56px 0 96px; }
+  .ouverture-grille { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; }
+  .ouverture p.chapo { font-size: 1.25rem; color: var(--ombre-2); margin-top: 24px; }
+  .ouverture .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .arcs { display: grid; grid-template-columns: 1.35fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; height: min(620px, 72vh); }
+  .arcs figure { margin: 0; overflow: hidden; border-radius: 999px 999px 0 0; background: var(--pierre-claire); }
+  .arcs figure:first-child { grid-row: 1 / 3; }
+  .arcs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .arcs .piscine img { object-position: 60% 50%; }
+  @keyframes lever { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+  .arcs figure { animation: lever 1s cubic-bezier(.25,.7,.2,1) both; }
+  .arcs figure:nth-child(2) { animation-delay: .15s; }
+  .arcs figure:nth-child(3) { animation-delay: .3s; }
+  .reperes { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 6px; font-size: 1rem; color: var(--ombre-2); }
+  .reperes strong { color: var(--ombre); font-weight: 600; }
+  .maison { scroll-margin-top: 88px; }
+  @media (prefers-reduced-motion: reduce) {
+    .arcs figure { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* Les maisons */
+  .maisons { background: #fff; }
+  .maison { display: grid; grid-template-columns: 5fr 6fr; gap: 64px; align-items: center; padding: 56px 0; border-top: 1px solid var(--pierre-claire); }
+  .maison:first-of-type { border-top: 0; padding-top: 0; }
+  .maison:nth-of-type(even) .photo { order: 2; }
+  .photo {
+    aspect-ratio: 5 / 6; max-width: 400px; width: 100%; justify-self: center; border-radius: 999px 999px 0 0; background: var(--pierre-claire);
+    display: flex; align-items: flex-end; padding: 20px;
+    font-size: .85rem; color: var(--ombre-2);
+  }
+  .photo { position: relative; overflow: hidden; }
+  .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .photo.bassin { background: #d5e9ea; }
+  .photo-large { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 4px; margin-top: 32px; background: var(--pierre-claire); }
+  .photo-autour { aspect-ratio: 21 / 9; margin: 0 0 56px; }
+  .actions-maison { display: flex; flex-wrap: wrap; gap: 12px; }
+  button.photo { border: 0; padding: 0; cursor: zoom-in; font: inherit; }
+  .vignettes { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 28px; }
+  .vignettes button.vignette { width: 64px; height: 64px; padding: 0; border: 0; border-radius: 4px; overflow: hidden; cursor: zoom-in; background: var(--pierre-claire); }
+  .vignettes img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vignettes .tout-voir { margin-left: 8px; background: none; border: 0; padding: 6px 0; font: 600 1rem Commissioner, sans-serif; color: var(--volet); text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
+  #sur-place .vignettes { margin-top: 16px; }
+
+  .visionneuse { width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: #151b1c; color: #eef3f1; }
+  .visionneuse::backdrop { background: rgba(21,27,28,.9); }
+  .visionneuse[open] { display: grid; grid-template-rows: auto 1fr; }
+  .visionneuse-haut { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 20px; }
+  .visionneuse-titre { margin: 0; font-family: Marcellus, serif; font-size: 1.25rem; }
+  .visionneuse-fermer { font: 600 1rem Commissioner, sans-serif; color: #fff; background: rgba(255,255,255,.1); border: 0; border-radius: 6px; padding: 10px 16px; cursor: pointer; }
+  .visionneuse figure { margin: 0; min-height: 0; display: grid; grid-template-rows: 1fr auto; padding: 0 72px 16px; }
+  .visionneuse figure img { width: 100%; height: 100%; min-height: 0; object-fit: contain; touch-action: pan-y; }
+  .visionneuse figcaption { display: flex; justify-content: space-between; gap: 16px; padding-top: 12px; font-size: 1rem; color: #c3cbca; }
+  .visionneuse-compteur { white-space: nowrap; }
+  .visionneuse-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; border: 0; background: rgba(255,255,255,.12); cursor: pointer; display: grid; place-items: center; }
+  .visionneuse-nav:hover, .visionneuse-fermer:hover { background: rgba(255,255,255,.22); }
+  .visionneuse-nav svg { width: 26px; height: 26px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .visionneuse-nav.precedente { left: 12px; }
+  .visionneuse-nav.suivante { right: 12px; }
+  td .periode { display: block; font-size: .875rem; color: var(--ombre-2); font-weight: 400; }
+  .photo.olivier { background: #e1e3d2; }
+  dl.fiche { display: grid; grid-template-columns: max-content 1fr; gap: 10px 28px; margin: 24px 0 28px; font-size: 1rem; }
+  dl.fiche dt { color: var(--ombre-2); }
+  dl.fiche dd { margin: 0; }
+  .prix { font-size: 1rem; color: var(--ombre-2); margin-bottom: 20px; }
+  .prix strong { font-family: Marcellus, serif; font-weight: 400; font-size: 1.75rem; color: var(--ombre); }
+
+  /* Sur place */
+  .sur-place-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .liste-equip { list-style: none; padding: 0; margin: 0; }
+  .liste-equip li { display: grid; grid-template-columns: 32px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--pierre); }
+  .liste-equip li:last-child { border-bottom: 1px solid var(--pierre); }
+  .liste-equip svg { width: 28px; height: 28px; stroke: var(--volet); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .liste-equip b { display: block; font-weight: 600; }
+  .liste-equip span { color: var(--ombre-2); font-size: 1rem; }
+
+  /* Autour */
+  .autour { background: var(--volet); color: #eef3f1; }
+  .autour h2, .autour h3 { color: #fff; }
+  .autour .intro-section p { color: #cfdcda; }
+  .distances { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .distances ol { list-style: none; padding: 0; margin: 0; }
+  .distances li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,.18); }
+  .distances li span:last-child { color: #cfdcda; white-space: nowrap; }
+
+  /* Tarifs */
+  .tarifs-grille { display: grid; grid-template-columns: 3fr 2fr; gap: 64px; align-items: start; }
+  table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+  th, td { padding: 16px 0; text-align: left; border-bottom: 1px solid var(--pierre); }
+  th { font-weight: 600; color: var(--ombre-2); font-size: .95rem; }
+  td:not(:first-child), th:not(:first-child) { text-align: right; }
+  td.haute { font-weight: 600; }
+  .note { font-size: .9rem; color: var(--ombre-2); margin-top: 16px; }
+  .compris h3 { margin-top: 0; }
+  .compris ul { padding-left: 1.1em; margin: 0 0 28px; }
+  .compris li { margin-bottom: 6px; }
+
+  /* Réservation Smoobu */
+  .resa { background: #fff; }
+  .onglets { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--pierre); margin-bottom: 0; }
+  .onglets button {
+    font: 500 1rem Commissioner, sans-serif; padding: 12px 18px; background: none; border: 0;
+    border-bottom: 3px solid transparent; margin-bottom: -1px; color: var(--ombre-2); cursor: pointer;
+  }
+  .onglets button[aria-selected="true"] { color: var(--ombre); border-bottom-color: var(--volet); }
+  .resa-cadre { background: var(--chaux); min-height: 320px; }
+  .resa-cadre iframe { display: block; width: 100%; height: 900px; border: 0; }
+  .resa-vide { padding: 56px 32px; max-width: 40rem; }
+  .resa-vide p { color: var(--ombre-2); }
+  .resa-infos { font-size: .95rem; color: var(--ombre-2); margin-top: 20px; }
+
+  /* Avis */
+  .avis-liste { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; max-width: 60rem; }
+  blockquote { margin: 0; border-left: 2px solid var(--soleil); padding-left: 20px; }
+  blockquote p { font-family: Marcellus, serif; font-size: 1.3rem; line-height: 1.45; color: var(--ombre); }
+  blockquote footer { font-size: .95rem; color: var(--ombre-2); }
+
+  /* Contact */
+  .contact { background: var(--pierre-claire); }
+  .contact-grille { display: grid; grid-template-columns: 2fr 3fr; gap: 72px; }
+  .carte { display: block; width: 100%; aspect-ratio: 4 / 3; border: 0; border-radius: 4px; margin-bottom: 12px; background: var(--pierre); }
+  address { font-style: normal; line-height: 1.8; margin-bottom: 24px; }
+  .contact dl { margin: 0 0 24px; }
+  .contact dt { font-weight: 600; margin-top: 16px; }
+  .contact dd { margin: 0; color: var(--ombre-2); }
+  form.demande { display: grid; gap: 16px; align-content: start; }
+  form.demande .ligne { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  form.demande label { display: grid; gap: 6px; font-size: .95rem; font-weight: 500; }
+  form.demande input, form.demande select, form.demande textarea {
+    font: inherit; font-size: 1rem; padding: 12px 14px; border: 1px solid #bfb5a4; border-radius: 6px; background: #fff; color: var(--ombre); width: 100%;
+  }
+  form.demande textarea { min-height: 130px; resize: vertical; }
+  .confirmation { color: var(--volet); font-weight: 600; }
+
+  footer.pied { background: var(--ombre); color: #c3cbca; padding: 56px 0 40px; font-size: 1rem; }
+  footer.pied a { color: #fff; }
+  .pied-grille { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+  footer.pied ul { list-style: none; padding: 0; margin: 0; line-height: 2; }
+  .mention { margin-top: 40px; font-size: .85rem; color: #8e9a99; }
+
+  .cta-mobile { display: none; }
+
+  @media (max-width: 980px) {
+    section { padding: 80px 0; }
+    .nav ul, .nav .langues, .nav > .btn { display: none; }
+    .menu-btn { display: block; }
+    .nav.ouvert { flex-wrap: wrap; height: auto; padding-top: 16px; padding-bottom: 16px; }
+    .nav.ouvert ul { display: flex; flex-direction: column; width: 100%; gap: 14px; order: 3; padding: 8px 0 16px; }
+    .nav.ouvert .langues { display: block; order: 4; padding-bottom: 12px; }
+    .arcs { height: 460px; order: -1; }
+    .ouverture-grille, .maison, .sur-place-grille, .distances, .tarifs-grille, .contact-grille { grid-template-columns: 1fr; gap: 40px; }
+    .maison:nth-of-type(even) .photo { order: 0; }
+    .photo { aspect-ratio: 4 / 3; max-height: 420px; }
+    .avis-liste { grid-template-columns: 1fr; gap: 36px; }
+    .photo-autour { aspect-ratio: 3 / 2; }
+    .pied-grille { grid-template-columns: 1fr; }
+    .resa-cadre iframe { height: 1100px; }
+    .cta-mobile { display: block; visibility: hidden; opacity: 0; transition: opacity .2s, visibility .2s; position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 50; text-align: center; box-shadow: 0 8px 24px rgba(31,42,44,.3); }
+    footer.pied { padding-bottom: 104px; }
+  }
+  .cta-mobile.visible { visibility: visible; opacity: 1; }
+  @media (max-width: 560px) {
+    body { font-size: 1.0625rem; }
+    .arcs { height: 340px; gap: 10px; }
+    .visionneuse figure { padding: 0 0 12px; }
+    .visionneuse figcaption { padding: 12px 16px 0; }
+    .visionneuse-nav { top: auto; bottom: 64px; transform: none; }
+    .wrap { padding: 0 16px; }
+    form.demande .ligne { grid-template-columns: 1fr; }
+    .ouverture { padding-top: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav" id="nav" aria-label="Hoofdnavigatie" data-i18n-aria-label="aria_nav">
+    <a class="marque" href="#">Domaine Vaison</a>
+    <ul>
+      <li><a href="#maisons" data-i18n="nav_maisons">De huizen</a></li>
+      <li><a href="#sur-place" data-i18n="nav_sur_place">Ter plaatse</a></li>
+      <li><a href="#autour" data-i18n="nav_autour">Omgeving</a></li>
+      <li><a href="#tarifs" data-i18n="nav_tarifs">Prijzen</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+    </ul>
+    <label class="langues">
+      <select aria-label="Taal" data-i18n-aria-label="aria_langue" onchange="location.href = this.value"><option value="../" lang="fr">Français</option><option value="../en/" lang="en">English</option><option value="../de/" lang="de">Deutsch</option><option value="./" lang="nl" selected>Nederlands</option></select>
+    </label>
+    <a class="btn" href="#reservation" data-i18n="btn_reserver">Boeken</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" onclick="basculerMenu(this)" data-i18n="btn_menu">Menu</button>
+  </nav>
+</header>
+
+<main>
+<section class="ouverture">
+  <div class="wrap ouverture-grille">
+    <div>
+      <h1 data-i18n="h1">Drie vakantiehuizen bij het Romeinse theater</h1>
+      <p class="chapo" data-i18n="chapo">Olivier, Lavande en Les Cigales: drie huizen voor 4 personen op een afgesloten domein in Vaison-la-Romaine, met tuin, jeu-de-boulesbaan en parkeerplaats. Het hele jaar open.</p>
+      <ul class="reperes">
+        <li data-i18n="repere_theatre"><strong>Romeins theater</strong> op een steenworp</li>
+        <li data-i18n="repere_centre"><strong>Centrum</strong> op 300 m lopen</li>
+        <li data-i18n="repere_piscine"><strong>Zwembad</strong> van 10 × 5 m in de tuin</li>
+      </ul>
+      <div class="actions">
+        <a class="btn" href="#reservation" data-i18n="btn_disponibilites">Beschikbaarheid bekijken</a>
+        <a class="btn secondaire" href="#maisons" data-i18n="btn_decouvrir">Bekijk de huizen</a>
+      </div>
+    </div>
+    <div class="arcs">
+      <figure class="piscine"><img src="../photos/accueil-piscine.jpg" alt="Het zwembad van het domein onder een blauwe lucht, omzoomd door oleanders" data-i18n-alt="alt_accueil_piscine" fetchpriority="high"></figure>
+      <figure><img src="../photos/accueil-olivier.jpg" alt="Een huis met groene luiken achter een olijfboom, op het gazon van de tuin" data-i18n-alt="alt_accueil_olivier"></figure>
+      <figure><img src="../photos/accueil-terrasse.jpg" alt="Uitzicht op de bloeiende tuin vanaf een overdekt terras" data-i18n-alt="alt_accueil_terrasse"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="maisons" id="maisons">
+  <div class="wrap">
+    <div class="intro-section">
+      <h2 data-i18n="nav_maisons">De huizen</h2>
+      <p data-i18n="maisons_intro">Drie volledig ingerichte huizen voor 4 personen, elk met een eigen terras, keuken en badkamer. De tuin, het zwembad, de jeu-de-boulesbaan en de parkeerplaats zijn gedeeld.</p>
+    </div>
+
+    <article class="maison" id="maison-olivier-lavande">
+      <button class="photo bassin photo-galerie" data-galerie="olivier-lavande" aria-label="Foto&#x27;s van Olivier en Lavande bekijken" data-i18n-aria-label="aria_photos_ol"><img src="../photos/olivier-lavande.jpg" alt="De woonkamer van een van de huizen Olivier en Lavande: tafel, bank en televisie" data-i18n-alt="alt_ol" loading="lazy"></button>
+      <div>
+        <h3 data-i18n="ol_titre">Olivier en Lavande</h3>
+        <p data-i18n="ol_texte">Twee identieke huizen, elk met een eigen terras met uitzicht op het zwembad. Eenvoudige, warme inrichting en een welkomstpakket bij aankomst.</p>
+        <dl class="fiche">
+          <dt data-i18n="fiche_surface">Oppervlakte</dt><dd>55 m²</dd>
+          <dt data-i18n="fiche_couchages">Slaapplaatsen</dt><dd data-i18n="ol_couchages">4 personen, babybedje mogelijk</dd>
+          <dt data-i18n="fiche_chambres">Slaapkamers</dt><dd data-i18n="ol_chambres">Eén tweepersoonsbed 140 × 190, twee eenpersoonsbedden 90 × 190</dd>
+          <dt data-i18n="fiche_sdb">Badkamer</dt><dd data-i18n="sdb_baignoire">Bad met douche</dd>
+          <dt data-i18n="fiche_cuisine">Keuken</dt><dd data-i18n="ol_cuisine">Gasfornuis, koelkast, wasmachine, koffiezetapparaat</dd>
+          <dt data-i18n="fiche_exterieur">Buiten</dt><dd data-i18n="ol_exterieur">Eigen terras met uitzicht op het zwembad</dd>
+        </dl>
+        <div class="vignettes" data-vignettes="olivier-lavande"></div>
+        <p class="prix" data-i18n="ol_prix">Vanaf <strong>€ 700</strong> per week</p>
+        <div class="actions-maison">
+          <button class="btn" onclick="ouvrirReservation('olivier')" data-i18n="btn_dates_olivier">Vrije data: Olivier</button>
+          <button class="btn secondaire" onclick="ouvrirReservation('lavande')" data-i18n="btn_dates_lavande">Vrije data: Lavande</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="maison" id="maison-cigales">
+      <button class="photo photo-galerie" data-galerie="cigales" aria-label="Foto&#x27;s van Les Cigales bekijken" data-i18n-aria-label="aria_photos_ci"><img src="../photos/cigales.jpg" alt="Het overdekte terras van Les Cigales, met tafel, stoelen en uitzicht op de tuin" data-i18n-alt="alt_ci" loading="lazy"></button>
+      <div>
+        <h3>Les Cigales</h3>
+        <p data-i18n="ci_texte">De grootste van de drie, met twee eigen terrassen op het zuiden en het oosten. Ligstoelen staan voor u klaar.</p>
+        <dl class="fiche">
+          <dt data-i18n="fiche_surface">Oppervlakte</dt><dd>65 m²</dd>
+          <dt data-i18n="fiche_couchages">Slaapplaatsen</dt><dd data-i18n="ci_couchages">4 personen, babybedje en extra bed mogelijk</dd>
+          <dt data-i18n="fiche_chambres">Slaapkamers</dt><dd data-i18n="ci_chambres">Eén tweepersoonsbed, twee eenpersoonsbedden</dd>
+          <dt data-i18n="fiche_sdb">Badkamer</dt><dd data-i18n="sdb_baignoire">Bad met douche</dd>
+          <dt data-i18n="fiche_cuisine">Keuken</dt><dd data-i18n="ci_cuisine">Vaatwasser, wasmachine, magnetron, koffiezetapparaat</dd>
+          <dt data-i18n="fiche_exterieur">Buiten</dt><dd data-i18n="ci_exterieur">Twee terrassen, op het zuiden en het oosten</dd>
+        </dl>
+        <div class="vignettes" data-vignettes="cigales"></div>
+        <p class="prix" data-i18n="ci_prix">Vanaf <strong>€ 750</strong> per week</p>
+        <button class="btn" onclick="ouvrirReservation('cigales')" data-i18n="btn_dates">Bekijk vrije data</button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="sur-place">
+  <div class="wrap sur-place-grille">
+    <div class="intro-section" style="margin-bottom:0">
+      <h2 data-i18n="sp_titre">Ter plaatse, zonder meerprijs</h2>
+      <p data-i18n="sp_texte">Het hek gaat dicht: de kinderen spelen in de tuin en de auto blijft binnen terwijl u te voet de stad in gaat.</p>
+      <img class="photo-large" src="../photos/entree.jpg" alt="De ingang van het domein: hek, grindpad, oleanders en lavendelperken" data-i18n-alt="alt_entree" loading="lazy">
+      <div class="vignettes" data-vignettes="domaine"></div>
+    </div>
+    <ul class="liste-equip">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17c2 0 2-1.5 4-1.5S8 17 10 17s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M2 21c2 0 2-1.5 4-1.5S8 21 10 21s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M8 14V5a2 2 0 0 1 4 0M16 14V5a2 2 0 0 0-4 0M8 9h8"/></svg><div><b data-i18n="eq_piscine">Zwembad</b><span data-i18n="eq_piscine_d">10 × 5 m, midden in de tuin.</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22V12M12 12c-4 0-7-3-7-7 4 0 7 3 7 7zM12 12c4 0 7-3 7-7-4 0-7 3-7 7zM4 22h16"/></svg><div><b data-i18n="eq_jardin">Grote tuin</b><span data-i18n="eq_jardin_d">Gazon, bloemperken en olijfbomen.</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="16" r="3"/><circle cx="16" cy="15" r="4"/><circle cx="12" cy="7" r="1.2"/></svg><div><b data-i18n="eq_boulodrome">Jeu-de-boulesbaan</b><span data-i18n="eq_boulodrome_d">Ballen te leen op aanvraag.</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16l-2 7H6zM8 17l-2 5M16 17l2 5M9 6c0-1.5 1-2 1-3M13 6c0-1.5 1-2 1-3"/></svg><div><b data-i18n="eq_barbecue">Barbecue</b><span data-i18n="eq_barbecue_d">Te leen op aanvraag.</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div><b data-i18n="eq_parking">Afgesloten parkeerplaats</b><span data-i18n="eq_parking_d">Achter het hek.</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg><div><b data-i18n="eq_wifi">Wifi</b><span data-i18n="eq_wifi_d">In de huizen.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="autour" id="autour">
+  <div class="wrap">
+    <div class="intro-section">
+      <h2 data-i18n="au_titre">In de omgeving</h2>
+      <p data-i18n="au_texte">Vaison bestaat uit de Romeinse stad, de middeleeuwse bovenstad en de moderne stad. Uw gastheren tippen u wandelingen, wijngaarden en restaurants en lenen u de kaart met wandel- en fietsroutes.</p>
+    </div>
+    <img class="photo-large photo-autour" src="../photos/pont-romain.jpg" alt="De Romeinse brug van Vaison-la-Romaine over de Ouvèze, onder de bovenstad" data-i18n-alt="alt_pont" loading="lazy">
+    <div class="distances">
+      <div>
+        <h3 data-i18n="au_pied">Te voet</h3>
+        <ol>
+          <li><span data-i18n="au_theatre">Romeins theater</span><span data-i18n="au_deux_pas">op een steenworp</span></li>
+          <li><span data-i18n="au_centre">Centrum</span><span>300 m</span></li>
+          <li><span data-i18n="au_sites">Romeinse opgravingen van Puymin en La Villasse</span><span data-i18n="au_en_ville">in de stad</span></li>
+          <li><span data-i18n="au_pont">Romeinse brug, kathedraal, bovenstad</span><span data-i18n="au_en_ville">in de stad</span></li>
+        </ol>
+      </div>
+      <div>
+        <h3 data-i18n="au_voiture">Met de auto</h3>
+        <ol>
+          <li><span>Dentelles de Montmirail</span><span data-i18n="au_moins_30min">minder dan 30 min</span></li>
+          <li><span data-i18n="au_ventoux">Mont Ventoux, 1.910 m</span><span data-i18n="au_moins_30km">minder dan 30 km</span></li>
+          <li><span data-i18n="au_vignobles">Wijngaarden van Gigondas en Châteauneuf-du-Pape</span><span data-i18n="au_moins_1h">minder dan een uur</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tarifs">
+  <div class="wrap">
+    <div class="intro-section">
+      <h2 data-i18n="nav_tarifs">Prijzen</h2>
+      <p data-i18n="ta_intro">Prijzen per huis per week. Minimaal verblijf van 3 dagen in het laag- en middenseizoen, een week in het hoogseizoen.</p>
+    </div>
+    <div class="tarifs-grille">
+      <div>
+        <table>
+          <thead><tr><th scope="col" data-i18n="ta_periode">Seizoen</th><th scope="col" data-i18n="ta_ol">Olivier of Lavande</th><th scope="col">Les Cigales</th></tr></thead>
+          <tbody>
+            <tr><td data-i18n="ta_basse">Laagseizoen<span class="periode">januari t/m april, oktober t/m december</span></td><td data-i18n="p700">€ 700</td><td data-i18n="p750">€ 750</td></tr>
+            <tr><td data-i18n="ta_moyenne">Middenseizoen<span class="periode">mei, juni en september</span></td><td data-i18n="p800">€ 800</td><td data-i18n="p850">€ 850</td></tr>
+            <tr><td class="haute" data-i18n="ta_haute">Hoogseizoen<span class="periode">zomer (schoolvakanties) en feestdagen</span></td><td class="haute" data-i18n="p900">€ 900</td><td class="haute" data-i18n="p950">€ 950</td></tr>
+          </tbody>
+        </table>
+        <p class="note" data-i18n="ta_note">Aankomst vanaf 16.00 uur, vertrek tussen 9.00 en 10.00 uur. De exacte prijs voor uw data ziet u zodra u ze in de boekingskalender kiest.</p>
+      </div>
+      <div class="compris">
+        <h3 data-i18n="ta_compris">Inbegrepen</h3>
+        <ul><li data-i18n="ta_compris1">Zwembad, tuin, jeu-de-boulesbaan, afgesloten parkeerplaats en wifi</li><li data-i18n="ta_compris2">Barbecue en jeu-de-boulesballen te leen</li><li data-i18n="ta_compris3">Welkomstpakket</li></ul>
+        <h3 data-i18n="ta_plus">Extra</h3>
+        <ul><li data-i18n="ta_plus1">Eindschoonmaak: € 50, verplicht</li><li data-i18n="ta_plus2">Bedlinnen en handdoeken: optioneel</li><li data-i18n="ta_plus3">Babybedje en kinderstoel: € 15 per verblijf</li><li data-i18n="ta_plus4">Huisdier: € 25 per verblijf per dier</li><li data-i18n="ta_plus5">Toeristenbelasting: € 1,70 per volwassene per dag</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resa" id="reservation">
+  <div class="wrap">
+    <div class="intro-section">
+      <h2 data-i18n="btn_reserver">Boeken</h2>
+      <p data-i18n="re_intro">Kies een huis en daarna uw data. De kalender is dezelfde als op onze andere platforms: een datum die hier vrij is, is echt vrij.</p>
+    </div>
+    <div class="onglets" role="tablist" aria-label="Kies een huis" data-i18n-aria-label="aria_choix_maison">
+      <button role="tab" data-villa="toutes" aria-selected="true" data-i18n="re_toutes">Alle huizen</button>
+      <button role="tab" data-villa="olivier" aria-selected="false">Olivier</button>
+      <button role="tab" data-villa="lavande" aria-selected="false">Lavande</button>
+      <button role="tab" data-villa="cigales" aria-selected="false">Les Cigales</button>
+    </div>
+    <div class="resa-cadre" id="resa-frame" role="tabpanel"></div>
+    <p class="resa-infos" data-i18n="re_infos">Veilig online betalen en bevestiging per e-mail. Een vraag voordat u boekt? <a href="#contact">Schrijf ons</a>.</p>
+  </div>
+</section>
+
+<section aria-labelledby="avis-titre">
+  <div class="wrap">
+    <div class="intro-section">
+      <h2 id="avis-titre" data-i18n="av_titre">Wat onze gasten zeggen</h2>
+      <p data-i18n="av_intro">Beoordelingen op Google, vertaald uit het Frans.</p>
+    </div>
+    <div class="avis-liste">
+      <blockquote><p data-i18n="av_1">‘Een heel hartelijke ontvangst door de eigenaren. Op een paar honderd meter van het centrum, op een steenworp van het theater. Een zwembad, een mooie omgeving. Een ideale plek om op vakantie te gaan.’</p><footer data-i18n="av_1_auteur">Go, Google-beoordeling</footer></blockquote>
+      <blockquote><p data-i18n="av_2">‘Heel goede ligging, de eigenaren zijn erg vriendelijk en het zwembad is fantastisch.’</p><footer data-i18n="av_2_auteur">Alfre A., Google-beoordeling</footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grille">
+    <div>
+      <h2 data-i18n="co_titre">Schrijf ons</h2>
+      <p data-i18n="co_texte">De heer Brygo ontvangt u het hele jaar. Voor vragen over de huizen, de opties of het boeken kunt u bellen, mailen of het formulier invullen.</p>
+      <address>100 chemin du Brusquet<br>84110 Vaison-la-Romaine</address>
+      <iframe class="carte" title="Kaart: het domein, het Romeinse theater en het centrum van Vaison-la-Romaine" data-i18n-title="title_carte" loading="lazy"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=5.0655%2C44.2380%2C5.0870%2C44.2490&amp;layer=mapnik&amp;marker=44.2445258%2C5.0774152"></iframe>
+      <p><a href="https://www.google.com/maps/search/?api=1&amp;query=44.2445258,5.0774152" target="_blank" rel="noopener" data-i18n="co_itineraire">Route openen in Google Maps</a></p>
+      <dl>
+        <dt data-i18n="co_telephone">Telefoon</dt><dd><a href="tel:+33632515629">06 32 51 56 29</a></dd>
+        <dt>E-mail</dt><dd><a href="mailto:domaine.letheatreantique@gmail.com">domaine.letheatreantique@gmail.com</a></dd>
+        <dt data-i18n="co_stationnement">Parkeren</dt><dd data-i18n="co_parking">Afgesloten parkeerplaats op het domein</dd>
+      </dl>
+    </div>
+    <form class="demande" onsubmit="event.preventDefault(); envoyerDemande(this);">
+      <div class="ligne">
+        <label><span data-i18n="form_nom">Naam</span><input name="nom" autocomplete="name" required></label>
+        <label><span data-i18n="form_email">E-mail</span><input type="email" name="email" autocomplete="email" required></label>
+      </div>
+      <div class="ligne">
+        <label><span data-i18n="form_arrivee">Aankomst</span><input type="date" name="arrivee"></label>
+        <label><span data-i18n="form_depart">Vertrek</span><input type="date" name="depart"></label>
+      </div>
+      <div class="ligne">
+        <label><span data-i18n="form_maison">Huis</span><select name="maison"><option data-i18n="form_peu_importe">Maakt niet uit</option><option>Olivier</option><option>Lavande</option><option>Les Cigales</option></select></label>
+        <label><span data-i18n="form_voyageurs">Personen</span><select name="voyageurs"><option>1</option><option>2</option><option>3</option><option>4</option><option data-i18n="form_bebe">4 en een baby</option></select></label>
+      </div>
+      <label><span data-i18n="form_message">Bericht</span><textarea name="message" placeholder="Late aankomst, huisdier, babybedje…" data-i18n-placeholder="form_placeholder"></textarea></label>
+      <div><button class="btn" type="submit" data-i18n="form_envoyer">Aanvraag versturen</button></div>
+      <p class="confirmation" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="pied">
+  <div class="wrap pied-grille">
+    <div>
+      <p style="font-family:Marcellus,serif;font-size:1.5rem;color:#fff;margin-bottom:8px">Domaine Vaison</p>
+      <p data-i18n="pied_texte">Drie vakantiehuizen met zwembad op een steenworp van het Romeinse theater in Vaison-la-Romaine. Het hele jaar open.</p>
+    </div>
+    <ul><li><a href="#maisons" data-i18n="nav_maisons">De huizen</a></li><li><a href="#tarifs" data-i18n="nav_tarifs">Prijzen</a></li><li><a href="#reservation" data-i18n="btn_reserver">Boeken</a></li></ul>
+    <ul><li><a href="#autour" data-i18n="nav_autour">Omgeving</a></li><li><a href="#contact" data-i18n="nav_contact">Contact</a></li><li><a href="#" data-i18n="pied_mentions">Juridische informatie</a></li></ul>
+  </div>
+  <p class="wrap mention" data-i18n="pied_maquette">Ontwerp: inhoud en foto's overgenomen van residenceletheatre.com.</p>
+</footer>
+
+<dialog class="visionneuse" id="visionneuse" aria-label="Foto&#x27;s" data-i18n-aria-label="aria_photos">
+  <div class="visionneuse-haut">
+    <p class="visionneuse-titre"></p>
+    <form method="dialog"><button class="visionneuse-fermer" data-i18n="vi_fermer">Sluiten</button></form>
+  </div>
+  <figure>
+    <img alt="">
+    <figcaption><span class="visionneuse-legende"></span><span class="visionneuse-compteur"></span></figcaption>
+  </figure>
+  <button class="visionneuse-nav precedente" aria-label="Vorige foto" data-i18n-aria-label="aria_precedente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="visionneuse-nav suivante" aria-label="Volgende foto" data-i18n-aria-label="aria_suivante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+</dialog>
+
+<a class="btn cta-mobile" href="#reservation" data-i18n="btn_disponibilites">Beschikbaarheid bekijken</a>
+
+<script id="textes" type="application/json">
+{
+  "galeries": {
+    "olivier-lavande": "Olivier en Lavande",
+    "cigales": "Les Cigales",
+    "domaine": "Het domein"
+  },
+  "legendes": {
+    "1676558f1dcadd750df69defc4e16d6b": "De woonkamer: eethoek, bank en televisie",
+    "b43e242cade5996541ba6e9c69d9f5f1": "De open keuken aan de woonkamer",
+    "acab24f7e5fa35498ca3f2d838189ca4": "De woonkamer gezien vanaf de terrasdeur",
+    "1bbe75eccf3c669e7b0264b18bec25dd": "De eethoek",
+    "0bd4cf0e386fd8f8ccead8c2620ed2a8": "De slaapkamer met tweepersoonsbed 140 × 190",
+    "9c72197f964bf7e96d040866d01b06f8": "De slaapkamer met twee eenpersoonsbedden",
+    "97548f86d54bb1ae1ce0378e1f556614": "De badkamer met bad en douche",
+    "residentheatre-11": "Het overdekte terras",
+    "residentheatre-13": "Het terras langs het huis",
+    "residentheatre-16": "Het zwembad van 10 × 5 m",
+    "residentheatre-18": "Het zwembad en de oleanders",
+    "residentheatre-19": "De rand van het zwembad",
+    "residentheatre-25": "De woonkamer",
+    "be8b8119b11970aa71271cd23073fc59": "De zithoek met fauteuils",
+    "5e3053176e2a2425d135e1fbb8cadc44": "De woonkamer en de keukenhoek",
+    "9d833aa5a4ec348f3d3a9529076c95dc": "De slaapkamer met tweepersoonsbed",
+    "90883b51c77162f16da73cf929f9f2fd": "De slaapkamer met twee eenpersoonsbedden",
+    "5b9ca37211e2e5999a2a4f4898e55eb6": "De badkamer",
+    "residentheatre-12": "Het overdekte terras",
+    "residentheatre-15": "Het huis en de bloeiende tuin",
+    "residentheatre-14": "Het pad en de oleanders",
+    "residentheatre-20": "De grindbinnenplaats",
+    "residentheatre-17": "Het zwembad",
+    "SAM_3534_1080": "De ingang van het domein",
+    "SAM_2168_1080": "Het zwembad met parasols",
+    "SAM_2128_1080": "De tuin en de perken",
+    "SAM_2117_1080": "Een huis onder de olijfboom",
+    "SAM_2122_1080": "De tuin gezien vanaf een overdekt terras",
+    "SAM_2109_1080": "Een schaduwrijk hoekje van een terras",
+    "residentheatre-34": "Een schaduwrijk terras",
+    "residentheatre-21": "De eethoek in de tuin"
+  },
+  "compteur": "{n} van {total}",
+  "agrandir": "Vergroten: {legende}",
+  "voir_photos": "Bekijk alle {n} foto's",
+  "voir_photos_domaine": "Bekijk alle {n} foto's van het domein",
+  "maisons": {
+    "toutes": "alle huizen",
+    "olivier": "Olivier",
+    "lavande": "Lavande",
+    "cigales": "Les Cigales"
+  },
+  "titre_reservation": "Boeking, {maison}",
+  "attente_titre": "De online kalender komt binnenkort",
+  "attente_texte": "Stuur ons in de tussentijd uw data voor {maison}: wij antwoorden met de beschikbaarheid en de exacte prijs.",
+  "attente_maison_choix": "het huis van uw keuze",
+  "attente_bouton": "Beschikbaarheid aanvragen",
+  "demande_envoyee": "Aanvraag verstuurd. Wij antwoorden binnen 24 uur."
+}
+</script>
+<script>
+  /* Textes générés par le script : traduits dans i18n/*.json (section "script"). */
+  const T = JSON.parse(document.getElementById('textes').textContent);
+  const PHOTOS = '../photos/';
+  const remplir = (modele, valeurs) => modele.replace(/\{(\w+)\}/g, (_, k) => valeurs[k]);
+
+  /* ====== Configuration Smoobu ======
+     Dans Smoobu : Paramètres > Booking Engine (moteur de réservation) > « Intégrer au site web ».
+     Copiez l'adresse (src / url) du module « tous les logements » dans `toutes`,
+     puis celle de chaque logement dans la maison correspondante.
+     Tant qu'une adresse est vide, un encart d'attente s'affiche à la place. */
+  const SMOOBU = {
+    toutes: '',
+    olivier: '',
+    lavande: '',
+    cigales: '',
+  };
+
+  /* ====== Galeries ======
+     Photos reprises des pages du site actuel (« Villa côté Piscine » pour Olivier et Lavande,
+     « Villa les 2 Terrasses » pour Les Cigales). Grandes images : photos/site-actuel/,
+     vignettes : photos/vignettes/ (mêmes noms de fichier). */
+  const GALERIES = {
+    'olivier-lavande': [
+      '1676558f1dcadd750df69defc4e16d6b',
+      'b43e242cade5996541ba6e9c69d9f5f1',
+      'acab24f7e5fa35498ca3f2d838189ca4',
+      '1bbe75eccf3c669e7b0264b18bec25dd',
+      '0bd4cf0e386fd8f8ccead8c2620ed2a8',
+      '9c72197f964bf7e96d040866d01b06f8',
+      '97548f86d54bb1ae1ce0378e1f556614',
+      'residentheatre-11',
+      'residentheatre-13',
+      'residentheatre-16',
+      'residentheatre-18',
+      'residentheatre-19',
+    ],
+    cigales: [
+      'residentheatre-25',
+      'be8b8119b11970aa71271cd23073fc59',
+      '5e3053176e2a2425d135e1fbb8cadc44',
+      '9d833aa5a4ec348f3d3a9529076c95dc',
+      '90883b51c77162f16da73cf929f9f2fd',
+      '5b9ca37211e2e5999a2a4f4898e55eb6',
+      'residentheatre-12',
+      'residentheatre-15',
+      'residentheatre-14',
+      'residentheatre-20',
+      'residentheatre-17',
+    ],
+    domaine: [
+      'SAM_3534_1080',
+      'SAM_2168_1080',
+      'SAM_2128_1080',
+      'SAM_2117_1080',
+      'SAM_2122_1080',
+      'SAM_2109_1080',
+      'residentheatre-34',
+      'residentheatre-21',
+    ],
+  };
+
+  const visionneuse = document.getElementById('visionneuse');
+  const vImg = visionneuse.querySelector('figure img');
+  let galerieOuverte = null, indexPhoto = 0;
+
+  function afficherPhoto(i) {
+    const photos = GALERIES[galerieOuverte];
+    indexPhoto = (i + photos.length) % photos.length;
+    const fichier = photos[indexPhoto], legende = T.legendes[fichier];
+    vImg.src = PHOTOS + 'site-actuel/' + fichier + '.jpg';
+    vImg.alt = legende;
+    visionneuse.querySelector('.visionneuse-legende').textContent = legende;
+    visionneuse.querySelector('.visionneuse-compteur').textContent = remplir(T.compteur, { n: indexPhoto + 1, total: photos.length });
+    [1, -1].forEach(d => { new Image().src = PHOTOS + 'site-actuel/' + photos[(indexPhoto + d + photos.length) % photos.length] + '.jpg'; });
+  }
+
+  function ouvrirGalerie(nom, i = 0) {
+    galerieOuverte = nom;
+    visionneuse.querySelector('.visionneuse-titre').textContent = T.galeries[nom];
+    afficherPhoto(i);
+    visionneuse.showModal();
+  }
+
+  visionneuse.querySelector('.precedente').addEventListener('click', () => afficherPhoto(indexPhoto - 1));
+  visionneuse.querySelector('.suivante').addEventListener('click', () => afficherPhoto(indexPhoto + 1));
+  visionneuse.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') afficherPhoto(indexPhoto - 1);
+    if (e.key === 'ArrowRight') afficherPhoto(indexPhoto + 1);
+  });
+  let toucheX = null;
+  vImg.addEventListener('touchstart', e => { toucheX = e.touches[0].clientX; }, { passive: true });
+  vImg.addEventListener('touchend', e => {
+    if (toucheX === null) return;
+    const dx = e.changedTouches[0].clientX - toucheX;
+    if (Math.abs(dx) > 40) afficherPhoto(indexPhoto + (dx < 0 ? 1 : -1));
+    toucheX = null;
+  });
+
+  document.querySelectorAll('[data-vignettes]').forEach(zone => {
+    const nom = zone.dataset.vignettes, photos = GALERIES[nom];
+    photos.slice(0, 4).forEach((fichier, i) => {
+      const b = document.createElement('button');
+      b.className = 'vignette';
+      b.setAttribute('aria-label', remplir(T.agrandir, { legende: T.legendes[fichier] }));
+      b.innerHTML = `<img src="${PHOTOS}vignettes/${fichier}.jpg" alt="" loading="lazy">`;
+      b.addEventListener('click', () => ouvrirGalerie(nom, i));
+      zone.appendChild(b);
+    });
+    const tout = document.createElement('button');
+    tout.className = 'tout-voir';
+    tout.textContent = remplir(nom === 'domaine' ? T.voir_photos_domaine : T.voir_photos, { n: photos.length });
+    tout.addEventListener('click', () => ouvrirGalerie(nom));
+    zone.appendChild(tout);
+  });
+  document.querySelectorAll('.photo-galerie').forEach(b => b.addEventListener('click', () => ouvrirGalerie(b.dataset.galerie)));
+
+  const NOMS = T.maisons;
+  const cadre = document.getElementById('resa-frame');
+
+  function afficherVilla(villa) {
+    document.querySelectorAll('.onglets button').forEach(b => b.setAttribute('aria-selected', b.dataset.villa === villa));
+    const url = SMOOBU[villa] || SMOOBU.toutes;
+    if (url) {
+      cadre.innerHTML = '';
+      const f = document.createElement('iframe');
+      f.src = url;
+      f.title = remplir(T.titre_reservation, { maison: NOMS[villa] });
+      f.loading = 'lazy';
+      cadre.appendChild(f);
+    } else {
+      cadre.innerHTML = `<div class="resa-vide">
+        <h3>${T.attente_titre}</h3>
+        <p>${remplir(T.attente_texte, { maison: villa === 'toutes' ? T.attente_maison_choix : NOMS[villa] })}</p>
+        <a class="btn" href="#contact">${T.attente_bouton}</a></div>`;
+    }
+  }
+
+  function ouvrirReservation(villa) {
+    afficherVilla(villa);
+    document.getElementById('reservation').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }
+
+  function envoyerDemande(form) {
+    form.querySelector('.confirmation').textContent = T.demande_envoyee;
+    form.querySelector('button').disabled = true;
+  }
+
+  function basculerMenu(btn) {
+    const ouvert = document.getElementById('nav').classList.toggle('ouvert');
+    btn.setAttribute('aria-expanded', ouvert);
+  }
+
+  document.querySelectorAll('.onglets button').forEach(b => b.addEventListener('click', () => afficherVilla(b.dataset.villa)));
+  document.querySelectorAll('#nav ul a').forEach(a => a.addEventListener('click', () => {
+    document.getElementById('nav').classList.remove('ouvert');
+    document.querySelector('.menu-btn').setAttribute('aria-expanded', false);
+  }));
+  afficherVilla('toutes');
+
+  const entete = document.querySelector('header');
+  const ctaMobile = document.querySelector('.cta-mobile');
+  const ouverture = document.querySelector('.ouverture');
+  addEventListener('scroll', () => {
+    entete.classList.toggle('defile', scrollY > 8);
+    ctaMobile.classList.toggle('visible', ouverture.getBoundingClientRect().bottom < 0);
+  }, { passive: true });
+</script>
+</body>
+</html>
