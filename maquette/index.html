@@ -104,10 +104,24 @@
   }
   .booking-bar form {
     background: var(--blanc); border-radius: var(--rayon); box-shadow: 0 20px 50px rgba(60,40,20,.15);
-    display: grid; grid-template-columns: repeat(4, 1fr) auto; gap: 0; padding: 10px;
+    display: grid; grid-template-columns: 1fr 1.4fr auto; gap: 0; padding: 10px; align-items: center;
   }
   .booking-bar label { display: block; padding: 10px 18px; border-right: 1px solid var(--ligne); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--encre-2); font-weight: 600; }
-  .booking-bar label:nth-of-type(4) { border-right: 0; }
+  .bar-info { padding: 10px 18px; font-size: .88rem; color: var(--encre-2); }
+  .bar-info strong { display: block; color: var(--encre); font-size: .95rem; }
+
+  /* Réservation Smoobu */
+  .resa { background: var(--blanc); }
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .tabs button { font: 600 .9rem Inter, sans-serif; padding: 10px 18px; border-radius: 999px; border: 1.5px solid var(--ligne); background: var(--pierre); color: var(--encre); cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--encre); border-color: var(--encre); color: #fff; }
+  .resa-frame { border: 1px solid var(--ligne); border-radius: var(--rayon); overflow: hidden; background: var(--pierre); }
+  .resa-frame iframe { display: block; width: 100%; height: 900px; border: 0; }
+  .resa-vide { padding: 56px 28px; text-align: center; max-width: 60ch; margin: 0 auto; }
+  .resa-vide .badge { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; background: var(--lavande); color: #fff; padding: 4px 12px; border-radius: 999px; margin-bottom: 14px; }
+  .resa-vide p { color: var(--encre-2); }
+  .resa-garanties { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 18px; font-size: .88rem; color: var(--encre-2); }
+  .resa-garanties span::before { content: "✓ "; color: var(--olive); font-weight: 700; }
   .booking-bar input, .booking-bar select { display: block; width: 100%; border: 0; background: none; font: 500 1rem Inter, sans-serif; color: var(--encre); padding: 4px 0 0; outline: none; }
   .booking-bar .btn { margin: 4px; border-radius: 10px; }
 
@@ -208,8 +222,9 @@
     .nav ul.open { display: flex; flex-direction: column; position: absolute; top: 76px; left: 0; right: 0; background: var(--pierre); color: var(--encre); padding: 20px; gap: 16px; box-shadow: 0 10px 20px rgba(0,0,0,.08); }
     .burger { display: block; }
     .nav-right .btn { display: none; }
-    .booking-bar form { grid-template-columns: 1fr 1fr; }
+    .booking-bar form { grid-template-columns: 1fr; }
     .booking-bar label { border-right: 0; border-bottom: 1px solid var(--ligne); }
+    .resa-frame iframe { height: 1100px; }
     .booking-bar .btn { grid-column: 1 / -1; justify-content: center; }
     .intro, .vaison-grid, .tarifs-wrap, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .villa-grid, .avis-grid { grid-template-columns: 1fr; }
@@ -243,7 +258,7 @@
     </ul>
     <div class="nav-right">
       <span class="lang"><a class="on" href="#">FR</a> · <a href="#">EN</a> · <a href="#">DE</a> · <a href="#">NL</a></span>
-      <a class="btn" href="#reserver">Réserver</a>
+      <a class="btn" href="#reservation">Réserver</a>
       <button class="burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
     </div>
   </div>
@@ -257,18 +272,16 @@
     <p>Un domaine clos au calme, piscine, grand jardin et boulodrome — à quelques minutes à pied du centre historique. Ouvert toute l'année.</p>
     <div class="ctas">
       <a class="btn" href="#villas">Découvrir les villas</a>
-      <a class="btn ghost" href="#reserver">Vérifier les disponibilités</a>
+      <a class="btn ghost" href="#reservation">Vérifier les disponibilités</a>
     </div>
   </div>
 </section>
 
 <div class="wrap booking-bar" id="reserver">
-  <form onsubmit="event.preventDefault(); location.hash='contact';">
-    <label>Arrivée<input type="date"></label>
-    <label>Départ<input type="date"></label>
-    <label>Voyageurs<select><option>2 adultes</option><option>3 personnes</option><option>4 personnes</option><option>+ bébé</option></select></label>
-    <label>Villa<select><option>Toutes les villas</option><option>Villa Côté Piscine</option><option>Villa les 2 Terrasses</option><option>Villa l'Olivier</option></select></label>
-    <button class="btn" type="submit">Rechercher</button>
+  <form onsubmit="event.preventDefault(); ouvrirReservation(this.villa.value);">
+    <label>Villa<select name="villa"><option value="toutes">Toutes les villas</option><option value="cote-piscine">Villa Côté Piscine</option><option value="2-terrasses">Villa les 2 Terrasses</option><option value="olivier">Villa l'Olivier</option></select></label>
+    <div class="bar-info"><strong>Réservation en direct</strong>Disponibilités en temps réel · paiement sécurisé · meilleur prix garanti</div>
+    <button class="btn" type="submit">Voir les disponibilités</button>
   </form>
 </div>
 
@@ -308,7 +321,7 @@
           <h3>Villa Côté Piscine</h3>
           <p>Le salon s'ouvre sur la terrasse et le jardin, à deux pas du bassin. Idéale pour les familles.</p>
           <ul class="chips"><li>4 pers.</li><li>2 chambres</li><li>65 m²</li><li>Terrasse</li><li>Animaux acceptés</li></ul>
-          <div class="villa-foot"><span class="price">dès <strong>450 €</strong> / sem.</span><a class="link" href="#contact">Voir la villa →</a></div>
+          <div class="villa-foot"><span class="price">dès <strong>450 €</strong> / sem.</span><a class="link" href="#reservation" onclick="event.preventDefault(); ouvrirReservation('cote-piscine')">Disponibilités →</a></div>
         </div>
       </article>
       <article class="villa">
@@ -317,7 +330,7 @@
           <h3>Villa les 2 Terrasses</h3>
           <p>Une terrasse au soleil du matin, l'autre à l'ombre pour les dîners d'été face au Théâtre antique.</p>
           <ul class="chips"><li>4 pers.</li><li>2 chambres</li><li>2 terrasses</li><li>Climatisation</li></ul>
-          <div class="villa-foot"><span class="price">dès <strong>450 €</strong> / sem.</span><a class="link" href="#contact">Voir la villa →</a></div>
+          <div class="villa-foot"><span class="price">dès <strong>450 €</strong> / sem.</span><a class="link" href="#reservation" onclick="event.preventDefault(); ouvrirReservation('2-terrasses')">Disponibilités →</a></div>
         </div>
       </article>
       <article class="villa">
@@ -326,7 +339,7 @@
           <h3>Villa l'Olivier</h3>
           <p>Nichée sous un olivier centenaire, la plus intime des trois, parfaite pour un séjour en couple.</p>
           <ul class="chips"><li>2–4 pers.</li><li>2 chambres</li><li>Jardin privatif</li><li>Lit bébé</li></ul>
-          <div class="villa-foot"><span class="price">dès <strong>450 €</strong> / sem.</span><a class="link" href="#contact">Voir la villa →</a></div>
+          <div class="villa-foot"><span class="price">dès <strong>450 €</strong> / sem.</span><a class="link" href="#reservation" onclick="event.preventDefault(); ouvrirReservation('olivier')">Disponibilités →</a></div>
         </div>
       </article>
     </div>
@@ -393,7 +406,7 @@
             <tr><td><span class="season" style="background:var(--olive)"></span>Octobre – décembre</td><td>2 nuits</td><td>450 €</td></tr>
           </tbody>
         </table>
-        <p class="note">Tarifs indicatifs pour une villa de 4 personnes. Taxe de séjour en sus. Grille à valider avec le propriétaire.</p>
+        <p class="note">Tarifs indicatifs pour une villa de 4 personnes. Taxe de séjour en sus. Le prix exact de vos dates est calculé en temps réel dans le module de réservation.</p>
       </div>
       <div class="incl">
         <h3>Compris</h3>
@@ -408,9 +421,29 @@
           <li>Ménage de fin de séjour</li>
           <li>Animal de compagnie (forfait séjour)</li>
         </ul>
-        <a class="btn" style="margin-top:22px" href="#contact">Demander un devis</a>
+        <a class="btn" style="margin-top:22px" href="#reservation">Réserver en ligne</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="resa" id="reservation">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Réservation en ligne</div>
+        <h2>Choisissez vos dates</h2>
+      </div>
+      <p>Calendrier synchronisé en temps réel avec nos autres plateformes : ce que vous voyez ici est réellement disponible.</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button role="tab" data-villa="toutes" aria-selected="true">Toutes les villas</button>
+      <button role="tab" data-villa="cote-piscine" aria-selected="false">Côté Piscine</button>
+      <button role="tab" data-villa="2-terrasses" aria-selected="false">Les 2 Terrasses</button>
+      <button role="tab" data-villa="olivier" aria-selected="false">L'Olivier</button>
+    </div>
+    <div class="resa-frame" id="resa-frame"></div>
+    <div class="resa-garanties"><span>Paiement sécurisé</span><span>Confirmation immédiate</span><span>Sans frais de plateforme</span><span>Une question ? <a href="#contact">Écrivez-nous</a></span></div>
   </div>
 </section>
 
@@ -472,16 +505,57 @@
         <div class="logo" style="color:#fff">Domaine Vaison<small>Résidence le Théâtre</small></div>
         <p style="max-width:40ch;margin-top:14px">Villas avec piscine face au Théâtre antique de Vaison-la-Romaine. Ouvert toute l'année.</p>
       </div>
-      <div><h4>Le séjour</h4><ul><li><a href="#villas">Nos villas</a></li><li><a href="#tarifs">Tarifs</a></li><li><a href="#reserver">Réserver</a></li></ul></div>
+      <div><h4>Le séjour</h4><ul><li><a href="#villas">Nos villas</a></li><li><a href="#tarifs">Tarifs</a></li><li><a href="#reservation">Réserver</a></li></ul></div>
       <div><h4>Infos</h4><ul><li><a href="#vaison">Vaison-la-Romaine</a></li><li><a href="#contact">Contact & accès</a></li><li><a href="#">Mentions légales</a></li></ul></div>
     </div>
     <div class="legal"><span>© 2026 Domaine Vaison</span><span>Maquette — contenus et photos à valider</span></div>
   </div>
 </footer>
 
-<a class="btn sticky-cta" href="#reserver">Vérifier les disponibilités</a>
+<a class="btn sticky-cta" href="#reservation">Vérifier les disponibilités</a>
 
 <script>
+  /* ====== Configuration Smoobu ======
+     Dans Smoobu : Paramètres > Booking Engine (moteur de réservation) > « Intégrer au site web ».
+     Copiez l'adresse (src / url) du module « tous les logements » dans `toutes`,
+     puis celle de chaque logement dans la villa correspondante.
+     Tant qu'une adresse est vide, un encart « à connecter » s'affiche à la place. */
+  const SMOOBU = {
+    toutes: '',
+    'cote-piscine': '',
+    '2-terrasses': '',
+    olivier: '',
+  };
+
+  const NOMS = { toutes: 'toutes les villas', 'cote-piscine': 'Villa Côté Piscine', '2-terrasses': 'Villa les 2 Terrasses', olivier: "Villa l'Olivier" };
+  const cadre = document.getElementById('resa-frame');
+
+  function afficherVilla(villa) {
+    document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.villa === villa));
+    const url = SMOOBU[villa] || SMOOBU.toutes;
+    if (url) {
+      cadre.innerHTML = '';
+      const f = document.createElement('iframe');
+      f.src = url;
+      f.title = 'Réservation — ' + NOMS[villa];
+      f.loading = 'lazy';
+      cadre.appendChild(f);
+    } else {
+      cadre.innerHTML = `<div class="resa-vide"><span class="badge">Module Smoobu à connecter</span>
+        <h3>Calendrier & réservation — ${NOMS[villa]}</h3>
+        <p>Ici s'affichera le moteur de réservation Smoobu : disponibilités en temps réel, calcul du prix selon les dates et paiement en ligne.</p>
+        <a class="btn" href="#contact">En attendant, demander une disponibilité</a></div>`;
+    }
+  }
+
+  function ouvrirReservation(villa) {
+    afficherVilla(villa);
+    document.getElementById('reservation').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => afficherVilla(b.dataset.villa)));
+  afficherVilla('toutes');
+
   const h = document.querySelector('header');
   const onScroll = () => h.classList.toggle('scrolled', scrollY > 40);
   addEventListener('scroll', onScroll, { passive: true });
