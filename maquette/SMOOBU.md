@@ -39,6 +39,6 @@ je l'intégrerai tel quel dans la section, à la place de l'iframe.
 
 - **Calendrier de disponibilité seul** (sans réservation) sur une future page détail de villa :
   Smoobu > Avancé > *Calendar iFrame*.
-- **API Smoobu** (disponibilités/prix affichés dans le design du site, ex. « dès 450 € » mis à jour
+- **API Smoobu** (disponibilités/prix affichés dans le design du site, ex. « dès 700 € » mis à jour
   automatiquement) : nécessite un petit serveur pour protéger la clé d'API — GitHub Pages
   seul ne suffit pas.
