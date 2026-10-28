@@ -10,7 +10,7 @@
 | **Logements** | 3 maisons pour 4 personnes. **Olivier** et **Lavande** : jumelles, 55 m², lit double 140 × 190 + deux lits jumeaux 90 × 190, baignoire, terrasse privée (vue sur la piscine pour Lavande seulement) (page « Villa côté Piscine »). **Les Cigales** : 65 m², même couchage, douche, pas de lave-vaisselle, deux terrasses sud et est, lit d'appoint possible (page « Villa les 2 Terrasses »). *Salles de bain, lave-vaisselle et vue sur la piscine corrigés par le propriétaire, le site actuel étant inexact sur ces points.* |
 | **Équipements** | Piscine 10 × 5 m, jardin, parking fermé, boulodrome, Wi-Fi gratuits ; barbecue et boules prêtés sur demande ; panier d'accueil. |
 | **Tarifs (semaine)** | Olivier ou Lavande : 700 € / 800 € / 900 € ; Les Cigales : 750 € / 850 € / 950 € (basse / moyenne / haute saison). Minimum 3 jours en basse et moyenne saison, 1 semaine en haute saison. |
-| **Frais** | Ménage obligatoire 50 €, draps et serviettes en option, lit bébé et chaise haute 15 €/séjour, animal 25 €/séjour, taxe de séjour 1,70 €/adulte/jour. |
+| **Frais** | Site actuel : ménage obligatoire 50 €, draps et serviettes en option. **Désormais inclus dans le tarif de base** (décision du propriétaire). Restent en plus : lit bébé et chaise haute 15 €/séjour, animal 25 €/séjour, taxe de séjour 1,70 €/adulte/jour. |
 | **Contact** | 06 32 51 56 29, domaine.letheatreantique@gmail.com. |
 | **Pages** | Accueil, Les villas (2 pages), Galerie, Tarifs, Aux alentours, Contact & Accès. FR / EN. Réservation par formulaire de demande, sans disponibilités en ligne. |
 | **Avis** | Deux avis Google repris sur l'accueil. |
@@ -48,7 +48,6 @@ Page d'accueil unique, responsive, autonome :
 - [ ] Nom de marque : « Domaine Vaison » (nom du repo) ou « Résidence Le Théâtre Antique » (nom actuel)
 - [ ] Horaires d'arrivée et de départ (la maquette reprend ceux des pages villas : 16 h ; 9 h–10 h)
 - [ ] Périodes exactes de moyenne et haute saison (juin apparaît dans les deux sur le site actuel)
-- [ ] Prix des draps et serviettes en option
 - [ ] Licence des photos touristiques (voir `photos/README.md`)
 - [ ] Orthographe des avis cités (légèrement corrigée dans la maquette)
 

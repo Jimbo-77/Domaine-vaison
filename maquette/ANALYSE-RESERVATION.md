@@ -76,9 +76,9 @@ Le Booking Engine de Smoobu règle la plupart des problèmes, à condition de le
 - **capacité maximale de 4 personnes**, lit bébé en plus ;
 - **séjour minimum par saison** : 3 nuits en basse et moyenne saison, 7 en haute saison ;
   jour d'arrivée imposé l'été si souhaité ;
-- **tarifs par saison**, ménage obligatoire de 50 €, taxe de séjour de 1,70 € par adulte et par
+- **tarifs par saison**, ménage, draps et serviettes inclus, taxe de séjour de 1,70 € par adulte et par
   nuit ;
-- **options payantes** : animal 25 €, lit bébé et chaise haute 15 €, linge ;
+- **options payantes** : animal 25 €, lit bébé et chaise haute 15 € ;
 - **acompte ou paiement en ligne**, confirmation immédiate par e-mail ;
 - **synchronisation des calendriers** avec les autres plateformes (Smoobu est un gestionnaire de
   canaux) ;
@@ -91,9 +91,9 @@ Si le formulaire de demande reste en service quelque temps (sur l'ancien site ou
 1. Intitulés visibles au-dessus des champs ; aucune date pré-remplie.
 2. Contrôles avant l'envoi : séjour minimum selon la saison, 4 personnes maximum.
 3. Choix séparés : Olivier, Lavande, Les Cigales, ou « peu importe ».
-4. Champ message et cases pour les options (animal, lit bébé, linge, arrivée tardive) ;
+4. Champ message et cases pour les options (animal, lit bébé, arrivée tardive) ;
    enfants de moins de 2 ans comptés à part.
-5. Récapitulatif avant l'envoi avec un prix estimé : semaine(s) de la saison, ménage, options,
+5. Récapitulatif avant l'envoi avec un prix estimé : semaine(s) de la saison, options,
    taxe de séjour.
 6. Bouton « Envoyer ma demande » (et non « Réserver ») et texte « Réponse sous 24 h, aucun
    paiement à cette étape ».
