@@ -7,7 +7,7 @@
 | Élément | Constat |
 |---|---|
 | **Offre** | « Résidence Le Théâtre Antique », 100 chemin du Brusquet, 84110 Vaison-la-Romaine. À deux pas du Théâtre antique, à 300 m du centre-ville. Ouvert toute l'année. Accueil par M. Brygo. |
-| **Logements** | 3 maisons pour 4 personnes. **Olivier** et **Lavande** : jumelles, 55 m², lit double 140 × 190 + deux lits jumeaux 90 × 190, baignoire-douche, terrasse privée avec vue sur la piscine (page « Villa côté Piscine »). **Les Cigales** : 65 m², même couchage, lave-vaisselle, deux terrasses sud et est, lit d'appoint possible (page « Villa les 2 Terrasses »). |
+| **Logements** | 3 maisons pour 4 personnes. **Olivier** et **Lavande** : jumelles, 55 m², lit double 140 × 190 + deux lits jumeaux 90 × 190, baignoire, terrasse privée (vue sur la piscine pour Lavande seulement) (page « Villa côté Piscine »). **Les Cigales** : 65 m², même couchage, douche, pas de lave-vaisselle, deux terrasses sud et est, lit d'appoint possible (page « Villa les 2 Terrasses »). *Salles de bain, lave-vaisselle et vue sur la piscine corrigés par le propriétaire, le site actuel étant inexact sur ces points.* |
 | **Équipements** | Piscine 10 × 5 m, jardin, parking fermé, boulodrome, Wi-Fi gratuits ; barbecue et boules prêtés sur demande ; panier d'accueil. |
 | **Tarifs (semaine)** | Olivier ou Lavande : 700 € / 800 € / 900 € ; Les Cigales : 750 € / 850 € / 950 € (basse / moyenne / haute saison). Minimum 3 jours en basse et moyenne saison, 1 semaine en haute saison. |
 | **Frais** | Ménage obligatoire 50 €, draps et serviettes en option, lit bébé et chaise haute 15 €/séjour, animal 25 €/séjour, taxe de séjour 1,70 €/adulte/jour. |
