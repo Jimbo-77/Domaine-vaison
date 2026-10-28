@@ -7,5 +7,6 @@ Site vitrine des trois maisons de vacances à deux pas du Théâtre antique de V
 - `maquette/i18n/` — traductions et mode d'emploi (`maquette/i18n/README.md`)
 - `maquette/photos/` — photos du site actuel (voir `maquette/photos/README.md`)
 - `maquette/ANALYSE.md` — analyse du site actuel residenceletheatre.com et points à valider
+- `maquette/ANALYSE-RESERVATION.md` — analyse de la réservation sur le site actuel et recommandations
 - `maquette/SMOOBU.md` — comment brancher la réservation en ligne Smoobu
 - `maquette/apercu-*.png` — captures desktop et mobile
