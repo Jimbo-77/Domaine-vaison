@@ -16,7 +16,13 @@ Photos récupérées sur residenceletheatre.com (octobre 2026), recompressées s
 | `pont-romain.jpg` | Section « Autour » | `1fa7748ea79f0770434323efd9a8b54b.jpg` |
 | `jardin.jpg` | Réserve (page détail à venir) | `SAM_2128_1080.jpg` |
 
-Pour changer une photo, remplacez le fichier en gardant le même nom.
+Les pages affichent des versions WebP plus légères, en trois largeurs (`<nom>-480.webp`, `-800.webp`,
+`-1200.webp`) : le navigateur choisit la bonne selon l'écran. Les galeries utilisent `<nom>.webp` dans
+`site-actuel/` et `vignettes/`. Les JPEG restent la source, et servent d'image d'aperçu quand on partage
+un lien (WhatsApp, Facebook…).
+
+Pour changer une photo : remplacez le JPEG en gardant le même nom, puis lancez
+`python3 maquette/outils/images.py`, qui recrée toutes les versions WebP.
 
 ## Archive complète : `site-actuel/` (1600 px max)
 
@@ -35,6 +41,6 @@ Les galeries (vignettes sous chaque fiche, visionneuse plein écran) affichent l
 La liste des photos de chaque galerie est dans l'objet `GALERIES` de `maquette/site.js` ; leurs légendes
 sont dans le bloc de textes des pages (section `legendes`) et dans `maquette/i18n/*.json` pour les traductions.
 Pour ajouter une photo : déposez-la dans `site-actuel/`, créez sa vignette dans `vignettes/`, ajoutez
-son nom (sans extension) dans la bonne galerie de `site.js`, sa légende française dans le bloc de textes
+son nom (sans extension) dans la bonne galerie de `site.js`, lancez `python3 maquette/outils/images.py`, sa légende française dans le bloc de textes
 des trois pages françaises et sa traduction dans chaque fichier de langue, puis lancez
 `python3 maquette/outils/traduire.py`.

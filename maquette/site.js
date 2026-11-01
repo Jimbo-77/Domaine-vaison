@@ -72,11 +72,11 @@ function afficherPhoto(i) {
   const photos = GALERIES[galerieOuverte];
   indexPhoto = (i + photos.length) % photos.length;
   const fichier = photos[indexPhoto], legende = T.legendes[fichier];
-  vImg.src = PHOTOS + 'site-actuel/' + fichier + '.jpg';
+  vImg.src = PHOTOS + 'site-actuel/' + fichier + '.webp';
   vImg.alt = legende;
   visionneuse.querySelector('.visionneuse-legende').textContent = legende;
   visionneuse.querySelector('.visionneuse-compteur').textContent = remplir(T.compteur, { n: indexPhoto + 1, total: photos.length });
-  [1, -1].forEach(d => { new Image().src = PHOTOS + 'site-actuel/' + photos[(indexPhoto + d + photos.length) % photos.length] + '.jpg'; });
+  [1, -1].forEach(d => { new Image().src = PHOTOS + 'site-actuel/' + photos[(indexPhoto + d + photos.length) % photos.length] + '.webp'; });
 }
 
 function ouvrirGalerie(nom, i = 0) {
@@ -109,7 +109,7 @@ document.querySelectorAll('[data-vignettes]').forEach(zone => {
     const b = document.createElement('button');
     b.className = 'vignette';
     b.setAttribute('aria-label', remplir(T.agrandir, { legende: T.legendes[fichier] }));
-    b.innerHTML = `<img src="${PHOTOS}vignettes/${fichier}.jpg" alt="" loading="lazy">`;
+    b.innerHTML = `<img src="${PHOTOS}vignettes/${fichier}.webp" alt="" width="360" height="270" loading="lazy">`;
     b.addEventListener('click', () => ouvrirGalerie(nom, i));
     zone.appendChild(b);
   });
@@ -165,6 +165,23 @@ document.querySelectorAll('#nav ul a').forEach(a => a.addEventListener('click', 
   document.querySelector('.menu-btn').setAttribute('aria-expanded', false);
 }));
 afficherVilla(cadre ? cadre.dataset.villa || 'toutes' : 'toutes');
+
+/* Carte OpenStreetMap chargée seulement à la demande (poids et vie privée). */
+function afficherCarte() {
+  const zone = document.getElementById('carte');
+  const f = document.createElement('iframe');
+  f.className = 'carte';
+  f.src = zone.dataset.src;
+  f.title = zone.title;
+  zone.replaceWith(f);
+}
+
+/* Menu des langues : se ferme au clic ailleurs ou avec Échap. */
+const langues = document.querySelector('.langues');
+if (langues) {
+  document.addEventListener('click', e => { if (!langues.contains(e.target)) langues.open = false; });
+  langues.addEventListener('keydown', e => { if (e.key === 'Escape') { langues.open = false; langues.querySelector('summary').focus(); } });
+}
 
 const entete = document.querySelector('header');
 const ctaMobile = document.querySelector('.cta-mobile');
