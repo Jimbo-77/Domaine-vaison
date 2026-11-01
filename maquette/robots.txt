@@ -1,0 +1,3 @@
+# Maquette : rien ne doit être indexé. Voir INDEXABLE dans outils/traduire.py.
+User-agent: *
+Disallow: /

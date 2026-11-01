@@ -44,9 +44,11 @@ Ajoutez dans `index.html` l'attribut `data-i18n="ma_cle"` sur l'élément (ou `d
 
 ## Référencement
 
-Chaque page déclare sa langue (`<html lang>`), son adresse canonique et les adresses des autres
-langues (`hreflang`). Si l'adresse du site change (nom de domaine), remplacez
-`https://jimbo-77.github.io/Domaine-vaison/maquette/` dans l'en-tête de `index.html`, puis régénérez.
+Chaque page déclare sa langue (`<html lang>`). Le bloc « référencement » de l'en-tête (adresse
+canonique, adresses des autres langues, interdiction d'indexer) est rempli par le script, comme
+`robots.txt` et `sitemap.xml` : ne les modifiez pas à la main. Tout dépend de deux réglages en haut
+de `maquette/outils/traduire.py` : `ADRESSE_SITE` et `INDEXABLE` (voir « Mise en ligne » dans le
+`README.md` du dépôt).
 
 Les traductions ont été rédigées pour la maquette : faites-les relire par un locuteur natif
 avant la mise en ligne définitive.

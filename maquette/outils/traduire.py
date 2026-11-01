@@ -11,14 +11,25 @@ Utilisation, depuis la racine du dépôt :
 
 Le script :
   1. met à jour maquette/i18n/fr.json (textes de référence, à ne pas modifier à la main) ;
-  2. écrit maquette/<langue>/<page>.html pour chaque page et chaque fichier de langue ;
-  3. signale les clés manquantes (le texte français est alors conservé).
+  2. remplit le bloc « référencement » de l'en-tête de chaque page (adresse canonique, liens
+     vers les autres langues, interdiction d'indexer tant que le site n'est pas en ligne) ;
+  3. écrit maquette/<langue>/<page>.html pour chaque page et chaque fichier de langue ;
+  4. écrit maquette/robots.txt et maquette/sitemap.xml ;
+  5. signale les clés manquantes (le texte français est alors conservé).
 """
 import html
 import json
 import re
 import sys
 from pathlib import Path
+
+# ====== Réglages de mise en ligne ======
+# Adresse du site, avec la barre oblique finale. Le jour de la mise en ligne, remplacer par
+# l'adresse définitive (par exemple 'https://www.residenceletheatre.com/'), puis relancer le script.
+ADRESSE_SITE = 'https://jimbo-77.github.io/Domaine-vaison/maquette/'
+# False tant que le site est une maquette : les moteurs de recherche ne doivent pas l'indexer.
+# Passer à True le jour de la mise en ligne définitive.
+INDEXABLE = False
 
 RACINE = Path(__file__).resolve().parent.parent
 PAGES = ['index.html', 'villacotepiscine.html', 'villa2terrasses.html']
@@ -28,6 +39,45 @@ LANGUES = {'fr': 'Français', 'en': 'English', 'de': 'Deutsch', 'nl': 'Nederland
 RE_CONTENU = re.compile(r'(<([a-zA-Z0-9]+)\b[^>]*\sdata-i18n="([^"]+)"[^>]*>)(.*?)(</\2>)', re.S)
 RE_ATTRIBUT = re.compile(r'(\s([a-z-]+)=")([^"]*)(" data-i18n-\2="([^"]+)")')
 RE_TEXTES = re.compile(r'(<script id="textes" type="application/json">\n)(.*?)(\n</script>)', re.S)
+RE_REFERENCEMENT = re.compile(r'(<!-- référencement :[^\n]*-->\n)(.*?)(<!-- /référencement -->)', re.S)
+
+
+def adresse(langue, nom):
+    """Adresse publique d'une page, sans l'extension .html (les hébergeurs la servent ainsi)."""
+    chemin = '' if nom == 'index.html' else nom[:-len('.html')]
+    return ADRESSE_SITE + ('' if langue == 'fr' else f'{langue}/') + chemin
+
+
+def bloc_referencement(langue, nom):
+    lignes = [f'<link rel="canonical" href="{adresse(langue, nom)}">']
+    lignes += [f'<link rel="alternate" hreflang="{code}" href="{adresse(code, nom)}">' for code in LANGUES]
+    lignes.append(f'<link rel="alternate" hreflang="x-default" href="{adresse("fr", nom)}">')
+    if not INDEXABLE:
+        lignes.append('<meta name="robots" content="noindex, nofollow">')
+    return '\n'.join(lignes) + '\n'
+
+
+def referencer(page, langue, nom):
+    if not RE_REFERENCEMENT.search(page):
+        raise SystemExit(f'{nom} : bloc « référencement » introuvable dans l\'en-tête')
+    return RE_REFERENCEMENT.sub(lambda m: m.group(1) + bloc_referencement(langue, nom) + m.group(3), page, count=1)
+
+
+def robots_et_sitemap():
+    if INDEXABLE:
+        robots = f'User-agent: *\nAllow: /\n\nSitemap: {ADRESSE_SITE}sitemap.xml\n'
+    else:
+        robots = '# Maquette : rien ne doit être indexé. Voir INDEXABLE dans outils/traduire.py.\nUser-agent: *\nDisallow: /\n'
+    (RACINE / 'robots.txt').write_text(robots, encoding='utf-8')
+    urls = []
+    for nom in PAGES:
+        liens = ''.join(f'\n    <xhtml:link rel="alternate" hreflang="{code}" href="{adresse(code, nom)}"/>' for code in LANGUES)
+        liens += f'\n    <xhtml:link rel="alternate" hreflang="x-default" href="{adresse("fr", nom)}"/>'
+        urls += [f'  <url>\n    <loc>{adresse(code, nom)}</loc>{liens}\n  </url>' for code in LANGUES]
+    (RACINE / 'sitemap.xml').write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+        + '\n'.join(urls) + '\n</urlset>\n', encoding='utf-8')
 
 
 def extraire(pages):
@@ -79,7 +129,7 @@ def generer(page, langue, nom, textes, script):
         lambda m: m.group(1) + html.escape(textes.get(m.group(5), html.unescape(m.group(3))), quote=True) + m.group(4), page)
     page = RE_TEXTES.sub(lambda m: m.group(1) + json.dumps(script, ensure_ascii=False, indent=2) + m.group(3), page)
     page = page.replace('<html lang="fr">', f'<html lang="{langue}">', 1)
-    page = re.sub(r'(<link rel="canonical" href="[^"]*/maquette/)', rf'\g<1>{langue}/', page, count=1)
+    page = referencer(page, langue, nom)
     page = selecteur_langues(page, langue, nom)
     # La page traduite est un dossier plus bas : on remonte pour les fichiers communs.
     page = re.sub(r'(\s(?:src|href)=")(photos/|style\.css|site\.js)', r'\1../\2', page)
@@ -88,7 +138,16 @@ def generer(page, langue, nom, textes, script):
 
 
 def main():
-    pages = {nom: (RACINE / nom).read_text(encoding='utf-8') for nom in PAGES}
+    pages = {}
+    for nom in PAGES:
+        source = RACINE / nom
+        page = source.read_text(encoding='utf-8')
+        mise_a_jour = referencer(page, 'fr', nom)
+        if mise_a_jour != page:
+            source.write_text(mise_a_jour, encoding='utf-8')
+        pages[nom] = mise_a_jour
+    robots_et_sitemap()
+    print(f'adresse du site : {ADRESSE_SITE} ; indexable : {"oui" if INDEXABLE else "non (maquette)"}')
     textes_fr, script_fr = extraire(pages)
     DOSSIER_I18N.mkdir(exist_ok=True)
     (DOSSIER_I18N / 'fr.json').write_text(

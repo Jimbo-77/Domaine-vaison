@@ -12,3 +12,17 @@ Site vitrine des trois maisons de vacances à deux pas du Théâtre antique de V
 - `maquette/ANALYSE-RESERVATION.md` — analyse de la réservation sur le site actuel et recommandations
 - `maquette/SMOOBU.md` — comment brancher la réservation en ligne Smoobu
 - `maquette/apercu-*.png` — captures desktop et mobile
+
+## Mise en ligne définitive
+
+Tant que le site est une maquette, toutes les pages demandent aux moteurs de recherche de ne pas
+les indexer, pour ne pas concurrencer le site actuel. Le jour de la mise en ligne :
+
+1. Dans `maquette/outils/traduire.py`, régler `ADRESSE_SITE` sur l'adresse définitive
+   (par exemple `'https://www.residenceletheatre.com/'`) et passer `INDEXABLE` à `True`.
+2. Lancer `python3 maquette/outils/traduire.py` : adresses canoniques, liens entre langues,
+   `robots.txt` et `sitemap.xml` sont mis à jour, et l'interdiction d'indexer est retirée.
+3. Publier le contenu du dossier `maquette/` à la racine du domaine.
+4. Déclarer `sitemap.xml` dans Google Search Console.
+5. Rediriger les anciennes adresses du site actuel vers les nouvelles pages.
+
