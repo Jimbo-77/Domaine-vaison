@@ -1,0 +1,259 @@
+/* Feuille de style commune aux pages du site (accueil et pages des maisons). */
+:root {
+  --chaux: #f8f8f4;
+  --pierre: #d9d0c1;
+  --pierre-claire: #ece7de;
+  --volet: #2f5d62;
+  --volet-fonce: #234649;
+  --bassin: #8ec5c9;
+  --ombre: #1f2a2c;
+  --ombre-2: #4d5859;
+  --soleil: #e0a43a;
+  --mesure: 34rem;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--chaux);
+  color: var(--ombre);
+  font: 400 1.125rem/1.6 Commissioner, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--volet); text-underline-offset: .2em; }
+h1, h2, h3 { font-family: Marcellus, Georgia, serif; font-weight: 400; margin: 0 0 .5em; letter-spacing: -.005em; }
+h1 { font-size: clamp(2.5rem, 5.4vw, 4.25rem); line-height: 1.04; }
+h2 { font-size: clamp(2rem, 3.6vw, 2.75rem); line-height: 1.1; }
+h3 { font-size: 1.5rem; line-height: 1.2; }
+p { margin: 0 0 1em; max-width: var(--mesure); }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+section { padding: 112px 0; }
+.intro-section { max-width: 40rem; margin-bottom: 56px; }
+.intro-section p { color: var(--ombre-2); }
+
+:focus-visible { outline: 3px solid var(--soleil); outline-offset: 3px; }
+
+.btn {
+  display: inline-block; padding: 15px 26px; border-radius: 6px;
+  background: var(--volet); color: #fff; text-decoration: none;
+  font: 600 1rem Commissioner, sans-serif; border: 0; cursor: pointer;
+}
+.btn:hover { background: var(--volet-fonce); }
+.btn.secondaire { background: transparent; color: var(--volet); box-shadow: inset 0 0 0 1.5px var(--volet); }
+.btn.secondaire:hover { background: var(--pierre-claire); }
+
+/* En-tête */
+header { position: sticky; top: 0; z-index: 40; background: rgba(248,248,244,.94); backdrop-filter: blur(6px); border-bottom: 1px solid transparent; transition: border-color .2s; }
+header.defile { border-bottom-color: var(--pierre); }
+.nav { display: flex; align-items: center; gap: 32px; height: 72px; }
+.marque { font-family: Marcellus, serif; font-size: 1.5rem; line-height: 1.1; text-decoration: none; color: var(--ombre); margin-right: auto; }
+.marque-petit { display: block; font-size: .95rem; color: var(--ombre-2); }
+.nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; font-size: 1rem; }
+.nav ul a { color: var(--ombre); text-decoration: none; }
+.nav ul a:hover { color: var(--volet); text-decoration: underline; }
+.langues { font-size: .9rem; color: var(--ombre-2); }
+.langues select { font: inherit; color: inherit; background: none; border: 1px solid var(--pierre); border-radius: 4px; padding: 4px 6px; }
+.menu-btn { display: none; font: 600 1rem Commissioner, sans-serif; background: none; border: 1px solid var(--pierre); border-radius: 4px; padding: 8px 12px; color: var(--ombre); cursor: pointer; }
+
+/* Ouverture : le plan */
+.ouverture { padding: 56px 0 96px; }
+.ouverture-grille { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; }
+.ouverture p.chapo { font-size: 1.25rem; color: var(--ombre-2); margin-top: 24px; }
+.ouverture .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.arcs { display: grid; grid-template-columns: 1.35fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; height: min(620px, 72vh); }
+.arcs figure { margin: 0; overflow: hidden; border-radius: 999px 999px 0 0; background: var(--pierre-claire); }
+.arcs figure:first-child { grid-row: 1 / 3; }
+.arcs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.arcs .piscine img { object-position: 60% 50%; }
+@keyframes lever { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+.arcs figure { animation: lever 1s cubic-bezier(.25,.7,.2,1) both; }
+.arcs figure:nth-child(2) { animation-delay: .15s; }
+.arcs figure:nth-child(3) { animation-delay: .3s; }
+.reperes { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 6px; font-size: 1rem; color: var(--ombre-2); }
+.reperes strong { color: var(--ombre); font-weight: 600; }
+.maison { scroll-margin-top: 88px; }
+@media (prefers-reduced-motion: reduce) {
+  .arcs figure { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Les maisons */
+.maisons { background: #fff; }
+.maison { display: grid; grid-template-columns: 5fr 6fr; gap: 64px; align-items: center; padding: 56px 0; border-top: 1px solid var(--pierre-claire); }
+.maison:first-of-type { border-top: 0; padding-top: 0; }
+.maison:nth-of-type(even) .photo { order: 2; }
+.photo {
+  aspect-ratio: 5 / 6; max-width: 400px; width: 100%; justify-self: center; border-radius: 999px 999px 0 0; background: var(--pierre-claire);
+  display: flex; align-items: flex-end; padding: 20px;
+  font-size: .85rem; color: var(--ombre-2);
+}
+.photo { position: relative; overflow: hidden; }
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.photo.bassin { background: #d5e9ea; }
+.photo-large { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 4px; margin-top: 32px; background: var(--pierre-claire); }
+.photo-autour { aspect-ratio: 21 / 9; margin: 0 0 56px; }
+.actions-maison { display: flex; flex-wrap: wrap; gap: 12px; }
+button.photo { border: 0; padding: 0; cursor: zoom-in; font: inherit; }
+.vignettes { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 28px; }
+.vignettes button.vignette { width: 64px; height: 64px; padding: 0; border: 0; border-radius: 4px; overflow: hidden; cursor: zoom-in; background: var(--pierre-claire); }
+.vignettes img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vignettes .tout-voir { margin-left: 8px; background: none; border: 0; padding: 6px 0; font: 600 1rem Commissioner, sans-serif; color: var(--volet); text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
+#sur-place .vignettes { margin-top: 16px; }
+
+.visionneuse { width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: #151b1c; color: #eef3f1; }
+.visionneuse::backdrop { background: rgba(21,27,28,.9); }
+.visionneuse[open] { display: grid; grid-template-rows: auto 1fr; }
+.visionneuse-haut { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 20px; }
+.visionneuse-titre { margin: 0; font-family: Marcellus, serif; font-size: 1.25rem; }
+.visionneuse-fermer { font: 600 1rem Commissioner, sans-serif; color: #fff; background: rgba(255,255,255,.1); border: 0; border-radius: 6px; padding: 10px 16px; cursor: pointer; }
+.visionneuse figure { margin: 0; min-height: 0; display: grid; grid-template-rows: 1fr auto; padding: 0 72px 16px; }
+.visionneuse figure img { width: 100%; height: 100%; min-height: 0; object-fit: contain; touch-action: pan-y; }
+.visionneuse figcaption { display: flex; justify-content: space-between; gap: 16px; padding-top: 12px; font-size: 1rem; color: #c3cbca; }
+.visionneuse-compteur { white-space: nowrap; }
+.visionneuse-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; border: 0; background: rgba(255,255,255,.12); cursor: pointer; display: grid; place-items: center; }
+.visionneuse-nav:hover, .visionneuse-fermer:hover { background: rgba(255,255,255,.22); }
+.visionneuse-nav svg { width: 26px; height: 26px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.visionneuse-nav.precedente { left: 12px; }
+.visionneuse-nav.suivante { right: 12px; }
+td .periode { display: block; font-size: .875rem; color: var(--ombre-2); font-weight: 400; }
+.photo.olivier { background: #e1e3d2; }
+dl.fiche { display: grid; grid-template-columns: max-content 1fr; gap: 10px 28px; margin: 24px 0 28px; font-size: 1rem; }
+dl.fiche dt { color: var(--ombre-2); }
+dl.fiche dd { margin: 0; }
+.prix { font-size: 1rem; color: var(--ombre-2); margin-bottom: 20px; }
+.prix strong { font-family: Marcellus, serif; font-weight: 400; font-size: 1.75rem; color: var(--ombre); }
+
+/* Sur place */
+.sur-place-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+.liste-equip { list-style: none; padding: 0; margin: 0; }
+.liste-equip li { display: grid; grid-template-columns: 32px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--pierre); }
+.liste-equip li:last-child { border-bottom: 1px solid var(--pierre); }
+.liste-equip svg { width: 28px; height: 28px; stroke: var(--volet); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.liste-equip b { display: block; font-weight: 600; }
+.liste-equip span { color: var(--ombre-2); font-size: 1rem; }
+
+/* Autour */
+.autour { background: var(--volet); color: #eef3f1; }
+.autour h2, .autour h3 { color: #fff; }
+.autour .intro-section p { color: #cfdcda; }
+.distances { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+.distances ol { list-style: none; padding: 0; margin: 0; }
+.distances li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,.18); }
+.distances li span:last-child { color: #cfdcda; white-space: nowrap; }
+
+/* Tarifs */
+.tarifs-grille { display: grid; grid-template-columns: 3fr 2fr; gap: 64px; align-items: start; }
+table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+th, td { padding: 16px 0; text-align: left; border-bottom: 1px solid var(--pierre); }
+th { font-weight: 600; color: var(--ombre-2); font-size: .95rem; }
+td:not(:first-child), th:not(:first-child) { text-align: right; }
+td.haute { font-weight: 600; }
+.note { font-size: .9rem; color: var(--ombre-2); margin-top: 16px; }
+.compris h3 { margin-top: 0; }
+.compris ul { padding-left: 1.1em; margin: 0 0 28px; }
+.compris li { margin-bottom: 6px; }
+
+/* Réservation Smoobu */
+.resa { background: #fff; }
+.onglets { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--pierre); margin-bottom: 0; }
+.onglets button {
+  font: 500 1rem Commissioner, sans-serif; padding: 12px 18px; background: none; border: 0;
+  border-bottom: 3px solid transparent; margin-bottom: -1px; color: var(--ombre-2); cursor: pointer;
+}
+.onglets button[aria-selected="true"] { color: var(--ombre); border-bottom-color: var(--volet); }
+.resa-cadre { background: var(--chaux); min-height: 320px; }
+.resa-cadre iframe { display: block; width: 100%; height: 900px; border: 0; }
+.resa-vide { padding: 56px 32px; max-width: 40rem; }
+.resa-vide p { color: var(--ombre-2); }
+.resa-infos { font-size: .95rem; color: var(--ombre-2); margin-top: 20px; }
+
+/* Avis */
+.avis-liste { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; max-width: 60rem; }
+blockquote { margin: 0; border-left: 2px solid var(--soleil); padding-left: 20px; }
+blockquote p { font-family: Marcellus, serif; font-size: 1.3rem; line-height: 1.45; color: var(--ombre); }
+blockquote footer { font-size: .95rem; color: var(--ombre-2); }
+
+/* Contact */
+.contact { background: var(--pierre-claire); }
+.contact-grille { display: grid; grid-template-columns: 2fr 3fr; gap: 72px; }
+.carte { display: block; width: 100%; aspect-ratio: 4 / 3; border: 0; border-radius: 4px; margin-bottom: 12px; background: var(--pierre); }
+address { font-style: normal; line-height: 1.8; margin-bottom: 24px; }
+.contact dl { margin: 0 0 24px; }
+.contact dt { font-weight: 600; margin-top: 16px; }
+.contact dd { margin: 0; color: var(--ombre-2); }
+form.demande { display: grid; gap: 16px; align-content: start; }
+form.demande .ligne { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+form.demande label { display: grid; gap: 6px; font-size: .95rem; font-weight: 500; }
+form.demande input, form.demande select, form.demande textarea {
+  font: inherit; font-size: 1rem; padding: 12px 14px; border: 1px solid #bfb5a4; border-radius: 6px; background: #fff; color: var(--ombre); width: 100%;
+}
+form.demande textarea { min-height: 130px; resize: vertical; }
+.confirmation { color: var(--volet); font-weight: 600; }
+
+footer.pied { background: var(--ombre); color: #c3cbca; padding: 56px 0 40px; font-size: 1rem; }
+footer.pied a { color: #fff; }
+.pied-grille { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+footer.pied ul { list-style: none; padding: 0; margin: 0; line-height: 2; }
+.mention { margin-top: 40px; font-size: .85rem; color: #8e9a99; }
+
+.cta-mobile { display: none; }
+
+@media (max-width: 980px) {
+  section { padding: 80px 0; }
+  .nav ul, .nav .langues, .nav > .btn { display: none; }
+  .menu-btn { display: block; }
+  .nav.ouvert { flex-wrap: wrap; height: auto; padding-top: 16px; padding-bottom: 16px; }
+  .nav.ouvert ul { display: flex; flex-direction: column; width: 100%; gap: 14px; order: 3; padding: 8px 0 16px; }
+  .nav.ouvert .langues { display: block; order: 4; padding-bottom: 12px; }
+  .arcs { height: 460px; order: -1; }
+  .ouverture-grille, .maison, .sur-place-grille, .distances, .tarifs-grille, .contact-grille { grid-template-columns: 1fr; gap: 40px; }
+  .maison:nth-of-type(even) .photo { order: 0; }
+  .photo { aspect-ratio: 4 / 3; max-height: 420px; }
+  .avis-liste { grid-template-columns: 1fr; gap: 36px; }
+  .photo-autour { aspect-ratio: 3 / 2; }
+  .pied-grille { grid-template-columns: 1fr; }
+  .resa-cadre iframe { height: 1100px; }
+  .cta-mobile { display: block; visibility: hidden; opacity: 0; transition: opacity .2s, visibility .2s; position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 50; text-align: center; box-shadow: 0 8px 24px rgba(31,42,44,.3); }
+  footer.pied { padding-bottom: 104px; }
+}
+.cta-mobile.visible { visibility: visible; opacity: 1; }
+@media (max-width: 560px) {
+  body { font-size: 1.0625rem; }
+  .arcs { height: 340px; gap: 10px; }
+  .visionneuse figure { padding: 0 0 12px; }
+  .visionneuse figcaption { padding: 12px 16px 0; }
+  .visionneuse-nav { top: auto; bottom: 64px; transform: none; }
+  .wrap { padding: 0 16px; }
+  form.demande .ligne { grid-template-columns: 1fr; }
+  .ouverture { padding-top: 32px; }
+}
+
+/* Lien de l'accueil vers la page de chaque maison */
+.lien-maison { margin: 20px 0 0; font-weight: 600; }
+
+/* Pages des maisons */
+.entete-maison { padding: 40px 0 72px; }
+.entete-maison h1 { font-size: clamp(2.25rem, 4.6vw, 3.5rem); max-width: 22ch; }
+.entete-maison .chapo { font-size: 1.25rem; color: var(--ombre-2); margin-top: 20px; max-width: 40rem; }
+.entete-maison .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.entete-grille { display: grid; grid-template-columns: 1.25fr 1fr; gap: 64px; align-items: center; }
+.entete-grille .photo { max-width: 420px; }
+.fil { font-size: .95rem; color: var(--ombre-2); margin-bottom: 28px; }
+.fil a { color: var(--volet); }
+.galerie-maison { background: #fff; padding-top: 72px; }
+.vignettes.grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 0; }
+.vignettes.grille button.vignette { width: 100%; height: auto; aspect-ratio: 4 / 3; }
+.description-maison { background: var(--chaux); }
+.description-grille { display: grid; grid-template-columns: 3fr 2fr; gap: 72px; align-items: start; }
+.description-grille .fiche { margin-top: 64px; }
+.autre-maison { background: var(--pierre-claire); }
+.carte-maison { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: center; margin-top: 32px; }
+.carte-photo img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 999px 999px 0 0; }
+.carte-maison h3 { margin-top: 0; }
+@media (max-width: 980px) {
+  .entete-grille, .description-grille, .carte-maison { grid-template-columns: 1fr; gap: 32px; }
+  .description-grille .fiche { margin-top: 0; }
+}
+@media (max-width: 560px) {
+  .vignettes.grille { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+}

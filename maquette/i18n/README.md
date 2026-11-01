@@ -1,20 +1,21 @@
 # Traductions
 
-Le site existe en cinq langues, chacune à sa propre adresse :
+Le site a trois pages, en cinq langues :
 
-| Langue | Page | Traductions |
+| Page | Français (référence) | Autres langues |
 |---|---|---|
-| Français (référence) | `maquette/index.html` | dans la page elle-même |
-| Anglais | `maquette/en/index.html` | `en.json` |
-| Allemand | `maquette/de/index.html` | `de.json` |
-| Néerlandais | `maquette/nl/index.html` | `nl.json` |
-| Espagnol | `maquette/es/index.html` | `es.json` |
+| Accueil | `maquette/index.html` | `maquette/<langue>/index.html` |
+| Olivier et Lavande | `maquette/villacotepiscine.html` | `maquette/<langue>/villacotepiscine.html` |
+| Les Cigales | `maquette/villa2terrasses.html` | `maquette/<langue>/villa2terrasses.html` |
 
-Les pages `en/`, `de/`, `nl/` et `es/` sont **générées** : ne les modifiez pas à la main.
+Langues : anglais (`en.json`), allemand (`de.json`), néerlandais (`nl.json`), espagnol (`es.json`).
+Les dossiers `en/`, `de/`, `nl/` et `es/` sont **générés** : ne les modifiez pas à la main.
+La mise en forme (`style.css`) et le script (`site.js`) sont communs à toutes les pages.
 
 ## Modifier un texte
 
-1. **Texte français** : modifiez `maquette/index.html`.
+1. **Texte français** : modifiez la page française concernée. Une clé présente sur plusieurs pages
+   (menu, pied de page, tarifs…) doit garder le même texte partout : le script le signale sinon.
 2. **Traduction** : modifiez la valeur correspondante dans `en.json`, `de.json`, `nl.json` ou `es.json`.
    - `textes` : textes de la page (la clé est celle de l'attribut `data-i18n` dans `index.html`) ;
    - `script` : textes affichés par le script (légendes des photos, boutons des galeries, messages).
@@ -32,7 +33,7 @@ Les pages `en/`, `de/`, `nl/` et `es/` sont **générées** : ne les modifiez pa
 
 1. Copiez `en.json` en `<code>.json` (par exemple `it.json`) et traduisez les valeurs.
 2. Ajoutez la langue dans `LANGUES`, en haut de `maquette/outils/traduire.py`.
-3. Dans l'en-tête de `index.html`, ajoutez la balise `hreflang` et l'option du sélecteur de langue.
+3. Dans l'en-tête de chaque page française, ajoutez la balise `hreflang` et l'option du sélecteur de langue.
 4. Régénérez.
 
 ## Ajouter un texte
