@@ -32,6 +32,9 @@ du site actuel : vérifiez leur licence avant de les publier ailleurs.
 
 Les galeries (vignettes sous chaque fiche, visionneuse plein écran) affichent les photos de
 `site-actuel/` et leurs vignettes de `vignettes/` (360 px, mêmes noms de fichier).
-La liste des photos et leurs légendes se trouvent dans l'objet `GALERIES`, en bas de `index.html`.
-Pour ajouter une photo : déposez-la dans `site-actuel/`, créez sa vignette dans `vignettes/`,
-puis ajoutez une ligne `['nom-du-fichier-sans-extension', 'Légende']` dans la bonne galerie.
+La liste des photos de chaque galerie est dans l'objet `GALERIES` de `maquette/site.js` ; leurs légendes
+sont dans le bloc de textes des pages (section `legendes`) et dans `maquette/i18n/*.json` pour les traductions.
+Pour ajouter une photo : déposez-la dans `site-actuel/`, créez sa vignette dans `vignettes/`, ajoutez
+son nom (sans extension) dans la bonne galerie de `site.js`, sa légende française dans le bloc de textes
+des trois pages françaises et sa traduction dans chaque fichier de langue, puis lancez
+`python3 maquette/outils/traduire.py`.

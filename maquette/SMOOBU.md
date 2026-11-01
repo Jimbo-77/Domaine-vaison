@@ -16,7 +16,7 @@ Elle affiche le moteur de réservation Smoobu (Booking Engine) : disponibilités
 
 ## 2. Côté site
 
-Dans `maquette/index.html`, en bas du fichier, remplir l'objet `SMOOBU` avec l'adresse
+Dans `maquette/site.js` (script commun à toutes les pages et à toutes les langues), remplir l'objet `SMOOBU` avec l'adresse
 (attribut `src` ou `url` du code fourni par Smoobu) de chaque module :
 
 ```js
