@@ -176,6 +176,45 @@ function afficherCarte() {
   zone.replaceWith(f);
 }
 
+/* Bandeau de suggestion de langue : si le navigateur du visiteur préfère une autre langue
+   disponible, on lui propose la même page dans cette langue, sans jamais le rediriger.
+   Le choix est mémorisé (changement de langue ou fermeture du bandeau). */
+const MEMOIRE_LANGUE = 'langue-choisie';
+function memoriserLangue(code) {
+  try { localStorage.setItem(MEMOIRE_LANGUE, code); } catch (e) { /* stockage indisponible : sans conséquence */ }
+}
+function langueMemorisee() {
+  try { return localStorage.getItem(MEMOIRE_LANGUE); } catch (e) { return null; }
+}
+document.querySelectorAll('a[hreflang]').forEach(a => a.addEventListener('click', () => memoriserLangue(a.getAttribute('hreflang'))));
+(function proposerLangue() {
+  const bloc = document.getElementById('suggestion-langue');
+  if (!bloc || langueMemorisee()) return;
+  const disponibles = JSON.parse(bloc.textContent);
+  const langueDeLaPage = document.documentElement.lang;
+  let choix = null;
+  for (const preference of navigator.languages || [navigator.language || '']) {
+    const code = preference.toLowerCase().split('-')[0];
+    if (code === langueDeLaPage) return;          // le visiteur lit déjà sa langue préférée
+    if (disponibles[code]) { choix = code; break; }
+  }
+  if (!choix) return;
+  const s = disponibles[choix];
+  const bandeau = document.createElement('div');
+  bandeau.className = 'suggestion-langue';
+  bandeau.lang = choix;
+  bandeau.innerHTML = `<p></p><a hreflang="${choix}"></a><button type="button"><span aria-hidden="true">×</span></button>`;
+  bandeau.querySelector('p').textContent = s.texte;
+  const lien = bandeau.querySelector('a');
+  lien.href = s.href;
+  lien.textContent = s.lien;
+  lien.addEventListener('click', () => memoriserLangue(choix));
+  const fermer = bandeau.querySelector('button');
+  fermer.setAttribute('aria-label', s.fermer);
+  fermer.addEventListener('click', () => { memoriserLangue(langueDeLaPage); bandeau.remove(); });
+  document.body.prepend(bandeau);
+})();
+
 /* Menu des langues : se ferme au clic ailleurs ou avec Échap. */
 const langues = document.querySelector('.langues');
 if (langues) {

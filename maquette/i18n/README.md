@@ -32,15 +32,23 @@ La mise en forme (`style.css`) et le script (`site.js`) sont communs à toutes l
 ## Ajouter une langue
 
 1. Copiez `en.json` en `<code>.json` (par exemple `it.json`) et traduisez les valeurs.
-2. Ajoutez la langue dans `LANGUES`, en haut de `maquette/outils/traduire.py`.
-3. Dans l'en-tête de chaque page française, ajoutez la balise `hreflang` et l'option du sélecteur de langue.
-4. Régénérez.
+2. En haut de `maquette/outils/traduire.py`, ajoutez la langue dans `LANGUES` et la phrase du bandeau
+   de suggestion dans `SUGGESTIONS`, puis dans `LOCALES` (code régional, par exemple `it_IT`).
+3. Régénérez : le menu des langues, les balises `hreflang`, le plan du site et le bandeau de
+   suggestion de chaque page sont mis à jour automatiquement.
 
 ## Ajouter un texte
 
 Ajoutez dans `index.html` l'attribut `data-i18n="ma_cle"` sur l'élément (ou `data-i18n-alt="ma_cle"`,
 `data-i18n-aria-label="ma_cle"`… pour un attribut, placé juste après celui-ci), puis la clé
 `"ma_cle"` dans chaque fichier de langue, et régénérez.
+
+## Bandeau de suggestion de langue
+
+Si la langue préférée du navigateur du visiteur est disponible et n'est pas celle de la page, un
+bandeau lui propose la même page dans sa langue (jamais de redirection automatique). Il disparaît dès
+que le visiteur ferme le bandeau ou choisit une langue, et ce choix est mémorisé dans son navigateur.
+Les phrases du bandeau sont dans `SUGGESTIONS` (`maquette/outils/traduire.py`), l'affichage dans `site.js`.
 
 ## Référencement
 

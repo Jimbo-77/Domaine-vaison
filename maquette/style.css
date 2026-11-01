@@ -196,6 +196,13 @@ blockquote footer { font-size: .95rem; color: var(--ombre-2); }
 .contact { background: var(--pierre-claire); }
 .contact-grille { display: grid; grid-template-columns: 2fr 3fr; gap: 72px; }
 .carte { display: block; width: 100%; aspect-ratio: 4 / 3; border: 0; border-radius: 4px; margin-bottom: 12px; background: var(--pierre); }
+/* Bandeau de suggestion de langue (ajouté par site.js) */
+.suggestion-langue { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 16px; padding: 10px 56px 10px 16px; background: var(--volet); color: #fff; font-size: .95rem; position: relative; }
+.suggestion-langue p { margin: 0; }
+.suggestion-langue a { color: #fff; font-weight: 600; }
+.suggestion-langue button { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border: 0; border-radius: 50%; background: transparent; color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer; }
+.suggestion-langue button:hover { background: rgba(255,255,255,.15); }
+
 /* Carte : remplacée par un bouton tant que le visiteur ne l'a pas demandée */
 .carte { display: grid; place-content: center; justify-items: center; gap: 12px; text-align: center; padding: 24px; }
 .carte svg { width: 36px; height: 36px; fill: none; stroke: var(--volet); stroke-width: 1.5; }
