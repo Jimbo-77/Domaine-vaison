@@ -2,7 +2,7 @@
   "langue": "de",
   "textes": {
     "meta_titre": "Résidence Le Théâtre Antique – Ferienhäuser in Vaison-la-Romaine",
-    "meta_description": "Drei Ferienhäuser für 4 Personen auf einem umzäunten Anwesen in Vaison-la-Romaine, wenige Schritte vom antiken Theater und 300 m vom Stadtzentrum. Pool, Garten, Boule-Platz. Ganzjährig geöffnet.",
+    "meta_description": "Drei Ferienhäuser für 4 Personen mit Pool in Vaison-la-Romaine, wenige Schritte vom antiken Theater und 300 m vom Zentrum. Ganzjährig geöffnet.",
     "nav_maisons": "Die Häuser",
     "nav_sur_place": "Vor Ort",
     "nav_autour": "Umgebung",
@@ -10,7 +10,7 @@
     "nav_contact": "Kontakt",
     "btn_reserver": "Buchen",
     "btn_menu": "Menü",
-    "h1": "Drei Ferienhäuser am antiken Theater",
+    "h1": "<span class=\"h1-lieu\">Ferienhäuser in Vaison-la-Romaine</span> Drei Ferienhäuser am antiken Theater",
     "chapo": "Olivier, Lavande und Les Cigales: drei Häuser für 4 Personen auf einem umzäunten Anwesen in Vaison-la-Romaine, mit Garten, Boule-Platz und Parkplatz. Ganzjährig geöffnet.",
     "repere_theatre": "<strong>Antikes Theater</strong> wenige Schritte entfernt",
     "repere_centre": "<strong>Stadtzentrum</strong> 300 m zu Fuß",
@@ -142,9 +142,9 @@
     "btn_voir_maisons": "Alles über diese Häuser",
     "btn_voir_maison": "Alles über das Haus",
     "meta_titre_ol": "Olivier und Lavande, Ferienhäuser mit Pool in Vaison-la-Romaine",
-    "meta_description_ol": "Zwei baugleiche Häuser mit 55 m² für 4 Personen und eigener Terrasse, auf einem Anwesen mit Pool, 300 m vom Zentrum von Vaison-la-Romaine. Ab 700 € pro Woche.",
+    "meta_description_ol": "Zwei baugleiche Häuser mit 55 m² für 4 Personen und Pool, 300 m vom Zentrum von Vaison-la-Romaine. Ab 700 € pro Woche, Reinigung und Wäsche inklusive.",
     "meta_titre_ci": "Les Cigales, Ferienhaus mit zwei Terrassen in Vaison-la-Romaine",
-    "meta_description_ci": "Haus mit 65 m² für 4 Personen und zwei eigenen Terrassen, auf einem Anwesen mit Pool, 300 m vom Zentrum von Vaison-la-Romaine. Ab 750 € pro Woche.",
+    "meta_description_ci": "Haus mit 65 m² für 4 Personen, zwei eigenen Terrassen und Pool, 300 m vom Zentrum von Vaison-la-Romaine. Ab 750 € pro Woche, Reinigung inklusive.",
     "aria_fil": "Brotkrümelnavigation",
     "fil_accueil": "Startseite",
     "h1_ol": "Olivier und Lavande, zwei Häuser für 4 Personen in Vaison-la-Romaine",
@@ -176,7 +176,9 @@
     "re_infos_maison": "Sichere Online-Zahlung und Bestätigung per E-Mail. Eine Frage vor der Buchung? <a href=\"index.html#contact\">Schreiben Sie uns</a>.",
     "va_titre": "Das andere Haus der Résidence",
     "va_cigales": "Les Cigales entdecken",
-    "va_ol": "Olivier und Lavande entdecken"
+    "va_ol": "Olivier und Lavande entdecken",
+    "carte_afficher": "Karte anzeigen",
+    "carte_note": "Karte von OpenStreetMap, wird erst geladen, wenn Sie sie anzeigen."
   },
   "script": {
     "galeries": {

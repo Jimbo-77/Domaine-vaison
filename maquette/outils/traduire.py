@@ -11,8 +11,9 @@ Utilisation, depuis la racine du dépôt :
 
 Le script :
   1. met à jour maquette/i18n/fr.json (textes de référence, à ne pas modifier à la main) ;
-  2. remplit le bloc « référencement » de l'en-tête de chaque page (adresse canonique, liens
-     vers les autres langues, interdiction d'indexer tant que le site n'est pas en ligne) ;
+  2. remplit, dans chaque page, le bloc « référencement » de l'en-tête (adresse canonique, liens
+     vers les autres langues, aperçu de partage, icônes, données structurées, interdiction
+     d'indexer tant que le site n'est pas en ligne) et le bloc « langues » du menu ;
   3. écrit maquette/<langue>/<page>.html pour chaque page et chaque fichier de langue ;
   4. écrit maquette/robots.txt et maquette/sitemap.xml ;
   5. signale les clés manquantes (le texte français est alors conservé).
@@ -40,6 +41,28 @@ RE_CONTENU = re.compile(r'(<([a-zA-Z0-9]+)\b[^>]*\sdata-i18n="([^"]+)"[^>]*>)(.*
 RE_ATTRIBUT = re.compile(r'(\s([a-z-]+)=")([^"]*)(" data-i18n-\2="([^"]+)")')
 RE_TEXTES = re.compile(r'(<script id="textes" type="application/json">\n)(.*?)(\n</script>)', re.S)
 RE_REFERENCEMENT = re.compile(r'(<!-- référencement :[^\n]*-->\n)(.*?)(<!-- /référencement -->)', re.S)
+RE_LANGUES = re.compile(r'(<!-- langues :[^\n]*-->\n)(.*?)(<!-- /langues -->)', re.S)
+
+# Informations de l'établissement, reprises dans les données structurées (schema.org).
+NOM_SITE = 'Résidence Le Théâtre Antique'
+TELEPHONE = '+33 6 32 51 56 29'
+EMAIL = 'domaine.letheatreantique@gmail.com'
+ADRESSE_POSTALE = {'@type': 'PostalAddress', 'streetAddress': '100 chemin du Brusquet', 'postalCode': '84110',
+                   'addressLocality': 'Vaison-la-Romaine', 'addressRegion': "Provence-Alpes-Côte d'Azur", 'addressCountry': 'FR'}
+GPS = {'@type': 'GeoCoordinates', 'latitude': 44.2445258, 'longitude': 5.0774152}
+LOCALES = {'fr': 'fr_FR', 'en': 'en_GB', 'de': 'de_DE', 'nl': 'nl_NL', 'es': 'es_ES'}
+# Par page : suffixe des clés de titre et de description, image de partage (fichier, largeur, hauteur, clé du texte alternatif).
+FICHES = {
+    'index.html': ('', ('accueil-piscine.jpg', 1400, 933, 'alt_accueil_piscine')),
+    'villacotepiscine.html': ('_ol', ('olivier-lavande.jpg', 1200, 829, 'alt_ol')),
+    'villa2terrasses.html': ('_ci', ('cigales.jpg', 1200, 800, 'alt_ci')),
+}
+# Maisons décrites sur chaque page : (ancre, nom, surface en m²).
+MAISONS = {
+    'villacotepiscine.html': [('olivier', 'Olivier', 55), ('lavande', 'Lavande', 55)],
+    'villa2terrasses.html': [('cigales', 'Les Cigales', 65)],
+}
+EQUIPEMENTS = ['eq_piscine', 'eq_jardin', 'eq_boulodrome', 'eq_barbecue', 'eq_parking', 'eq_wifi']
 
 
 def adresse(langue, nom):
@@ -48,19 +71,103 @@ def adresse(langue, nom):
     return ADRESSE_SITE + ('' if langue == 'fr' else f'{langue}/') + chemin
 
 
-def bloc_referencement(langue, nom):
+def brut(texte):
+    """Texte sans balises ni entités, pour les attributs et les données structurées."""
+    return html.unescape(re.sub(r'<[^>]+>', '', texte)).strip()
+
+
+def attribut(texte):
+    return html.escape(texte, quote=True)
+
+
+def donnees_structurees(langue, nom, textes):
+    suffixe, (image, *_) = FICHES[nom]
+    equipements = [{'@type': 'LocationFeatureSpecification', 'name': brut(textes[cle]), 'value': True} for cle in EQUIPEMENTS]
+    residence = {'@type': 'LodgingBusiness', '@id': ADRESSE_SITE + '#residence', 'name': NOM_SITE,
+                 'url': adresse(langue, 'index.html'), 'telephone': TELEPHONE, 'email': EMAIL,
+                 'address': ADRESSE_POSTALE, 'geo': GPS}
+    if nom == 'index.html':
+        maisons = [f'{adresse(langue, page)}#{ancre}' for page, liste in MAISONS.items() for ancre, _, _ in liste]
+        residence.update({'description': brut(textes['meta_description']), 'image': ADRESSE_SITE + 'photos/' + image,
+                          'priceRange': '700 € – 950 €', 'checkinTime': '16:00', 'checkoutTime': '10:00',
+                          'petsAllowed': True, 'amenityFeature': equipements,
+                          'containsPlace': [{'@id': m} for m in maisons]})
+        return {'@context': 'https://schema.org', '@graph': [residence]}
+    graphe = [residence]
+    for ancre, nom_maison, surface in MAISONS[nom]:
+        graphe.append({'@type': 'House', '@id': f'{adresse(langue, nom)}#{ancre}', 'name': f'{nom_maison}, {NOM_SITE}',
+                       'description': brut(textes['meta_description' + suffixe]), 'url': adresse(langue, nom),
+                       'image': ADRESSE_SITE + 'photos/' + image,
+                       'floorSize': {'@type': 'QuantitativeValue', 'value': surface, 'unitCode': 'MTK'},
+                       'numberOfBedrooms': 2, 'numberOfBathroomsTotal': 1,
+                       'occupancy': {'@type': 'QuantitativeValue', 'maxValue': 4},
+                       'petsAllowed': True, 'amenityFeature': equipements,
+                       'containedInPlace': {'@id': ADRESSE_SITE + '#residence'}})
+    nom_page = brut(textes['ol_titre']) if nom == 'villacotepiscine.html' else 'Les Cigales'
+    graphe.append({'@type': 'BreadcrumbList', 'itemListElement': [
+        {'@type': 'ListItem', 'position': 1, 'name': brut(textes['fil_accueil']), 'item': adresse(langue, 'index.html')},
+        {'@type': 'ListItem', 'position': 2, 'name': nom_page, 'item': adresse(langue, nom)}]})
+    return {'@context': 'https://schema.org', '@graph': graphe}
+
+
+def bloc_referencement(langue, nom, textes):
+    suffixe, (image, largeur, hauteur, cle_alt) = FICHES[nom]
+    prefixe = '' if langue == 'fr' else '../'
+    titre, description = brut(textes['meta_titre' + suffixe]), brut(textes['meta_description' + suffixe])
     lignes = [f'<link rel="canonical" href="{adresse(langue, nom)}">']
     lignes += [f'<link rel="alternate" hreflang="{code}" href="{adresse(code, nom)}">' for code in LANGUES]
     lignes.append(f'<link rel="alternate" hreflang="x-default" href="{adresse("fr", nom)}">')
     if not INDEXABLE:
         lignes.append('<meta name="robots" content="noindex, nofollow">')
+    lignes += [
+        f'<link rel="icon" href="{prefixe}favicon.svg" type="image/svg+xml">',
+        f'<link rel="icon" href="{prefixe}favicon-32.png" sizes="32x32" type="image/png">',
+        f'<link rel="apple-touch-icon" href="{prefixe}apple-touch-icon.png">',
+        '<meta name="theme-color" content="#2f5d62">',
+        '<meta property="og:type" content="website">',
+        f'<meta property="og:site_name" content="{attribut(NOM_SITE)}">',
+        f'<meta property="og:title" content="{attribut(titre)}">',
+        f'<meta property="og:description" content="{attribut(description)}">',
+        f'<meta property="og:url" content="{adresse(langue, nom)}">',
+        f'<meta property="og:image" content="{ADRESSE_SITE}photos/{image}">',
+        f'<meta property="og:image:width" content="{largeur}">',
+        f'<meta property="og:image:height" content="{hauteur}">',
+        f'<meta property="og:image:alt" content="{attribut(brut(textes[cle_alt]))}">',
+        f'<meta property="og:locale" content="{LOCALES[langue]}">',
+    ]
+    lignes += [f'<meta property="og:locale:alternate" content="{LOCALES[code]}">' for code in LANGUES if code != langue]
+    lignes.append('<meta name="twitter:card" content="summary_large_image">')
+    lignes.append('<script type="application/ld+json">\n'
+                  + json.dumps(donnees_structurees(langue, nom, textes), ensure_ascii=False, indent=1) + '\n</script>')
     return '\n'.join(lignes) + '\n'
 
 
-def referencer(page, langue, nom):
-    if not RE_REFERENCEMENT.search(page):
-        raise SystemExit(f'{nom} : bloc « référencement » introuvable dans l\'en-tête')
-    return RE_REFERENCEMENT.sub(lambda m: m.group(1) + bloc_referencement(langue, nom) + m.group(3), page, count=1)
+def bloc_langues(langue, nom):
+    """Menu des langues en vrais liens : chacun mène à la même page dans l'autre langue."""
+    fichier = '' if nom == 'index.html' else nom
+    def lien(code):
+        if code == langue:
+            href = fichier or './'
+        elif langue == 'fr':
+            href = f'{code}/{fichier}'
+        else:
+            href = '../' + ('' if code == 'fr' else f'{code}/') + fichier
+        courant = ' aria-current="page"' if code == langue else ''
+        return f'      <li><a href="{href}" hreflang="{code}" lang="{code}"{courant}>{LANGUES[code]}</a></li>'
+    # Le libellé « Langue » (traduit) est dans la page, juste avant ce bloc : id="titre-langues".
+    return ('    <details class="langues">\n'
+            f'      <summary aria-describedby="titre-langues">{LANGUES[langue]}</summary>\n'
+            '      <ul>\n' + '\n'.join(lien(c) for c in LANGUES) + '\n      </ul>\n'
+            '    </details>\n')
+
+
+def remplir_blocs(page, langue, nom, textes):
+    for motif, nom_bloc, contenu in ((RE_REFERENCEMENT, 'référencement', bloc_referencement(langue, nom, textes)),
+                                     (RE_LANGUES, 'langues', bloc_langues(langue, nom))):
+        if not motif.search(page):
+            raise SystemExit(f'{nom} : bloc « {nom_bloc} » introuvable')
+        page = motif.sub(lambda m: m.group(1) + contenu + m.group(3), page, count=1)
+    return page
 
 
 def robots_et_sitemap():
@@ -108,47 +215,30 @@ def fusionner(reference, traduction, chemin, manquants):
     return traduction
 
 
-def selecteur_langues(page, langue, nom):
-    """Chaque option mène à la même page dans l'autre langue (adresse relative au dossier <langue>/)."""
-    fichier = '' if nom == 'index.html' else nom
-    def option(code):
-        if code == langue:
-            valeur = fichier or './'
-        else:
-            valeur = '../' + ('' if code == 'fr' else f'{code}/') + fichier
-        choisi = ' selected' if code == langue else ''
-        return f'<option value="{valeur}" lang="{code}"{choisi}>{LANGUES[code]}</option>'
-    options = ''.join(option(c) for c in LANGUES)
-    return re.sub(r'(<select [^>]*onchange="location\.href = this\.value">).*?(</select>)',
-                  lambda m: m.group(1) + options + m.group(2), page, count=1, flags=re.S)
-
-
 def generer(page, langue, nom, textes, script):
     page = RE_CONTENU.sub(lambda m: m.group(1) + textes.get(m.group(3), m.group(4)) + m.group(5), page)
     page = RE_ATTRIBUT.sub(
         lambda m: m.group(1) + html.escape(textes.get(m.group(5), html.unescape(m.group(3))), quote=True) + m.group(4), page)
     page = RE_TEXTES.sub(lambda m: m.group(1) + json.dumps(script, ensure_ascii=False, indent=2) + m.group(3), page)
     page = page.replace('<html lang="fr">', f'<html lang="{langue}">', 1)
-    page = referencer(page, langue, nom)
-    page = selecteur_langues(page, langue, nom)
+    page = remplir_blocs(page, langue, nom, textes)
     # La page traduite est un dossier plus bas : on remonte pour les fichiers communs.
-    page = re.sub(r'(\s(?:src|href)=")(photos/|style\.css|site\.js)', r'\1../\2', page)
+    page = re.sub(r'(\s(?:src|href)=")(photos/|polices/|style\.css|site\.js)', r'\1../\2', page)
+    page = re.sub(r'srcset="([^"]*)"', lambda m: 'srcset="' + re.sub(r'(^|, )photos/', r'\1../photos/', m.group(1)) + '"', page)
     page = page.replace('data-racine=""', 'data-racine="../"', 1)
     return page
 
 
 def main():
-    pages = {}
-    for nom in PAGES:
-        source = RACINE / nom
-        page = source.read_text(encoding='utf-8')
-        mise_a_jour = referencer(page, 'fr', nom)
+    pages = {nom: (RACINE / nom).read_text(encoding='utf-8') for nom in PAGES}
+    textes_fr, script_fr = extraire(pages)
+    for nom, page in pages.items():
+        mise_a_jour = remplir_blocs(page, 'fr', nom, textes_fr)
         if mise_a_jour != page:
-            source.write_text(mise_a_jour, encoding='utf-8')
+            (RACINE / nom).write_text(mise_a_jour, encoding='utf-8')
         pages[nom] = mise_a_jour
     robots_et_sitemap()
     print(f'adresse du site : {ADRESSE_SITE} ; indexable : {"oui" if INDEXABLE else "non (maquette)"}')
-    textes_fr, script_fr = extraire(pages)
     DOSSIER_I18N.mkdir(exist_ok=True)
     (DOSSIER_I18N / 'fr.json').write_text(
         json.dumps({'langue': 'fr', 'textes': textes_fr, 'script': script_fr}, ensure_ascii=False, indent=2) + '\n',

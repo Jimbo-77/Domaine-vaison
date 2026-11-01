@@ -2,7 +2,7 @@
   "langue": "es",
   "textes": {
     "meta_titre": "Résidence Le Théâtre Antique – Alquiler en Vaison-la-Romaine",
-    "meta_description": "Tres casas para 4 personas en una finca cerrada de Vaison-la-Romaine, a un paso del Teatro Romano y a 300 m del centro. Piscina, jardín, pista de petanca. Abierto todo el año.",
+    "meta_description": "Tres casas para 4 personas con piscina en Vaison-la-Romaine, a un paso del Teatro Romano y a 300 m del centro. Abierto todo el año.",
     "nav_maisons": "Las casas",
     "nav_sur_place": "En la finca",
     "nav_autour": "Alrededores",
@@ -10,7 +10,7 @@
     "nav_contact": "Contacto",
     "btn_reserver": "Reservar",
     "btn_menu": "Menú",
-    "h1": "Tres casas a un paso del Teatro Romano",
+    "h1": "<span class=\"h1-lieu\">Casas de vacaciones en Vaison-la-Romaine</span> Tres casas a un paso del Teatro Romano",
     "chapo": "Olivier, Lavande y Les Cigales: tres casas para 4 personas en una finca cerrada de Vaison-la-Romaine, con jardín, pista de petanca y aparcamiento. Abierto todo el año.",
     "repere_theatre": "<strong>Teatro Romano</strong> a un paso",
     "repere_centre": "<strong>Centro</strong> a 300 m a pie",
@@ -142,9 +142,9 @@
     "btn_voir_maisons": "Todo sobre estas casas",
     "btn_voir_maison": "Todo sobre la casa",
     "meta_titre_ol": "Olivier y Lavande, casas con piscina en Vaison-la-Romaine",
-    "meta_description_ol": "Dos casas gemelas de 55 m² para 4 personas con terraza privada, en una finca con piscina a 300 m del centro de Vaison-la-Romaine. Desde 700 € por semana.",
+    "meta_description_ol": "Dos casas gemelas de 55 m² para 4 personas con piscina, a 300 m del centro de Vaison-la-Romaine. Desde 700 € por semana, limpieza y ropa incluidas.",
     "meta_titre_ci": "Les Cigales, casa con dos terrazas en Vaison-la-Romaine",
-    "meta_description_ci": "Casa de 65 m² para 4 personas con dos terrazas privadas, en una finca con piscina a 300 m del centro de Vaison-la-Romaine. Desde 750 € por semana.",
+    "meta_description_ci": "Casa de 65 m² para 4 personas, con dos terrazas privadas y piscina, a 300 m del centro de Vaison-la-Romaine. Desde 750 € por semana, limpieza incluida.",
     "aria_fil": "Ruta de navegación",
     "fil_accueil": "Inicio",
     "h1_ol": "Olivier y Lavande, dos casas para 4 personas en Vaison-la-Romaine",
@@ -176,7 +176,9 @@
     "re_infos_maison": "Pago en línea seguro y confirmación por correo electrónico. ¿Alguna pregunta antes de reservar? <a href=\"index.html#contact\">Escríbanos</a>.",
     "va_titre": "La otra casa de la Résidence",
     "va_cigales": "Descubrir Les Cigales",
-    "va_ol": "Descubrir Olivier y Lavande"
+    "va_ol": "Descubrir Olivier y Lavande",
+    "carte_afficher": "Mostrar el mapa",
+    "carte_note": "Mapa de OpenStreetMap, que solo se carga si lo muestra."
   },
   "script": {
     "galeries": {

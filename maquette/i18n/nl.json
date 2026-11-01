@@ -2,7 +2,7 @@
   "langue": "nl",
   "textes": {
     "meta_titre": "Résidence Le Théâtre Antique – Vakantiehuizen in Vaison-la-Romaine",
-    "meta_description": "Drie vakantiehuizen voor 4 personen op een afgesloten domein in Vaison-la-Romaine, op een steenworp van het Romeinse theater en 300 m van het centrum. Zwembad, tuin, jeu-de-boulesbaan. Het hele jaar open.",
+    "meta_description": "Drie vakantiehuizen voor 4 personen met zwembad in Vaison-la-Romaine, vlak bij het Romeinse theater en op 300 m van het centrum. Het hele jaar open.",
     "nav_maisons": "De huizen",
     "nav_sur_place": "Ter plaatse",
     "nav_autour": "Omgeving",
@@ -10,7 +10,7 @@
     "nav_contact": "Contact",
     "btn_reserver": "Boeken",
     "btn_menu": "Menu",
-    "h1": "Drie vakantiehuizen bij het Romeinse theater",
+    "h1": "<span class=\"h1-lieu\">Vakantiehuizen in Vaison-la-Romaine</span> Drie vakantiehuizen bij het Romeinse theater",
     "chapo": "Olivier, Lavande en Les Cigales: drie huizen voor 4 personen op een afgesloten domein in Vaison-la-Romaine, met tuin, jeu-de-boulesbaan en parkeerplaats. Het hele jaar open.",
     "repere_theatre": "<strong>Romeins theater</strong> op een steenworp",
     "repere_centre": "<strong>Centrum</strong> op 300 m lopen",
@@ -142,9 +142,9 @@
     "btn_voir_maisons": "Alles over deze huizen",
     "btn_voir_maison": "Alles over het huis",
     "meta_titre_ol": "Olivier en Lavande, vakantiehuizen met zwembad in Vaison-la-Romaine",
-    "meta_description_ol": "Twee identieke huizen van 55 m² voor 4 personen met eigen terras, op een domein met zwembad op 300 m van het centrum van Vaison-la-Romaine. Vanaf € 700 per week.",
+    "meta_description_ol": "Twee identieke huizen van 55 m² voor 4 personen met zwembad, op 300 m van het centrum van Vaison-la-Romaine. Vanaf € 700 per week, schoonmaak inbegrepen.",
     "meta_titre_ci": "Les Cigales, vakantiehuis met twee terrassen in Vaison-la-Romaine",
-    "meta_description_ci": "Huis van 65 m² voor 4 personen met twee eigen terrassen, op een domein met zwembad op 300 m van het centrum van Vaison-la-Romaine. Vanaf € 750 per week.",
+    "meta_description_ci": "Huis van 65 m² voor 4 personen met twee eigen terrassen en zwembad, op 300 m van het centrum van Vaison-la-Romaine. Vanaf € 750 per week.",
     "aria_fil": "Kruimelpad",
     "fil_accueil": "Home",
     "h1_ol": "Olivier en Lavande, twee huizen voor 4 personen in Vaison-la-Romaine",
@@ -176,7 +176,9 @@
     "re_infos_maison": "Veilig online betalen en bevestiging per e-mail. Een vraag voordat u boekt? <a href=\"index.html#contact\">Schrijf ons</a>.",
     "va_titre": "Het andere huis van de Résidence",
     "va_cigales": "Ontdek Les Cigales",
-    "va_ol": "Ontdek Olivier en Lavande"
+    "va_ol": "Ontdek Olivier en Lavande",
+    "carte_afficher": "Kaart tonen",
+    "carte_note": "Kaart van OpenStreetMap, alleen geladen als u hem toont."
   },
   "script": {
     "galeries": {
