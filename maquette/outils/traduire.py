@@ -36,12 +36,22 @@ RACINE = Path(__file__).resolve().parent.parent
 PAGES = ['index.html', 'villacotepiscine.html', 'villa2terrasses.html']
 DOSSIER_I18N = RACINE / 'i18n'
 LANGUES = {'fr': 'Français', 'en': 'English', 'de': 'Deutsch', 'nl': 'Nederlands', 'es': 'Español'}
+# Bandeau proposant la page dans la langue du navigateur du visiteur (affiché par site.js).
+# Il est rédigé dans la langue proposée, quelle que soit la langue de la page : (phrase, lien, fermer).
+SUGGESTIONS = {
+    'fr': ('Cette page existe aussi en français.', 'Voir la page en français', 'Fermer'),
+    'en': ('This page is also available in English.', 'View in English', 'Close'),
+    'de': ('Diese Seite gibt es auch auf Deutsch.', 'Auf Deutsch ansehen', 'Schließen'),
+    'nl': ('Deze pagina bestaat ook in het Nederlands.', 'Bekijken in het Nederlands', 'Sluiten'),
+    'es': ('Esta página también está disponible en español.', 'Ver en español', 'Cerrar'),
+}
 
 RE_CONTENU = re.compile(r'(<([a-zA-Z0-9]+)\b[^>]*\sdata-i18n="([^"]+)"[^>]*>)(.*?)(</\2>)', re.S)
 RE_ATTRIBUT = re.compile(r'(\s([a-z-]+)=")([^"]*)(" data-i18n-\2="([^"]+)")')
 RE_TEXTES = re.compile(r'(<script id="textes" type="application/json">\n)(.*?)(\n</script>)', re.S)
 RE_REFERENCEMENT = re.compile(r'(<!-- référencement :[^\n]*-->\n)(.*?)(<!-- /référencement -->)', re.S)
 RE_LANGUES = re.compile(r'(<!-- langues :[^\n]*-->\n)(.*?)(<!-- /langues -->)', re.S)
+RE_SUGGESTION = re.compile(r'(<!-- suggestion :[^\n]*-->\n)(.*?)(<!-- /suggestion -->)', re.S)
 
 # Informations de l'établissement, reprises dans les données structurées (schema.org).
 NOM_SITE = 'Résidence Le Théâtre Antique'
@@ -142,16 +152,27 @@ def bloc_referencement(langue, nom, textes):
     return '\n'.join(lignes) + '\n'
 
 
+def lien_relatif(langue, nom, code):
+    """Adresse relative, depuis la page `nom` en `langue`, de la même page en `code`."""
+    fichier = '' if nom == 'index.html' else nom
+    if code == langue:
+        return fichier or './'
+    if langue == 'fr':
+        return f'{code}/{fichier}'
+    return '../' + ('' if code == 'fr' else f'{code}/') + fichier
+
+
+def bloc_suggestion(langue, nom):
+    donnees = {code: {'href': lien_relatif(langue, nom, code), 'texte': texte, 'lien': lien, 'fermer': fermer}
+               for code, (texte, lien, fermer) in SUGGESTIONS.items() if code != langue}
+    return ('<script id="suggestion-langue" type="application/json">'
+            + json.dumps(donnees, ensure_ascii=False) + '</script>\n')
+
+
 def bloc_langues(langue, nom):
     """Menu des langues en vrais liens : chacun mène à la même page dans l'autre langue."""
-    fichier = '' if nom == 'index.html' else nom
     def lien(code):
-        if code == langue:
-            href = fichier or './'
-        elif langue == 'fr':
-            href = f'{code}/{fichier}'
-        else:
-            href = '../' + ('' if code == 'fr' else f'{code}/') + fichier
+        href = lien_relatif(langue, nom, code)
         courant = ' aria-current="page"' if code == langue else ''
         return f'      <li><a href="{href}" hreflang="{code}" lang="{code}"{courant}>{LANGUES[code]}</a></li>'
     # Le libellé « Langue » (traduit) est dans la page, juste avant ce bloc : id="titre-langues".
@@ -163,7 +184,8 @@ def bloc_langues(langue, nom):
 
 def remplir_blocs(page, langue, nom, textes):
     for motif, nom_bloc, contenu in ((RE_REFERENCEMENT, 'référencement', bloc_referencement(langue, nom, textes)),
-                                     (RE_LANGUES, 'langues', bloc_langues(langue, nom))):
+                                     (RE_LANGUES, 'langues', bloc_langues(langue, nom)),
+                                     (RE_SUGGESTION, 'suggestion', bloc_suggestion(langue, nom))):
         if not motif.search(page):
             raise SystemExit(f'{nom} : bloc « {nom_bloc} » introuvable')
         page = motif.sub(lambda m: m.group(1) + contenu + m.group(3), page, count=1)
