@@ -45,6 +45,7 @@ Page d'accueil unique, responsive, autonome :
 
 ## 4. À valider avec le propriétaire avant mise en ligne
 
+- [x] Pages des maisons : `villacotepiscine.html` (Olivier et Lavande) et `villa2terrasses.html` (Les Cigales), aux mêmes adresses que le site actuel
 - [x] Nom de marque : on garde « Résidence Le Théâtre Antique », le nom actuel (décision du propriétaire)
 - [ ] Horaires d'arrivée et de départ (la maquette reprend ceux des pages villas : 16 h ; 9 h–10 h)
 - [ ] Périodes exactes de moyenne et haute saison (juin apparaît dans les deux sur le site actuel)
